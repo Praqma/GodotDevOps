@@ -10,7 +10,7 @@ config_version=4
 
 [application]
 
-config/name="Temp"
+config/name="GodotDevOps"
 config/icon="res://icon.png"
 
 [physics]

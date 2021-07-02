@@ -8,5 +8,3 @@ func moveSpeedSet(value : float):
 func moveSpeedGet() -> float:
 	return moveSpeed
 
-func _init(moveSpeed : float):
-	self.moveSpeed = moveSpeed

@@ -1,15 +1,12 @@
 extends KinematicBody2D
 
-export var MoveSpeed := 300.0 setget moveSpeedSet, moveSpeedGet
+export var moveSpeed := 300.0 setget moveSpeedSet, moveSpeedGet
 
-func moveSpeedSet(moveSpeed : float):
-	if moveSpeed < 0.0:
-		moveSpeed = 0.0
-		
-	MoveSpeed = moveSpeed
+func moveSpeedSet(value : float):
+	moveSpeed =  max(value, 0)
 
 func moveSpeedGet() -> float:
-	return MoveSpeed
+	return moveSpeed
 
 func _init(moveSpeed : float):
-	moveSpeedSet(moveSpeed)
+	self.moveSpeed = moveSpeed

@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+position = Vector2( 512, 600 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+scale = Vector2( 50.68, 1 )
+shape = SubResource( 1 )
+
+[node name="KinematicBody2D2" type="KinematicBody2D" parent="."]
+position = Vector2( 512, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D2"]
+scale = Vector2( 50.68, 1 )
+shape = SubResource( 1 )
+
+[node name="KinematicBody2D3" type="KinematicBody2D" parent="."]
+position = Vector2( 0, 312 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D3"]
+scale = Vector2( 1, 29.88 )
+shape = SubResource( 2 )
+
+[node name="KinematicBody2D4" type="KinematicBody2D" parent="."]
+position = Vector2( 1016, 304 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D4"]
+scale = Vector2( 1, 29.88 )
+shape = SubResource( 2 )
+
+[node name="KinematicBody2D5" type="KinematicBody2D" parent="."]
+position = Vector2( 808, 392 )
+rotation = 0.785398
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D5"]
+scale = Vector2( 1, 29.88 )
+shape = SubResource( 2 )
+
+[node name="KinematicBody2D6" type="KinematicBody2D" parent="."]
+position = Vector2( 144, 336 )
+rotation = -0.523599
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D6"]
+scale = Vector2( 1, 29.88 )
+shape = SubResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 440, 520 )

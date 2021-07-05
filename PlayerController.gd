@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-export var moveSpeed := 300.0 setget moveSpeedSet, moveSpeedGet
-export var gravity := 1000.0 setget gravitySet, gravityGet
-export var jumpForce := 600.0 setget jumpForceSet, jumpForceGet
+export var moveSpeed := 300.0 setget set_moveSpeed, get_moveSpeed
+export var gravity := 1000.0 setget set_gravity, get_gravity
+export var jumpForce := 600.0 setget set_jumpForce, get_jumpForce
 
 var airMoveSpeed := 100.0
 var groundMoveSpeed := 300.0
@@ -11,22 +11,22 @@ var snap := false
 var moveInput := Vector2.ZERO
 var velocity := Vector2.ZERO
 
-func moveSpeedSet(value : float):
+func set_moveSpeed(value : float):
 	moveSpeed =  max(value, 0)
 
-func moveSpeedGet() -> float:
+func get_moveSpeed() -> float:
 	return moveSpeed
 
-func gravitySet(value : float):
+func set_gravity(value : float):
 	gravity = value
 
-func gravityGet() -> float:
+func get_gravity() -> float:
 	return gravity
 
-func jumpForceSet(value : float):
+func set_jumpForce(value : float):
 	jumpForce = value
 
-func jumpForceGet() -> float:
+func get_jumpForce() -> float:
 	return jumpForce
 	
 func _process(delta):

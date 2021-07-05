@@ -5,6 +5,7 @@ export var groundMoveSpeed := 300.0
 export var gravity := 1000.0 setget set_gravity, get_gravity
 export var jumpForce := 600.0 setget set_jumpForce, get_jumpForce
 export var snapLength := 5000.0
+export var slopeSlideThreshold := 50.0
 
 var snap := false
 var moveInput := Vector2.ZERO
@@ -41,7 +42,7 @@ func _physics_process(delta):
 	velocity.y += gravity * delta
 	
 	var snapVector = Vector2.DOWN * snapLength if snap else Vector2()
-	velocity = move_and_slide_with_snap(velocity, snapVector, Vector2.UP, true)
+	velocity = move_and_slide_with_snap(velocity, snapVector, Vector2.UP, slopeSlideThreshold)
 	
 	if is_on_floor() and (Input.is_action_just_released("move_right") or Input.is_action_just_released("move_left")):
 		velocity.y = 0

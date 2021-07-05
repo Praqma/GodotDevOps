@@ -24,8 +24,9 @@ jobs:
           name: example
           preset: ${{ matrix.platform }}
           debugMode: "true"
+      - uses: josephbmanley/run-gut-tests-action@v1.0.1
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
           name: Client - ${{ matrix.platform }}
-          path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
+          path: ${{ github.workspace }}/${{ steps.build.outputs.build }} 

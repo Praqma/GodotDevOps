@@ -38,7 +38,8 @@ func _physics_process(delta):
 		jump()
 	velocity.y += gravity * delta
 	
-	velocity = move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP, true)
+	var snapVector = Vector2.DOWN * 50 if snap else Vector2()
+	velocity = move_and_slide_with_snap(velocity, snapVector, Vector2.UP, true)
 	
 	var just_landed := is_on_floor() and not snap
 	if just_landed:

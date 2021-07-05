@@ -43,6 +43,9 @@ func _physics_process(delta):
 	var snapVector = Vector2.DOWN * snapLength if snap else Vector2()
 	velocity = move_and_slide_with_snap(velocity, snapVector, Vector2.UP, true)
 	
+	if is_on_floor() and (Input.is_action_just_released("move_right") or Input.is_action_just_released("move_left")):
+		velocity.y = 0
+	
 	var just_landed := is_on_floor() and not snap
 	if just_landed:
 		snap = true

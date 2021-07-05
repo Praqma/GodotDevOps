@@ -2,8 +2,9 @@ extends KinematicBody2D
 
 export var moveSpeed := 300.0 setget moveSpeedSet, moveSpeedGet
 export var gravity := 1000.0 setget gravitySet, gravityGet
-export var jumpForce := 500.0 setget jumpForceSet, jumpForceGet
+export var jumpForce := 600.0 setget jumpForceSet, jumpForceGet
 
+var snap := false
 var moveInput := Vector2.ZERO
 var velocity := Vector2.ZERO
 
@@ -30,11 +31,16 @@ func _process(delta):
 
 func _physics_process(delta):
 	velocity.x = moveInput.x * moveSpeed
-	if Input.is_action_just_pressed("jump") :
+	if Input.is_action_just_pressed("jump") and snap:
 		jump()
 	velocity.y += gravity * delta
 	
 	velocity = move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP, true)
+	
+	var just_landed := is_on_floor() and not snap
+	if just_landed:
+		snap = true
 
 func jump():
 	velocity.y = -jumpForce
+	snap = false

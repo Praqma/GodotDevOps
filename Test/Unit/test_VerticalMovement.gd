@@ -35,3 +35,11 @@ func test_jumping_decreases_jump_count_properly(params = use_parameters(jump_val
 	controller.jump()
 	
 	assert_eq(controller.jumpCount, params[1])
+
+func test_landing_resets_jump_count():
+	controller.maxJumpCount = 3
+	controller.jumpCount = 0
+	
+	controller.land()
+	
+	assert_eq(controller.jumpCount, controller.maxJumpCount)

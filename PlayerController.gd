@@ -58,15 +58,22 @@ func _physics_process(delta):
 	
 	var just_landed := is_on_floor() and not snap
 	if just_landed:
-		snap = true
+		land()
 
 func jump():
 	if jumpCount <= 0:
 		return
 	
+#	if !is_on_floor():
+#		jumpCount -= 1
+	
 	velocity.y = -jumpForce
 	snap = false
 	jumpCount -= 1
+
+func land():
+	snap = true
+	jumpCount = maxJumpCount
 
 func calculate_velocity(delta : float):
 	if is_on_floor():

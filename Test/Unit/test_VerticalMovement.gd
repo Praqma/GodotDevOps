@@ -12,8 +12,6 @@ func test_gravity_updates_properly(params = use_parameters(gravity_update_values
 	assert_eq(controller.velocity.y, params[2])
 	
 	controller.free()
-# Gravity
-# Jump
 
 var jump_update_values = [[10, .1, -100.0], [5,1,300.0], [1, 2, 0.0]]
 func test_jump_velocity_updates_properly(params = use_parameters(jump_update_values)) :

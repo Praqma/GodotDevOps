@@ -26,3 +26,12 @@ func test_calculate_vertical_velocity_with_gravity(params = use_parameters(expec
 	controller.calculate_velocity(params[0])
 	
 	assert_eq(controller.velocity.y, params[1])
+
+var jump_values = [[3, 2], [0, 0]]
+func test_jumping_decreases_jump_count_properly(params = use_parameters(jump_values)):
+	controller.maxJumpCount = params[0]
+	controller._ready()
+	
+	controller.jump()
+	
+	assert_eq(controller.jumpCount, params[1])

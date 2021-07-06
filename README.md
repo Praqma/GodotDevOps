@@ -17,14 +17,17 @@ This is a list of various topics we'd like to explore this summer:
   - [ ] Dealing with large binaries
     - [ ] Shallow cloning
     - [X] Git LFS
-    - [ ] ...
+    - [ ] Artifactory
 - [X] Debugging
 - [ ] GitHub Actions
   - [X] Introduction
-  - [ ] Automating Godot workflows
+  - [X] Automating Godot workflows
+  - [ ] Automating publishing
+- [ ] Managing release/patch notes
+  - [ ] Automating release/patch notes
 - [ ] DORA metrics in game development
 - [ ] Automating lifecycles
-  - [ ] Game builds
+  - [X] Game builds
   - [ ] Packages
   - [ ] Assets
 - [ ] Dependency and configuration management

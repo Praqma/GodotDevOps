@@ -32,19 +32,12 @@ func get_jumpForce() -> float:
 	
 func _process(delta):
 	moveInput.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-
-func _physics_process(delta):
-	if is_on_floor():
-		velocity.x = moveInput.x * moveSpeed
-	elif is_on_wall():
-		velocity.x = 0
-	else:
-		velocity.x += moveInput.x * airMoveSpeed	
-	velocity.x = clamp(velocity.x, -groundMoveSpeed, groundMoveSpeed)
 	
 	if Input.is_action_just_pressed("jump") and snap and is_on_floor():
 		jump()
-	velocity.y += gravity * delta
+
+func _physics_process(delta):
+	calculate_velocity(delta)
 	
 	var snapVector = Vector2.DOWN * snapLength if snap else Vector2()
 	velocity = move_and_slide_with_snap(velocity, snapVector, Vector2.UP, true, 4, deg2rad(slopeSlideThreshold))
@@ -55,9 +48,17 @@ func _physics_process(delta):
 	var just_landed := is_on_floor() and not snap
 	if just_landed:
 		snap = true
-		moveSpeed = groundMoveSpeed
 
 func jump():
 	velocity.y = -jumpForce
 	snap = false
-	moveSpeed = airMoveSpeed
+
+func calculate_velocity(delta : float):
+	if is_on_floor():
+		velocity.x = moveInput.x * moveSpeed
+	elif is_on_wall():
+		velocity.x = 0
+	else:
+		velocity.x += moveInput.x * airMoveSpeed
+	velocity.x = clamp(velocity.x, -groundMoveSpeed, groundMoveSpeed)
+	velocity.y += gravity * delta

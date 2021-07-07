@@ -82,6 +82,7 @@ func dash():
 func land():
 	snap = true
 	jumpCount = maxJumpCount
+	dashCount = maxDashCount
 
 func calculate_velocity(delta : float):
 	if is_on_floor():

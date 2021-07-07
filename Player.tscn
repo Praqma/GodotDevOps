@@ -16,3 +16,4 @@ texture = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="dash_timer" type="Timer" parent="."]
+one_shot = true

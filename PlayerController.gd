@@ -47,6 +47,7 @@ func get_jumpForce() -> float:
 	return jumpForce
 
 func dash_timer_timeout():
+	velocity = Vector2.ZERO
 	isDashing = false
 
 func _ready():
@@ -60,24 +61,25 @@ func setupValues():
 func _process(delta):
 	moveInput.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	moveInput.y =  Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
-	moveInput.normalized()
+	
 	if moveInput.x != 0:
 		facingDir = moveInput
 		facingDir.y = 0
-		facingDir.normalized()
+		facingDir = facingDir.normalized()
 	
 	if Input.is_action_just_pressed("jump") and ((snap and is_on_floor()) or jumpCount > 0):
 		jump()
-	if Input.is_action_just_pressed("dash") and dashCount > 0:	
+	if Input.is_action_just_pressed("dash") and dashCount > 0 and not isDashing:	
 		$dash_timer.start(dashLength)
 		dash()
 
 func _physics_process(delta):
-	calculate_velocity(delta)
+	if not isDashing :
+		calculate_velocity(delta)
 	
 #	if is_on_floor() or is_on_wall() or is_on_ceiling():
 #		isDashing = false
-		
+
 	if(isDashing):
 		velocity = move_and_slide(dashDirection, Vector2.UP)
 	else:
@@ -118,6 +120,7 @@ func land():
 	snap = true
 	jumpCount = maxJumpCount
 	dashCount = maxDashCount
+	isDashing = false
 
 func calculate_velocity(delta : float):
 	if is_on_floor():

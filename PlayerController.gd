@@ -7,12 +7,14 @@ export var jumpForce := 600.0 setget set_jumpForce, get_jumpForce
 export var snapLength := 5000.0
 export var slopeSlideThreshold := 50.0
 export var maxJumpCount := 2
+export var maxDashCount := 2
 
 var snap := false
 var moveInput := Vector2.ZERO
 var velocity := Vector2.ZERO
 var moveSpeed := 300.0 setget set_moveSpeed, get_moveSpeed
 var jumpCount := 1 setget set_jumpCount, get_jumpCount
+var dashCount
 
 func set_jumpCount(value : int):
 	jumpCount = max(value, 0)
@@ -40,6 +42,7 @@ func get_jumpForce() -> float:
 
 func _ready():
 	jumpCount = maxJumpCount
+	dashCount = maxDashCount
 
 func _process(delta):
 	moveInput.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -70,6 +73,11 @@ func jump():
 	velocity.y = -jumpForce
 	snap = false
 	jumpCount -= 1
+
+func dash():
+	if dashCount <= 0:
+		return
+	dashCount -= 1
 
 func land():
 	snap = true

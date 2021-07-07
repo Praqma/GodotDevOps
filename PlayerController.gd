@@ -20,6 +20,8 @@ var dashCount
 var isDashing = false
 var dashDirection
 
+var facingDir
+
 func set_jumpCount(value : int):
 	jumpCount = max(value, 0)
 
@@ -55,6 +57,11 @@ func _ready():
 func _process(delta):
 	moveInput.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	moveInput.y =  Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	moveInput.normalized()
+	if moveInput.x != 0:
+		facingDir = moveInput
+		facingDir.y = 0
+		facingDir.normalized()
 	
 	if Input.is_action_just_pressed("jump") and ((snap and is_on_floor()) or jumpCount > 0):
 		jump()
@@ -96,7 +103,10 @@ func dash():
 		return
 	isDashing = true
 	$dash_timer.start(dashLength)
-	dashDirection = moveInput * dashSpeed
+	if moveInput.length() < 0.1:
+		dashDirection = facingDir * dashSpeed
+	else:
+		dashDirection = moveInput * dashSpeed
 	snap = false
 	dashCount -= 1
 

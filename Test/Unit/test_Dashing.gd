@@ -14,7 +14,7 @@ var dash_values = [[3, 2], [0, 0]]
 func test_dashing_decrease_dash_count_properly(params = use_parameters(dash_values)):
 	controller.maxDashCount = params[0]
 	
-	controller._ready()
+	controller.setupValues()
 	
 	controller.dash()
 	

@@ -20,7 +20,7 @@ var dashCount
 var isDashing = false
 var dashDirection
 
-var facingDir
+var facingDir := Vector2.ZERO
 
 func set_jumpCount(value : int):
 	jumpCount = max(value, 0)
@@ -50,9 +50,12 @@ func dash_timer_timeout():
 	isDashing = false
 
 func _ready():
+	setupValues()
+	$dash_timer.connect("timeout", self, "dash_timer_timeout")
+	
+func setupValues():
 	jumpCount = maxJumpCount
 	dashCount = maxDashCount
-	$dash_timer.connect("timeout", self, "dash_timer_timeout")
 
 func _process(delta):
 	moveInput.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -65,7 +68,8 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("jump") and ((snap and is_on_floor()) or jumpCount > 0):
 		jump()
-	if Input.is_action_just_pressed("dash") and dashCount > 0:
+	if Input.is_action_just_pressed("dash") and dashCount > 0:	
+		$dash_timer.start(dashLength)
 		dash()
 
 func _physics_process(delta):
@@ -102,7 +106,7 @@ func dash():
 	if dashCount <= 0:
 		return
 	isDashing = true
-	$dash_timer.start(dashLength)
+	
 	if moveInput.length() < 0.1:
 		dashDirection = facingDir * dashSpeed
 	else:

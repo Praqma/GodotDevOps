@@ -1,6 +1,6 @@
 extends 'res://addons/gut/test.gd'
 
-var PlayerController = load("res://PlayerController.gd")
+var PlayerController = load("res://Scripts/Player/PlayerController.gd")
 var controller
 
 func before_each():

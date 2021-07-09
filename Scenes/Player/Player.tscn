@@ -95,5 +95,4 @@ one_shot = true
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 13 )
 animation = "Idle"
-frame = 2
 playing = true

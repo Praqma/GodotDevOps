@@ -79,6 +79,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("dash") and dashCount > 0 and not isDashing:	
 		$dash_timer.start(dashLength)
 		dash()
+		$Ghost.emitting = true
 	
 	handle_animation()
 

@@ -16,7 +16,7 @@ config/icon="res://Assets/Sprites/icon.png"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/gut/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [input]
 

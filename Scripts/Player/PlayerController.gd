@@ -19,8 +19,9 @@ var jumpCount := 1 setget set_jumpCount, get_jumpCount
 var dashCount
 var isDashing = false
 var dashDirection
-
 var facingDir := Vector2.ZERO
+
+onready var animatedSprite := $AnimatedSprite
 
 func set_jumpCount(value : int):
 	jumpCount = max(value, 0)
@@ -72,6 +73,8 @@ func _process(delta):
 	if Input.is_action_just_pressed("dash") and dashCount > 0 and not isDashing:	
 		$dash_timer.start(dashLength)
 		dash()
+	
+	handle_animation()
 
 func _physics_process(delta):
 	if not isDashing :
@@ -131,3 +134,25 @@ func calculate_velocity(delta : float):
 		velocity.x += moveInput.x * airMoveSpeed
 	velocity.x = clamp(velocity.x, -groundMoveSpeed, groundMoveSpeed)
 	velocity.y += gravity * delta
+
+func handle_animation():
+	if facingDir.x > 0:
+		animatedSprite.flip_h = false
+	if facingDir.x < 0:
+		animatedSprite.flip_h = true
+	
+	if velocity == Vector2.ZERO and is_on_floor():
+		animatedSprite.animation = "Idle"
+		return
+	if velocity != Vector2.ZERO and is_on_floor() and !isDashing:
+		animatedSprite.animation = "Running"
+		return
+	if isDashing:
+		animatedSprite.animation = "Dashing"
+		return
+	if !isDashing and !is_on_floor() and velocity.y >= 0:
+		animatedSprite.animation = "Falling"
+		return
+	if !isDashing and !snap and velocity.y < 0:
+		animatedSprite.animation = "Jumping"
+		return

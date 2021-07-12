@@ -29,8 +29,6 @@ dashSpeed = 400
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
 zoom = Vector2( 0.5, 0.5 )
-limit_top = -250
-limit_bottom = 250
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 drag_margin_left = 0.1

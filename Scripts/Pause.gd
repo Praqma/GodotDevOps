@@ -3,7 +3,7 @@
 onready var _transition_rect := $"../SceneTransitionRect"
 
 func _input(event):
-	if event.is_action_pressed("pause") :
+	if event.is_action_pressed("pause") and not _transition_rect.isTransitioning:
 		pause()
 
 func _on_Resume_pressed():

@@ -55,14 +55,6 @@ tile_data = PoolIntArray( -1572826, 32, 0, -1572825, 32, 1, -1572824, 32, 2, -15
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="SceneTransitionRect" parent="CanvasLayer" instance=ExtResource( 4 )]
-pause_mode = 2
-margin_left = -253.11
-margin_top = -149.68
-margin_right = -253.11
-margin_bottom = -149.68
-rect_scale = Vector2( 12.5768, 7.37932 )
-
 [node name="Pause" type="Control" parent="CanvasLayer"]
 pause_mode = 2
 visible = false
@@ -133,6 +125,14 @@ custom_fonts/font = SubResource( 2 )
 text = "Exit"
 flat = true
 align = 0
+
+[node name="SceneTransitionRect" parent="CanvasLayer" instance=ExtResource( 4 )]
+pause_mode = 2
+margin_left = -253.11
+margin_top = -149.68
+margin_right = -253.11
+margin_bottom = -149.68
+rect_scale = Vector2( 12.5768, 7.37932 )
 
 [connection signal="pressed" from="CanvasLayer/Pause/PauseOptions/Resume" to="CanvasLayer/Pause" method="_on_Resume_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/PauseOptions/Menu" to="CanvasLayer/Pause" method="_on_Menu_pressed"]

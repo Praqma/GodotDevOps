@@ -23,6 +23,10 @@ window/stretch/aspect="expand"
 
 enabled=PoolStringArray( "res://addons/gut/plugin.cfg" )
 
+[global]
+
+version="local"
+
 [input]
 
 move_right={

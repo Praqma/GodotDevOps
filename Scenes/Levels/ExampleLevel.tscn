@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Sprites/Tileset32x32.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Parallax.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/SceneTransitionRect.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Pause.gd" type="Script" id=5]
 
 [node name="ExampleLevel" type="Node2D"]
 
@@ -54,11 +55,15 @@ rect_scale = Vector2( 12.5768, 7.37932 )
 [node name="Pause" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Pause"]
+[node name="PauseOverlay" type="ColorRect" parent="CanvasLayer/Pause"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.470588 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

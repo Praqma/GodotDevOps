@@ -50,3 +50,15 @@ margin_top = -149.68
 margin_right = -253.11
 margin_bottom = -149.68
 rect_scale = Vector2( 12.5768, 7.37932 )
+
+[node name="Pause" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Pause"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.470588 )

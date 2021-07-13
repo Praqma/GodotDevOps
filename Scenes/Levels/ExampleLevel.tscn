@@ -56,6 +56,7 @@ tile_data = PoolIntArray( -1572826, 32, 0, -1572825, 32, 1, -1572824, 32, 2, -15
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="SceneTransitionRect" parent="CanvasLayer" instance=ExtResource( 4 )]
+pause_mode = 2
 margin_left = -253.11
 margin_top = -149.68
 margin_right = -253.11

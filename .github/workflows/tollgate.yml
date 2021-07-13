@@ -27,9 +27,12 @@ jobs:
       - name: Get git describe version
         run: echo "GIT_DESCRIBE=$(git describe)" >> $GITHUB_ENV
       - name: Create override.cfg
-        run: sudo echo "version = $GIT_DESCRIBE" > ${{ github.workspace }}/build/override.cfg
+        run: echo "version = $GIT_DESCRIBE" > override.cfg
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
           name: Client - ${{ matrix.platform }}
-          path: ${{ github.workspace }}/build/* 
+          path: |
+            ${{ github.workspace }}/build/*
+            ${{ github.workspace }}/override.cfg
+

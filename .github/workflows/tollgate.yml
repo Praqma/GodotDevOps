@@ -16,6 +16,7 @@ jobs:
         with:
           lfs: true
           fetch-depth: 0
+
       - name: Build
         id: build
         uses: josephbmanley/build-godot-action@v1.4.1
@@ -23,16 +24,23 @@ jobs:
           name: NeoMori
           preset: ${{ matrix.platform }}
           debugMode: "true"
+
       - uses: josephbmanley/run-gut-tests-action@v1.1.0
-      - name: Get git describe version
-        run: echo "GIT_DESCRIBE=$(git describe)" >> $GITHUB_ENV
-      - name: Create override.cfg
-        run: echo "version = $GIT_DESCRIBE" > override.cfg
-      - name: Upload Artifact
+
+      - name: Upload build
         uses: actions/upload-artifact@v2
         with:
           name: Client - ${{ matrix.platform }}
-          path: |
-            ${{ github.workspace }}/build/*
-            ${{ github.workspace }}/override.cfg
+          path: ${{ github.workspace }}/build/* 
 
+      - name: Get git describe version
+        run: echo "GIT_DESCRIBE=$(git describe)" >> $GITHUB_ENV
+        
+      - name: Create override.cfg
+        run: echo "version = $GIT_DESCRIBE" > override.cfg
+
+      - name: Upload override.cfg
+        uses: actions/upload-artifact@v2
+        with:
+          name: Client - ${{ matrix.platform }}
+          path: ${{ github.workspace }}/override.cfg

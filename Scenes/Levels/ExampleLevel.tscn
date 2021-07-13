@@ -134,3 +134,4 @@ align = 0
 
 [connection signal="pressed" from="CanvasLayer/Pause/PauseOptions/Resume" to="CanvasLayer/Pause" method="_on_Resume_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/PauseOptions/Menu" to="CanvasLayer/Pause" method="_on_Menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/PauseOptions/Restart" to="CanvasLayer/Pause" method="_on_Restart_pressed"]

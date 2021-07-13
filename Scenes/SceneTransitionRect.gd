@@ -13,4 +13,3 @@ func transition_to(_next_scene) -> void:
 	yield(_anim_player, "animation_finished")
 	get_tree().change_scene(_next_scene)
 	get_tree().paused = false
-	isTransitioning = false

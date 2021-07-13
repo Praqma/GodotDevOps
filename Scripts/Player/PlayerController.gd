@@ -10,6 +10,7 @@ export var maxJumpCount := 2
 export var maxDashCount := 2
 export var dashLength := 0.2
 export var dashSpeed := 1000
+export var deathBarrier := 200
 
 var snap := false
 var moveInput := Vector2.ZERO
@@ -22,6 +23,7 @@ var dashDirection
 var facingDir := Vector2.ZERO
 
 onready var animatedSprite := $AnimatedSprite
+onready var _transition_rect := $"../CanvasLayer/SceneTransitionRect"
 
 func set_jumpCount(value : int):
 	jumpCount = max(value, 0)
@@ -60,6 +62,10 @@ func setupValues():
 	dashCount = maxDashCount
 
 func _process(delta):
+	if position.y > deathBarrier:
+		die()
+		return
+	
 	moveInput.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	moveInput.y =  Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	
@@ -134,6 +140,10 @@ func calculate_velocity(delta : float):
 		velocity.x += moveInput.x * airMoveSpeed
 	velocity.x = clamp(velocity.x, -groundMoveSpeed, groundMoveSpeed)
 	velocity.y += gravity * delta
+
+func die() -> void:
+	if not _transition_rect.isTransitioning:
+		get_tree().reload_current_scene()
 
 func handle_animation():
 	if facingDir.x > 0:

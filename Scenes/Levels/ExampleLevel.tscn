@@ -55,7 +55,6 @@ tile_data = PoolIntArray( -1572826, 32, 0, -1572825, 32, 1, -1572824, 32, 2, -15
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="SceneTransitionRect" parent="CanvasLayer" instance=ExtResource( 4 )]
-visible = false
 margin_left = -253.11
 margin_top = -149.68
 margin_right = -253.11
@@ -64,6 +63,7 @@ rect_scale = Vector2( 12.5768, 7.37932 )
 
 [node name="Pause" type="Control" parent="CanvasLayer"]
 pause_mode = 2
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 5 )
@@ -79,24 +79,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PauseOptions" type="VBoxContainer" parent="CanvasLayer"]
+[node name="PauseOptions" type="VBoxContainer" parent="CanvasLayer/Pause"]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 50.0
 margin_top = -51.5
-margin_right = 174.0
-margin_bottom = 51.5
+margin_right = 224.0
+margin_bottom = 183.5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Pause" type="Label" parent="CanvasLayer/PauseOptions"]
+[node name="Pause" type="Label" parent="CanvasLayer/Pause/PauseOptions"]
 margin_right = 174.0
 margin_bottom = 55.0
 custom_fonts/font = SubResource( 1 )
 text = "Paused"
 
-[node name="Resume" type="Button" parent="CanvasLayer/PauseOptions"]
+[node name="Resume" type="Button" parent="CanvasLayer/Pause/PauseOptions"]
 margin_top = 59.0
 margin_right = 174.0
 margin_bottom = 100.0
@@ -105,7 +105,7 @@ text = "Resume"
 flat = true
 align = 0
 
-[node name="Menu" type="Button" parent="CanvasLayer/PauseOptions"]
+[node name="Menu" type="Button" parent="CanvasLayer/Pause/PauseOptions"]
 margin_top = 104.0
 margin_right = 174.0
 margin_bottom = 145.0
@@ -114,7 +114,7 @@ text = "Menu"
 flat = true
 align = 0
 
-[node name="Restart" type="Button" parent="CanvasLayer/PauseOptions"]
+[node name="Restart" type="Button" parent="CanvasLayer/Pause/PauseOptions"]
 margin_top = 149.0
 margin_right = 174.0
 margin_bottom = 190.0
@@ -123,7 +123,7 @@ text = "Restart"
 flat = true
 align = 0
 
-[node name="Exit" type="Button" parent="CanvasLayer/PauseOptions"]
+[node name="Exit" type="Button" parent="CanvasLayer/Pause/PauseOptions"]
 margin_top = 194.0
 margin_right = 174.0
 margin_bottom = 235.0
@@ -131,3 +131,5 @@ custom_fonts/font = SubResource( 2 )
 text = "Exit"
 flat = true
 align = 0
+
+[connection signal="pressed" from="CanvasLayer/Pause/PauseOptions/Resume" to="CanvasLayer/Pause" method="_on_Resume_pressed"]

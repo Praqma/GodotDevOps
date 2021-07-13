@@ -37,9 +37,11 @@ jobs:
         run: echo "GIT_DESCRIBE=$(git describe)" >> $GITHUB_ENV
         
       - name: Create override.cfg
+        if: ${{ env.GIT_DESCRIBE != '' }}
         run: echo "version = $GIT_DESCRIBE" > override.cfg
 
       - name: Upload override.cfg
+        if: ${{ env.GIT_DESCRIBE != '' }}
         uses: actions/upload-artifact@v2
         with:
           name: Client - ${{ matrix.platform }}

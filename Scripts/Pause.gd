@@ -17,6 +17,9 @@ func _on_Restart_pressed():
 	get_tree().reload_current_scene()
 	pause()
 
+func _on_Exit_pressed():
+	get_tree().quit()
+
 func pause():
 	var new_pause_state = not get_tree().paused
 	get_tree().paused = new_pause_state

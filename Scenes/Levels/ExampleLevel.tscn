@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Sprites/Tileset32x32.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/SceneTransitionRect.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/Pause.gd" type="Script" id=5]
 [ext_resource path="res://addons/gut/fonts/CourierPrime-BoldItalic.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://addons/gut/fonts/CourierPrime-Bold.ttf" type="DynamicFontData" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -13,7 +14,7 @@ font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
-font_data = ExtResource( 6 )
+font_data = ExtResource( 7 )
 
 [node name="ExampleLevel" type="Node2D"]
 
@@ -135,3 +136,4 @@ align = 0
 [connection signal="pressed" from="CanvasLayer/Pause/PauseOptions/Resume" to="CanvasLayer/Pause" method="_on_Resume_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/PauseOptions/Menu" to="CanvasLayer/Pause" method="_on_Menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/PauseOptions/Restart" to="CanvasLayer/Pause" method="_on_Restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/PauseOptions/Exit" to="CanvasLayer/Pause" method="_on_Exit_pressed"]

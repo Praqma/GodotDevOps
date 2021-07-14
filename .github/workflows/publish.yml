@@ -1,0 +1,58 @@
+name: publish
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ * ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [linux, windows, mac]
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          lfs: true
+          fetch-depth: 0
+
+      - name: Build
+        id: build
+        uses: josephbmanley/build-godot-action@v1.4.1
+        with:
+          name: NeoMori
+          preset: ${{ matrix.platform }}
+
+      - uses: josephbmanley/run-gut-tests-action@v1.1.0
+
+      - name: Upload build
+        uses: actions/upload-artifact@v2
+        with:
+          name: Client - ${{ matrix.platform }}
+          path: ${{ github.workspace }}/build/* 
+
+      - name: Get git describe version
+        run: echo "GIT_DESCRIBE=$(git describe)" >> $GITHUB_ENV
+
+      - name: Create override.cfg
+        if: ${{ env.GIT_DESCRIBE != '' }}
+        run: echo "global/version = $GIT_DESCRIBE" > override.cfg
+
+      - name: Upload override.cfg
+        if: ${{ env.GIT_DESCRIBE != '' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: Client - ${{ matrix.platform }}
+          path: ${{ github.workspace }}/override.cfg
+
+      - name: Publish as GitHub Release
+        if: github.event_name == 'tag'
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            override.cfg
+            ${{ github.workspace }}/build/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

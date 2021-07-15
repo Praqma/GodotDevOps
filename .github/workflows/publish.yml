@@ -3,7 +3,8 @@ name: publish
 on:
   push:
     branches: [ main ]
-    tags: [ '*' ]
+  release:
+    types: [ published ]
   workflow_dispatch:
 
 jobs:
@@ -48,7 +49,7 @@ jobs:
           path: ${{ github.workspace }}/override.cfg
 
       - name: Publish as GitHub Release
-        if: github.event_name == 'tag'
+        if: github.event_name == 'release'
         uses: softprops/action-gh-release@v1
         with:
           files: |

@@ -23,6 +23,10 @@ window/stretch/aspect="expand"
 
 enabled=PoolStringArray(  )
 
+[global]
+
+version="local"
+
 [input]
 
 move_right={

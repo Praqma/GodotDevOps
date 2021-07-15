@@ -9,6 +9,7 @@
 [node name="Parallax" parent="." instance=ExtResource( 3 )]
 
 [node name="16x16" type="TileMap" parent="."]
+z_index = -10
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
@@ -37,6 +38,7 @@ drag_margin_right = 0.1
 editor_draw_drag_margin = true
 
 [node name="32x32" type="TileMap" parent="."]
+z_index = 10
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )

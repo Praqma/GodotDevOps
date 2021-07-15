@@ -51,6 +51,14 @@ func dash_timer_timeout():
 	velocity = Vector2.ZERO
 	isDashing = false
 
+func ghostTrail_timer_timeout():
+#	if isDashing:
+		var ghost = preload("res://Scenes/GhostTrail.tscn").instance()
+		get_parent().add_child(ghost)
+		ghost.position = position
+		ghost.texture = animatedSprite.frames.get_frame(animatedSprite.animation, animatedSprite.frame)
+		ghost.flip_h = animatedSprite.flip_h
+
 func _ready():
 	setupValues()
 	$dash_timer.connect("timeout", self, "dash_timer_timeout")

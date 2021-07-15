@@ -1,0 +1,35 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        platform: [ linux, windows, mac ]
+
+    steps:
+    - name: Download client
+      uses: dawidd6/action-download-artifact@v2
+      with:
+        workflow: build.yml
+        workflow_conclusion: success
+        commit: ${{ github.sha }}
+        event: push
+        name: ${{ matrix.platform }}
+        path: NeoMori
+
+    - name: Zip client
+      run: zip -q -r ${{ matrix.platform }}.zip NeoMori
+
+    - name: Publish clients
+      uses: softprops/action-gh-release@v1
+      with:
+        files: ${{ matrix.platform }}.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

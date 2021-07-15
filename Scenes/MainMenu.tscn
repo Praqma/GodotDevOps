@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
+[ext_resource path="res://Scripts/Version.gd" type="Script" id=1]
 [ext_resource path="res://addons/gut/fonts/AnonymousPro-Bold.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://addons/gut/fonts/CourierPrime-Bold.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=6]
@@ -27,6 +28,20 @@ transform = Transform2D( 1, 0, 0, 1, 0, 400 )
 autoScroll = true
 autoScrollSpeed = 200
 
+[node name="Version" type="Label" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -24.0
+margin_right = 57.0
+margin_bottom = -10.0
+text = "{version}"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MenuOptions" type="VBoxContainer" parent="."]
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -51,7 +66,7 @@ __meta__ = {
 [node name="Start" type="Button" parent="MenuOptions"]
 margin_top = 63.0
 margin_right = 248.0
-margin_bottom = 110.0
+margin_bottom = 119.0
 rect_min_size = Vector2( 122, 47 )
 size_flags_horizontal = 7
 size_flags_vertical = 7
@@ -61,9 +76,9 @@ flat = true
 align = 0
 
 [node name="Exit" type="Button" parent="MenuOptions"]
-margin_top = 114.0
+margin_top = 123.0
 margin_right = 248.0
-margin_bottom = 161.0
+margin_bottom = 179.0
 rect_min_size = Vector2( 122, 47 )
 size_flags_horizontal = 7
 size_flags_vertical = 7
@@ -76,6 +91,7 @@ __meta__ = {
 }
 
 [node name="SceneTransitionRect" parent="." instance=ExtResource( 7 )]
+visible = false
 anchor_top = 0.5
 anchor_right = 0.0
 anchor_bottom = 0.5

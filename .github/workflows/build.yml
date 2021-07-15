@@ -1,6 +1,8 @@
-name: tollgate
+name: Build
 
 on:
+  push:
+    branches: [ main ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:
@@ -8,34 +10,45 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
-        platform: [linux, windows, mac]
+        platform: [ linux, windows, mac ]
+
     steps:
       - uses: actions/checkout@v2
         with:
-          lfs: true
           fetch-depth: 0
+          lfs: true
 
-      - name: Build
+      - name: Run GUT tests
+        uses: josephbmanley/run-gut-tests-action@v1.1.0
+
+      - name: Decide debugMode
+        uses: haya14busa/action-cond@v1
+        id: debugMode
+        with:
+          cond: ${{ github.event_name == 'pull_request' }}
+          if_true: "true"
+          if_false: "false"
+
+      - name: Build game client
         id: build
         uses: josephbmanley/build-godot-action@v1.4.1
         with:
           name: NeoMori
           preset: ${{ matrix.platform }}
-          debugMode: "true"
-
-      - uses: josephbmanley/run-gut-tests-action@v1.1.0
+          debugMode: ${{ steps.debugMode.outputs.value }}
 
       - name: Upload build
         uses: actions/upload-artifact@v2
         with:
           name: Client - ${{ matrix.platform }}
-          path: ${{ github.workspace }}/build/* 
+          path: ${{ github.workspace }}/build/*
 
-      - name: Get git describe version
+      - name: Git describe
         run: echo "GIT_DESCRIBE=$(git describe)" >> $GITHUB_ENV
-        
+
       - name: Create override.cfg
         if: ${{ env.GIT_DESCRIBE != '' }}
         run: echo "global/version = $GIT_DESCRIBE" > override.cfg

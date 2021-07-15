@@ -54,7 +54,7 @@ func dash_timer_timeout():
 	isDashing = false
 
 func ghostTrail_timer_timeout():
-#	if isDashing:
+	if isDashing:
 		var ghost = preload("res://Scenes/GhostTrail.tscn").instance()
 		get_parent().add_child(ghost)
 		ghost.position = position

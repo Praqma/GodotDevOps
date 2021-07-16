@@ -25,7 +25,7 @@ jobs:
         path: NeoMori
 
     - name: Update global/version in override.cfg
-      run: sed -i "s#global/version=.*#global/version=\"${GITHUB_REF/refs\/tags\//}\"#g" NeoMori/override.cfg
+      run: sed -i "s#global/version\s*=.*#global/version=\"${GITHUB_REF/refs\/tags\//}\"#g" NeoMori/override.cfg
 
     - name: Zip client
       run: zip -q -r ${{ matrix.platform }}.zip NeoMori

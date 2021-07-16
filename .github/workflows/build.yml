@@ -51,7 +51,7 @@ jobs:
 
       - name: Create override.cfg
         if: ${{ env.GIT_DESCRIBE != '' }}
-        run: echo "global/version = $GIT_DESCRIBE" > override.cfg
+        run: echo "global/version = $GIT_DESCRIBE" >> override.cfg
 
       - name: Upload override.cfg
         if: ${{ env.GIT_DESCRIBE != '' }}

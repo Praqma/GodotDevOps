@@ -24,11 +24,8 @@ jobs:
         name: ${{ matrix.platform }}
         path: NeoMori
 
-    - name: Git describe
-      run: echo "GIT_DESCRIBE=$(git describe)" >> $GITHUB_ENV
-
-    - name: Create override.cfg
-      run: echo "global/version = $GIT_DESCRIBE" > NeoMori/override.cfg
+    - name: Update global/version in override.cfg
+      run: sed -i "s#global/version=.*#global/version=\"${GITHUB_REF/refs\/tags\//}\"#g" NeoMori/override.cfg
 
     - name: Zip client
       run: zip -q -r ${{ matrix.platform }}.zip NeoMori

@@ -3,7 +3,7 @@ extends Node2D
 export var detectRadius : float = 10
 export var viewAngle : float = 90
 
-func find_targets(entities) -> PoolVector2Array:
+func find_targets_inside_radius(entities) -> PoolVector2Array:
 	var targets = PoolVector2Array()
 	for entity in entities:
 		if position.distance_to(entity) < detectRadius:

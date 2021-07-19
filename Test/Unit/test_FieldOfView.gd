@@ -2,25 +2,29 @@ extends 'res://addons/gut/test.gd'
 
 var fieldOfView = load("res://Scripts/FieldOfView.gd")
 var fow
+var entities
 
 # Tests
 	# [X] Inside radius
 	# [X] Outside radius
 	# [X] Count of targets inside radius
 	# [ ] Updates properly
-	# [ ] Inside radius and cone
-	# [ ] Inside raidus but outside cone
+	# [X] Inside cone
+	# [X] Outside cone
 	# [ ] Detection over time with target inside cone
 
-func before_each(): #Can possibly be replaced with before_all
+func before_all():
 	fow = fieldOfView.new()
 	fow.detectRadius = 10
+	fow.viewAngle = 90
 
-func after_each(): #Can possibly be replaced with after_all
+func before_each():
+	entities = PoolVector2Array()
+
+func after_all():
 	fow.free()
 
 func test_finds_targets_inside_detection_radius():
-	var entities = PoolVector2Array()
 	entities.append(Vector2(5,0))
 	
 	var targets = fow.find_targets(entities)
@@ -28,7 +32,6 @@ func test_finds_targets_inside_detection_radius():
 	assert_eq(entities, targets)
 
 func test_finds_targets_outside_detection_radius():
-	var entities = PoolVector2Array()
 	entities.append(Vector2(15,0))
 	
 	var targets = fow.find_targets(entities)
@@ -36,7 +39,6 @@ func test_finds_targets_outside_detection_radius():
 	assert_ne(entities, targets)
 
 func test_gets_count_of_targets_inside_detection_radius():
-	var entities = PoolVector2Array()
 	entities.append(Vector2(2,0))
 	entities.append(Vector2(5,0))
 	entities.append(Vector2(9,0))
@@ -46,3 +48,17 @@ func test_gets_count_of_targets_inside_detection_radius():
 	var targets = fow.find_targets(entities)
 	
 	assert_eq(targets.size(), 3)
+
+func test_finds_targets_inside_view_cone():
+	entities.append(Vector2(4,2))
+	
+	var targets = fow.find_targets_inside_cone(entities)
+	
+	assert_eq(targets, entities)
+
+func test_ignores_targets_outside_view_cone():
+	entities.append(Vector2(4,-5))
+	
+	var targets = fow.find_targets_inside_cone(entities)
+	
+	assert_ne(targets, entities)

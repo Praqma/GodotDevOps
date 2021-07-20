@@ -22,7 +22,10 @@ This is a list of various topics we'd like to explore this summer:
 - [ ] GitHub Actions
   - [X] Introduction
   - [X] Automating Godot workflows
-  - [ ] Automating publishing
+  - [X] Automating publishing
+- [ ] Release automation
+  - [ ] Itch.io
+  - [ ] Steam
 - [ ] Managing release/patch notes
   - [ ] Automating release/patch notes
 - [ ] DORA metrics in game development
@@ -31,9 +34,6 @@ This is a list of various topics we'd like to explore this summer:
   - [ ] Packages
   - [ ] Assets
 - [ ] Dependency and configuration management
-- [ ] Release automation
-  - [ ] Itch.io
-  - [ ] Steam
 
 ## Project flow
 

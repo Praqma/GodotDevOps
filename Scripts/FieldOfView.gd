@@ -22,6 +22,6 @@ func _process(delta):
 	update()
 
 func _draw():
-	draw_line(position, position + Vector2(cos(deg2rad(-viewAngle/2)) * detectRadius, sin(deg2rad(-viewAngle/2)) * detectRadius), Color(1,0,0,1))
-	draw_line(position, position + Vector2(cos(deg2rad(viewAngle/2)) * detectRadius, sin(deg2rad(viewAngle/2)) * detectRadius), Color(1,0,0,1))
-	draw_arc(position, detectRadius, deg2rad(-viewAngle/2), deg2rad(viewAngle/2), 32, Color(1,0,0,1))
+	draw_line(Vector2.ZERO, Vector2(cos(deg2rad(-viewAngle/2)) * detectRadius, sin(deg2rad(-viewAngle/2)) * detectRadius), Color(1,0,0,1))
+	draw_line(Vector2.ZERO, Vector2(cos(deg2rad(viewAngle/2)) * detectRadius, sin(deg2rad(viewAngle/2)) * detectRadius), Color(1,0,0,1))
+	draw_arc(Vector2.ZERO, detectRadius, deg2rad(-viewAngle/2), deg2rad(viewAngle/2), 32, Color(1,0,0,1))

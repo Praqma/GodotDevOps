@@ -20,15 +20,15 @@
 
 # Used to match commit message lines relevant to release note generation
 # e.g. "Fixes #24> Add a shiny new weapon" or "Fix #12> Fixed a crash that occurred when eating"
-MATCH_ENTRY_LINE="*Fix(es)? #[[:digit:]]+>"
+MATCH_ENTRY_LINE="^[ \t]*+[Ff]ix(es)?[ \t]*+#[[:digit:]]+[ \t]*+>"
 # Used to capture the release note message and issue number to format later
 # e.g. #Fixes #30> Increase character speed by 25%
 # Group 1: "#30"
 # Group 2: "Increase character speed by 25%"
-CAPTURE_ENTRY_INFO="^ *Fixe\?s\? \(#[[:digit:]]\+\) \?> \?\(.*\)"
+CAPTURE_ENTRY_INFO="^[ \t]*\+[Ff]ix\(es\)\?[ \t]*\+\(#[[:digit:]]\+\)[ \t]*\+>[ \t]*\+\(.*\)"
 # Used to format the previously captured data
 # e.g. "- Increase character speed by 25% (#30)"
-FORMAT_ENTRY_INFO="- \2 (\1)"
+FORMAT_ENTRY_INFO="- \3 (\2)"
 
 # 1) Print the log from the last tag until now
 # 2) Find all relevant lines,

@@ -40,14 +40,14 @@ jobs:
           preset: ${{ matrix.platform }}
           debugMode: ${{ steps.debugMode.outputs.value }}
 
+      - name: Git describe
+        run: echo "GIT_DESCRIBE=$(git describe)" >> $GITHUB_ENV
+
       - name: Upload build
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ matrix.platform }}
+          name: NeoMori_${{ env.GIT_DESCRIBE }}_${{ matrix.platform }}
           path: ${{ github.workspace }}/build/*
-
-      - name: Git describe
-        run: echo "GIT_DESCRIBE=$(git describe)" >> $GITHUB_ENV
 
       - name: Create override.cfg
         if: ${{ env.GIT_DESCRIBE != '' }}
@@ -57,5 +57,5 @@ jobs:
         if: ${{ env.GIT_DESCRIBE != '' }}
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ matrix.platform }}
+          name: NeoMori_${{ env.GIT_DESCRIBE }}_${{ matrix.platform }}
           path: ${{ github.workspace }}/override.cfg

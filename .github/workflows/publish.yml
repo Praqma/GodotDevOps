@@ -31,11 +31,11 @@ jobs:
       run: echo "FILENAME=NeoMori_${GITHUB_REF/refs\/tags\//}\_${{ matrix.platform }}" >> $GITHUB_ENV
 
     - name: Zip client
-      run: zip -q -r ${{ FILENAME }}.zip NeoMori
+      run: zip -q -r ${{ env.FILENAME }}.zip NeoMori
 
     - name: Publish clients
       uses: softprops/action-gh-release@v1
       with:
-        files: ${{ FILENAME }}.zip
+        files: ${{ env.FILENAME }}.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

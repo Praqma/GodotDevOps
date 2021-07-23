@@ -46,7 +46,7 @@ jobs:
       - name: Upload build
         uses: actions/upload-artifact@v2
         with:
-          name: NeoMori_${{ env.GIT_DESCRIBE }}_${{ matrix.platform }}
+          name: NeoMori_${{ github.sha }}_${{ matrix.platform }}
           path: ${{ github.workspace }}/build/*
 
       - name: Create override.cfg
@@ -57,5 +57,5 @@ jobs:
         if: ${{ env.GIT_DESCRIBE != '' }}
         uses: actions/upload-artifact@v2
         with:
-          name: NeoMori_${{ env.GIT_DESCRIBE }}_${{ matrix.platform }}
+          name: NeoMori_${{ github.sha }}_${{ matrix.platform }}
           path: ${{ github.workspace }}/override.cfg

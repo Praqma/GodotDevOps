@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Camera_base.png-27dfe73ca3b2c75055f40fda8c65e433.stex"
+path="res://.import/ExitSignForeground.png-3aa7b0135987b4576c8a0a2b41bc3eee.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Camera_base.png"
-dest_files=[ "res://.import/Camera_base.png-27dfe73ca3b2c75055f40fda8c65e433.stex" ]
+source_file="res://Assets/Sprites/ExitSignForeground.png"
+dest_files=[ "res://.import/ExitSignForeground.png-3aa7b0135987b4576c8a0a2b41bc3eee.stex" ]
 
 [params]
 

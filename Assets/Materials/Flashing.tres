@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Shaders/FlashingShader.shader" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/base_color = Color( 0.537255, 0.678431, 0.427451, 1 )
+shader_param/flash_color = Color( 0.443137, 0.87451, 0, 1 )
+shader_param/flash_modifier = 0.716
+shader_param/flash_speed = 4.014

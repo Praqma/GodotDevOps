@@ -21,7 +21,7 @@ jobs:
         workflow_conclusion: success
         commit: ${{ github.sha }}
         event: push
-        name: ${{ matrix.platform }}
+        name: NeoMori_${{ github.sha }}_${{ matrix.platform }}
         path: NeoMori
 
     - name: Update global/version in override.cfg

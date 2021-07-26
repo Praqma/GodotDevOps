@@ -9,9 +9,9 @@ onready var cameraHead = $CameraHead
 func _process(delta):
 	if rotates:
 		cameraHead.rotate(rotateSpeed * delta)
-		if cameraHead.rotation >= deg2rad(rotateArc.back()) :
+		if cameraHead.rotation > deg2rad(rotateArc.back()) :
 			rotateSpeed *= -1
-		elif cameraHead.rotation <= deg2rad(rotateArc[0]) :
+			cameraHead.rotation = deg2rad((rotateArc.back()))
+		elif cameraHead.rotation < deg2rad(rotateArc[0]) :
 			rotateSpeed *= -1
-		print(cameraHead.rotation)
-		print(rotateSpeed)
+			cameraHead.rotation = deg2rad((rotateArc[0]))

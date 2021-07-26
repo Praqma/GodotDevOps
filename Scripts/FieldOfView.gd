@@ -14,14 +14,14 @@ var losRange : float = 0
 func find_targets_inside_radius(entities) -> PoolVector2Array:
 	targets = PoolVector2Array()
 	for entity in entities:
-		if position.distance_to(entity) < detectRadius:
+		if global_position.distance_to(entity) < detectRadius:
 			targets.append(entity)
 	return targets
 
 func find_targets_inside_cone(entities) -> PoolVector2Array:
 	targets = PoolVector2Array()
 	for entity in entities:
-		var angleToEntity = rad2deg(transform.x.angle_to((entity - position).normalized()))
+		var angleToEntity = rad2deg(global_transform.x.angle_to((entity - global_position).normalized()))
 		if abs(angleToEntity) < viewAngle/2:
 			targets.append(entity)
 	return targets
@@ -30,7 +30,7 @@ func find_targets_with_raycast(entities) -> PoolVector2Array:
 	targets = PoolVector2Array()
 	var space_state = get_world_2d().direct_space_state
 	for	entity in entities:
-		var collision = space_state.intersect_ray(position, entity, [self], collisionLayer)
+		var collision = space_state.intersect_ray(global_position, entity, [self], collisionLayer)
 		if collision and collision.collider.is_in_group("detectable"):
 			targets.append(entity)
 	return targets
@@ -51,8 +51,8 @@ func _physics_process(delta):
 	if targets:
 		losRange += losSpeed
 		for target in targets:
-			if position.distance_to(target) <= losRange:
-				print("DETECTED")
+			if global_position.distance_to(target) <= losRange:
+				get_tree().reload_current_scene()
 	else:
 		losRange -= losSpeed
 	losRange = clamp(losRange, 0, detectRadius)

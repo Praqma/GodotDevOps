@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 export var airMoveSpeed := 100.0
 export var groundMoveSpeed := 300.0
+export var pushMoveSpeed := 75.0
 export var gravity := 1000.0 setget set_gravity, get_gravity
 export var jumpForce := 600.0 setget set_jumpForce, get_jumpForce
 export var snapLength := 5000.0
@@ -11,6 +12,7 @@ export var maxDashCount := 2
 export var dashLength := 0.2
 export var dashSpeed := 1000
 export var deathBarrier := 200
+export var pushRange := 8.0
 
 var snap := false
 var moveInput := Vector2.ZERO
@@ -93,10 +95,12 @@ func _process(delta):
 func _physics_process(delta):
 	if not isDashing :
 		calculate_velocity(delta)
-	
+		
 #	if is_on_floor() or is_on_wall() or is_on_ceiling():
 #		isDashing = false
-
+	
+	push_rigidbodies()
+	
 	if(isDashing):
 		velocity = move_and_slide(dashDirection, Vector2.UP)
 	else:
@@ -138,6 +142,15 @@ func land():
 	jumpCount = maxJumpCount
 	dashCount = maxDashCount
 	isDashing = false
+
+func push_rigidbodies() -> void:
+	var space_state = get_world_2d().direct_space_state
+	var rayTo = Vector2(global_position.x + (pushRange * facingDir.x), global_position.y)
+	var collision = space_state.intersect_ray(global_position, rayTo, [self])
+	if collision and collision.collider.is_in_group("body") and moveInput.x != 0:
+		var body = collision.collider as Body
+		body.velocity.x = pushMoveSpeed * facingDir.x
+		velocity.x = pushMoveSpeed * facingDir.x
 
 func calculate_velocity(delta : float):
 	if is_on_floor():

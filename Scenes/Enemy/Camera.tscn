@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Sprites/Camera_head.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/Camera_base.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Enemy/FieldOfView.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5.29113, 2.15196 )
+
+[node name="Camera" type="Sprite"]
+texture = ExtResource( 2 )
+centered = false
+script = ExtResource( 4 )
+
+[node name="CameraHead" type="Sprite" parent="."]
+position = Vector2( 8.55081, 3.97784 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, 3 )
+
+[node name="FieldOfView" parent="CameraHead" instance=ExtResource( 3 )]
+position = Vector2( 5.261, -0.074 )
+
+[node name="CameraCollider" type="StaticBody2D" parent="CameraHead"]
+position = Vector2( -0.44545, -1.00226 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraHead/CameraCollider"]
+shape = SubResource( 1 )

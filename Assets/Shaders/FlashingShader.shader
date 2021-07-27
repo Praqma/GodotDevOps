@@ -7,6 +7,6 @@ uniform float flash_speed: hint_range(1.0, 5.0) = 1;
 
 void fragment(){
 	vec4 color = texture(TEXTURE, UV);
-	color.rgb = mix(base_color.rgb,flash_color.rgb, abs(sin(TIME * flash_speed)));
+	color.rgb = mix(base_color.rgb,flash_color.rgb, flash_modifier * abs(sin(TIME * flash_speed)));
 	COLOR = color;
 }

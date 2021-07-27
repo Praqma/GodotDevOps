@@ -25,6 +25,7 @@ var dashDirection
 var facingDir := Vector2.ZERO
 
 onready var animatedSprite := $AnimatedSprite
+onready var collisionShape := $CollisionShape2D
 onready var _transition_rect := $"../CanvasLayer/SceneTransitionRect"
 
 func set_jumpCount(value : int):
@@ -99,7 +100,7 @@ func _physics_process(delta):
 #	if is_on_floor() or is_on_wall() or is_on_ceiling():
 #		isDashing = false
 	
-	push_rigidbodies()
+	detect_rigidbodies()
 	
 	if(isDashing):
 		velocity = move_and_slide(dashDirection, Vector2.UP)
@@ -143,10 +144,18 @@ func land():
 	dashCount = maxDashCount
 	isDashing = false
 
-func push_rigidbodies() -> void:
+func detect_rigidbodies() -> void:
 	var space_state = get_world_2d().direct_space_state
+	
 	var rayTo = Vector2(global_position.x + (pushRange * facingDir.x), global_position.y)
 	var collision = space_state.intersect_ray(global_position, rayTo, [self])
+	push_rigidbodies(collision)
+	
+	rayTo.y += collisionShape.shape.extents.y
+	collision = space_state.intersect_ray(global_position, rayTo, [self])
+	push_rigidbodies(collision)
+
+func push_rigidbodies(var collision) -> void:
 	if collision and collision.collider.is_in_group("body") and moveInput.x != 0:
 		var body = collision.collider as Body
 		body.velocity.x = pushMoveSpeed * facingDir.x

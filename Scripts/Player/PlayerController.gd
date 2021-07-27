@@ -23,6 +23,7 @@ var dashCount
 var isDashing = false
 var dashDirection
 var facingDir := Vector2.ZERO
+var pushing := false
 
 onready var animatedSprite := $AnimatedSprite
 onready var collisionShape := $CollisionShape2D
@@ -80,7 +81,7 @@ func _process(delta):
 	moveInput.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	moveInput.y =  Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	
-	if moveInput.x != 0:
+	if moveInput.x != 0 and not pushing:
 		facingDir = moveInput
 		facingDir.y = 0
 		facingDir = facingDir.normalized()
@@ -90,17 +91,23 @@ func _process(delta):
 	if Input.is_action_just_pressed("dash") and dashCount > 0 and not isDashing:	
 		$dash_timer.start(dashLength)
 		dash()
+	elif Input.is_action_pressed("pushing"):
+		pushing = detect_rigidbodies()
+	
+	if Input.is_action_just_released("pushing"):
+		pushing = false
 	
 	handle_animation()
 
 func _physics_process(delta):
 	if not isDashing :
 		calculate_velocity(delta)
-		
+	
 #	if is_on_floor() or is_on_wall() or is_on_ceiling():
 #		isDashing = false
 	
-	detect_rigidbodies()
+	if pushing:
+		detect_rigidbodies()
 	
 	if(isDashing):
 		velocity = move_and_slide(dashDirection, Vector2.UP)
@@ -144,22 +151,30 @@ func land():
 	dashCount = maxDashCount
 	isDashing = false
 
-func detect_rigidbodies() -> void:
+func detect_rigidbodies() -> bool:
 	var space_state = get_world_2d().direct_space_state
 	
 	var rayTo = Vector2(global_position.x + (pushRange * facingDir.x), global_position.y)
 	var collision = space_state.intersect_ray(global_position, rayTo, [self])
 	push_rigidbodies(collision)
 	
+	if collision:
+		return true
+	
 	rayTo.y += collisionShape.shape.extents.y
 	collision = space_state.intersect_ray(global_position, rayTo, [self])
 	push_rigidbodies(collision)
+	
+	if collision:
+		return true
+	
+	return false
 
 func push_rigidbodies(var collision) -> void:
 	if collision and collision.collider.is_in_group("body") and moveInput.x != 0:
 		var body = collision.collider as Body
-		body.velocity.x = pushMoveSpeed * facingDir.x
-		velocity.x = pushMoveSpeed * facingDir.x
+		body.velocity.x = pushMoveSpeed * moveInput.x
+		velocity.x = pushMoveSpeed * moveInput.x
 
 func calculate_velocity(delta : float):
 	if is_on_floor():

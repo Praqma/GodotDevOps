@@ -1,117 +1,145 @@
 # NeoMori
 
-NeoMori is a summer project that explores contemporary software development and DevOps in a game development setting.
+NeoMori is a summer project exploring contemporary software development and DevOps in a game development setting.
+
+- [Project goals](#project-goals)
+- [Installation](#installation)
+- [Development](#development)
+  - [Workflow](#workflow)
+  - [Task management](#task-management)
+  - [GitHub Actions](#actions)
+  - [Creating a release](#creating-a-release)
+  - [Project flow](#project-flow)
+- [License](#license)
 
 ![NeoMori_Dashing](https://user-images.githubusercontent.com/62639702/126960849-7fe79e43-6ff5-489e-8cad-0f4ac8e0ca6a.gif "NeoMori Dashing")
 
-The game is a fast-paced stealth platformer where the player has to make their way to the level exit whilst avoiding the detection of patroling enemies. However the main focus of the project isn't the outcome of the game but the practices and habits used and their impact on the development process.
+## Project goals <a name="project-goals"/>
 
-Automation also plays an integral part as an effort to unload time-consuming tasks from the developer. This should prove particularly useful for smaller independent studios with already limited resources and time.
+Game development has unique challenges which can make it difficult to adopt modern software development techniques and disciplines such as test driven development, automated software pipelines, etc.
 
-Some practices include using test-driven development to create independent features that are easily testable, dealing with large binaries, automating release note generation and creating a workflow to automatically build and publish the game.
+NeoMori aims to explore and overcome those challenges and produce a comprehensive guide on how to do so for novice and veteran alike.
 
-Blog detailing the development coming soon!
+For a full list of challenges, check the [roadmap](docs/ROADMAP.md).
 
-## Installation
+### About the game
 
-Every version of the game can be found and downloaded under the release page on github. The instructions below detail how to install and run the game.
+It'd be hard to run a project on development practices in game development without doing any game development.
+Underlying the project is the development of NeoMori, a fast-paced stealth platformer where players avoid detection while navigating through various levels.
 
-1. Navigate to the main github page.
-2. Select [**Releases**](https://github.com/Praqma/GodotDevOps/releases) on the right side bar.
-3. Choose a version you want to play.
-4. Choose a zip folder for the platform you wish to run it on.
-5. How to unzip and run the game vary based on platform. Continue the installation under the appropriate header.
+## Installation <a name="installation"/>
+
+1. Navigate to the [**Releases**](https://github.com/Praqma/GodotDevOps/releases) page
+2. Download the latest release for your distribution
+3. Unzip the release to a chosen directory
+4. Follow instructions below for your distribution
 
 ### Windows
 
-6. Unzip the folder.
-7. Inside should be 3 files: *`NeoMori`*, *`NeoMori.pck`* and *`override.cfg`*.
-8. Rename the *`NeoMori`* file (not ~~*`NeoMori.pck`*~~) to *`NeoMori.exe`*.
+5. Rename the *`NeoMori`* file (not ~~*`NeoMori.pck`*~~) to *`NeoMori.exe`*
    - *This will be fixed in the future!*
-9. That's it! To launch the game just run the .exe file.
+6. Run *`NeoMori.exe`* and enjoy!
 
 ### Linux
 
-6. Unzip the folder.
-7. Open the command line interface.
-    - *The file permissions need to be modified in order to run the game*.
-8. Run the following:
-    ```sh
-    chmod +x NeoMori
-    ```
-9. That's it! To launch the game just run the NeoMori file.
+5. Grant execute permissions to the game: `chmod +x NeoMori`
+6. Run *`NeoMori`* and enjoy!
 
 ### Mac
 
-6. Open the terminal.
+Fair warning, the Mac dist is a little finicky at present.
+
+5. Open your terminal in the directory you unzipped the release
 7. Run the following:
     ```sh
-    unzip "zip name"
-    cd NeoMori
     unzip NeoMori
     ls -lr@
     xattr -d -r com.apple.quarantine .
     open GodotDevOps.app
     ```
-8. That's it! To launch the game just run the .app file.
+8. Enjoy!
 
-## Credits
+## Development <a name="development"/>
 
-- Thierry Lacour ([@praqma-thi](https://github.com/praqma-thi))
-- Isak Nyström ([@SkoggsTrollet](https://github.com/SkoggsTrollet))
-- Danny Darwiche ([@DannyDarwiche](https://github.com/DannyDarwiche))
-- ( *Add tutorial links* )
+### Workflow <a name="workflow"/>
 
-## License
-
-This project is licensed under the [MIT license](https://github.com/Praqma/GodotDevOps/blob/main/LICENSE).
-
-## Project flow
-
-### Workflow
-
-- Code changes should be tied to an issue in [the board](https://github.com/Praqma/GodotDevOps/projects/1)
-  - Reference in commit messages (`"WIP #3"`, `"Fixes #3"`)
-  - Fixes that will appear in the release notes should be written directly in the commit body (`"Fixes #3 > New Feature: Giant lasers added to the players arsenal"`)
+- Commits should be tied to [an issue](https://github.com/Praqma/GodotDevOps/projects/1)
+  - Reference the issue in the commit messages:
+    `"WIP #3"`, `"Fixes #3"`
+  - Release notes should be added in the commit body:
+    `"Fixes #3 > New Feature: Giant lasers have been added to the player's arsenal"`
 - Code changes should happen on a branch
   - Name: Related issue number, lowercase, dash-separated `3-add-giant-lasers`
 - Merging is done through a pull request
 
-### Task management
+### Task management <a name="task-management"/>
 
-All tasks should always have a corresponding issue in [the kanban board](https://github.com/Praqma/GodotDevOps/projects/1) and all work on the project should always be attached to an issue.
+- All development tasks should always have a [corresponding issue](https://github.com/Praqma/GodotDevOps/projects/1)
+- All work on the project should always be tied to an issue
+- The board is divided into 5 categories: *Ungroomed*, *To Do*, *In Progress*, *Done* and *Scrapped*
+- Issues are ordered by importance/priority
 
-The board is divided into 5 categories: Ungroomed, To Do, In Progress, Done, Scrapped.
+#### Ungroomed
 
-Ungroomed tracks rough estimations of large scope issues that are usually vaguely defined.
+Ungroomed issues tracks ideas, unrefined large scope issues or other work that is vaguely defined.
 
-To Do are usually born from Ungroomed issues as more clearly defined tasks that can be completed within a single workday. All To Do issues should have a clear definition of done checklist that can be assesed to determine when an issue is completed and can be merged in. The order of issues in To Do matters. Generally, issues are ordered after importance or relevance with most important on top to least important at the bottom.
+#### To Do
 
-In Progress are the currently worked on issues. As a rule of thumb, the amount of issues currently In Progress shouldn't surpass the amount of project members at any given time. A person can't and shouldn't work on 2 things at once. It is perfectly fine to move issues back and forth between To Do and In Progress. If an issue is larger than expected it can be broken down into smaller issues and placed in To Do.
+Issues in `To Do` have clearly defined _definitions of done_, a set of tasks that need to be finished before it can be considered done.
 
-When an issue has all its definition of done marks checked and has been merged into main it can be moved into Done. Issues in Done are generally not moved. If an issue needs revisiting, create a new one detailing the reasons why and place it in To Do.
+An issue should also take less than a full day to complete. Anything larger should be broken down into smaller issues.
 
-Scrapped is a place to move issues that are no longer part of the projects scope. By placing them here instead of deleting them the scope becomes more managable. It serves as a reminder of features once considered that didn't make the cut and why. It is also useful to define a project based on both the features to include and not to include.
+For convenience's sake we allow "epics" to reside here as well. These are large issues used that help track progress of similarly-themed smaller issues.
 
-### GitHub Actions workflows
+#### In Progress
 
-The build workflow is triggered either on pull requests or when pushing to main. It runs the GUT tests and if they pass it creates a build artifact of the project in its current state. The main difference between the pull request and push is determining if it is built in debug or release mode.
+In Progress are issues currently being worked on.
 
-The publish workflow is triggered when the commit is tagged. It takes the artifact from the build workflow and publishes it as a release on GitHub.
+As a rule of thumb, the amount of issues here shouldn't surpass the amount of project members at any given time. 
+Essentially, a developer can't work on two  things at once.
 
-### Creating a release
+It is perfectly fine to move issues back and forth between `To Do` and `In Progress`.
 
-1. Open the command line interface
-2. Checkout the commit the release will be based on
-    - *Only works if the commit has a build artifact on main*
-3. Run the shell script release.sh
-4. Follow the instructions
-5. The commit is now tagged with the release notes in the body. This will trigger the publish workflow which will publish the release.
+If an issue is larger than expected it can be broken down into smaller issues and placed in `To Do`.
 
+When an issue has all its _definition of done_ marks checked, it can be merged in, closed and moved to `Done`.
 
-### Project flow
+#### Done 
 
-While the actual game being developed is extremely fun and interesting, let's not forget the overlapping goal of the project. For now, let's follow this little flow for now, we can readjust at any time.
+Issues in `Done` are done and stay done.
+
+If an issue needs revisiting, a new issue is created rather than reopening the original issue.
+
+#### Scrapped
+
+Issues are moved to `Scrapped` when they are no longer part of the project's scope.
+They serve as a log of features once considered that didn't make the cut.
+
+### GitHub Actions <a name="actions"/>
+
+#### Build
+
+The `build` workflow is triggered either on pull requests or when pushing to `main`.
+
+It runs the unit tests, builds the game clients and archives them for testing.
+
+#### Publish
+
+The `publish` workflow is triggered on tag.
+
+It takes the built clients from the `build` workflow and publishes them as a GitHub Release.
+
+### Creating a release <a name="releasing"/>
+
+1. Check out the commit you wish to release
+    - *Only works if the commit has a successful build on main*
+2. Run `.buildscripts/release.sh` and follow the prompts
+3. Your commit should now be tagged with generated release notes
+    - This will trigger the `publish` workflow, publishing the release
+
+### Project flow <a name="project-flow"/>
+
+The project as a whole loosely follows the following structure:
 
 - Game development continuously ongoing
 - Monday and Wednesday fikas and project discussion
@@ -120,3 +148,7 @@ While the actual game being developed is extremely fun and interesting, let's no
   - Find ways to improve our workflow, by either adding or removing processes/skills/tools
   - Book the time to hold some workshops/trainings to achieve those things
   - Where applicable, add them as isues to the board.
+
+## License <a name="license"/>
+
+This project is licensed under the [MIT license](LICENSE).

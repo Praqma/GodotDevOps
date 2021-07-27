@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/NeoMori_Box.png-27df8df067baaede731f979ac6b57617.stex"
+path="res://.import/DoorOpened.png-60f831f4b20aae9d24300ce3e3a580cf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/NeoMori_Box.png"
-dest_files=[ "res://.import/NeoMori_Box.png-27df8df067baaede731f979ac6b57617.stex" ]
+source_file="res://Assets/Sprites/DoorOpened.png"
+dest_files=[ "res://.import/DoorOpened.png-60f831f4b20aae9d24300ce3e3a580cf.stex" ]
 
 [params]
 

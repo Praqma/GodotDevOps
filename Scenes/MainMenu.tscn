@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Version.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Level.gd" type="Script" id=2]
 [ext_resource path="res://addons/gut/fonts/AnonymousPro-Bold.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://addons/gut/fonts/CourierPrime-Bold.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=6]
@@ -11,8 +12,12 @@
 size = 52
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 40
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 28
 font_data = ExtResource( 4 )
 
 [node name="Control" type="Control"]
@@ -55,7 +60,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="MenuOptions"]
-margin_right = 248.0
+margin_right = 980.0
 margin_bottom = 59.0
 custom_fonts/font = SubResource( 1 )
 text = "Neo Mori"
@@ -63,22 +68,56 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Start" type="Button" parent="MenuOptions"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuOptions"]
 margin_top = 63.0
-margin_right = 248.0
-margin_bottom = 119.0
+margin_right = 980.0
+margin_bottom = 212.0
+
+[node name="Rooftop Parkour" type="Button" parent="MenuOptions/VBoxContainer"]
+margin_right = 980.0
+margin_bottom = 47.0
 rect_min_size = Vector2( 122, 47 )
 size_flags_horizontal = 7
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 2 )
-text = "Start"
+custom_fonts/font = SubResource( 3 )
+text = "Rooftop Parkour"
 flat = true
 align = 0
+script = ExtResource( 2 )
+level = "res://Scenes/Levels/Level1.tscn"
+
+[node name="Dash Cams" type="Button" parent="MenuOptions/VBoxContainer"]
+margin_top = 51.0
+margin_right = 980.0
+margin_bottom = 98.0
+rect_min_size = Vector2( 122, 47 )
+size_flags_horizontal = 7
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 3 )
+text = "Dash Cams"
+flat = true
+align = 0
+script = ExtResource( 2 )
+level = "res://Scenes/Levels/Level2.tscn"
+
+[node name="Example Level" type="Button" parent="MenuOptions/VBoxContainer"]
+margin_top = 102.0
+margin_right = 980.0
+margin_bottom = 149.0
+rect_min_size = Vector2( 122, 47 )
+size_flags_horizontal = 7
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 3 )
+text = "Example Level"
+flat = true
+align = 0
+script = ExtResource( 2 )
+level = "res://Scenes/Levels/ExampleLevel.tscn"
 
 [node name="Exit" type="Button" parent="MenuOptions"]
-margin_top = 123.0
-margin_right = 248.0
-margin_bottom = 179.0
+margin_top = 216.0
+margin_right = 980.0
+margin_bottom = 263.0
 rect_min_size = Vector2( 122, 47 )
 size_flags_horizontal = 7
 size_flags_vertical = 7
@@ -99,5 +138,7 @@ margin_top = -300.0
 margin_right = 1024.0
 margin_bottom = 300.0
 
-[connection signal="pressed" from="MenuOptions/Start" to="MenuOptions" method="_on_Start_pressed"]
+[connection signal="pressed" from="MenuOptions/VBoxContainer/Rooftop Parkour" to="MenuOptions/VBoxContainer/Rooftop Parkour" method="_on_level_start"]
+[connection signal="pressed" from="MenuOptions/VBoxContainer/Dash Cams" to="MenuOptions/VBoxContainer/Dash Cams" method="_on_level_start"]
+[connection signal="pressed" from="MenuOptions/VBoxContainer/Example Level" to="MenuOptions/VBoxContainer/Example Level" method="_on_level_start"]
 [connection signal="pressed" from="MenuOptions/Exit" to="MenuOptions" method="_on_Exit_pressed"]

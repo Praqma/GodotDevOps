@@ -61,6 +61,7 @@ tile_data = PoolIntArray( -1572826, 32, 0, -1572825, 32, 1, -1572824, 32, 2, -15
 
 [node name="LevelGoal" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1737, -136.08 )
+sceneTransitionPath = NodePath("../CanvasLayer/SceneTransitionRect")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

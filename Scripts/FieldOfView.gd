@@ -10,6 +10,8 @@ export var losDetectColor := Color(1,0,0,1)
 # Number of rays per degree
 export (float) var coneResolution := 1.0
 
+onready var fovPolygon = $"Polygon2D"
+
 var targets = PoolVector2Array()
 var losRange : float = 0
 
@@ -40,7 +42,6 @@ func find_targets_with_raycast(entities) -> PoolVector2Array:
 	return targets
 
 func _process(delta):
-	draw_field_of_view()
 	update()
 
 func _physics_process(delta):
@@ -61,25 +62,54 @@ func _physics_process(delta):
 	else:
 		losRange -= losSpeed
 	losRange = clamp(losRange, 0, detectRadius)
+	
+	draw_field_of_view()
 
 func draw_field_of_view():
 	var stepCount = round(viewAngle * coneResolution)
 	var stepAngleSize = viewAngle / stepCount
 	
 	debugAngles.clear()
-	for i in stepCount:
-		var angle = -viewAngle/2 + stepAngleSize * i
-		debugAngles.append(angle)
+	var vertices := PoolVector2Array()
+	vertices.append(Vector2.ZERO)
+	
+	for i in stepCount + 1:
+		var angle = global_rotation_degrees - viewAngle/2 + stepAngleSize * i
+		debugAngles.append(angle - global_rotation_degrees)
+		var newViewCast : ViewCastInfo = ViewCast(angle)
+		vertices.append(newViewCast.point.rotated(-global_rotation))
+	fovPolygon.polygons.clear()
+	fovPolygon.polygon = vertices
+
+func ViewCast(angle : float) -> ViewCastInfo:
+	var dir := Vector2(cos(deg2rad(angle)), sin(deg2rad(angle)))
+	var space_state = get_world_2d().direct_space_state
+	var hit = space_state.intersect_ray(global_position, global_position + dir.normalized() * detectRadius, [self], collisionLayer)
+	if hit:
+		return ViewCastInfo.new(true, hit.position - global_position, (hit.position - global_position).length(), angle)
+	return ViewCastInfo.new(false, dir * detectRadius, detectRadius, angle)
+
+class ViewCastInfo:
+	var hit : bool
+	var point : Vector2
+	var distance: float
+	var angle : float
+
+	func _init(hit : bool, point : Vector2, distance : float, angle : float):
+		self.hit = hit
+		self.point = point
+		self.distance = distance
+		self.angle = angle
 
 func _draw():
 	for target in targets:
 		draw_line(Vector2.ZERO, to_local(target), losUndetectColor)
 		draw_line(Vector2.ZERO, to_local(target).normalized() * losRange, losDetectColor, 2)
 	
-	for a in debugAngles:
-		var dir := Vector2(cos(deg2rad(a)), sin(deg2rad(a)))
-		draw_line(Vector2.ZERO, dir.normalized() * detectRadius, Color.blue)
+#	for a in debugAngles:
+#		var dir := Vector2(cos(deg2rad(a)), sin(deg2rad(a)))
+#		draw_line(Vector2.ZERO, dir.normalized() * detectRadius, Color.blue)
 	
-	draw_line(Vector2.ZERO, Vector2(cos(deg2rad(-viewAngle/2)) * detectRadius, sin(deg2rad(-viewAngle/2)) * detectRadius), fovColor)
-	draw_line(Vector2.ZERO, Vector2(cos(deg2rad(viewAngle/2)) * detectRadius, sin(deg2rad(viewAngle/2)) * detectRadius), fovColor)
-	draw_arc(Vector2.ZERO, detectRadius, deg2rad(-viewAngle/2), deg2rad(viewAngle/2), 32, fovColor)
+#	draw_line(Vector2.ZERO, Vector2(cos(deg2rad(-viewAngle/2)) * detectRadius, sin(deg2rad(-viewAngle/2)) * detectRadius), fovColor)
+#	draw_line(Vector2.ZERO, Vector2(cos(deg2rad(viewAngle/2)) * detectRadius, sin(deg2rad(viewAngle/2)) * detectRadius), fovColor)
+#	draw_arc(Vector2.ZERO, detectRadius, deg2rad(-viewAngle/2), deg2rad(viewAngle/2), 32, fovColor)

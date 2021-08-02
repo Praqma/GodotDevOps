@@ -102,7 +102,7 @@ script = ExtResource( 2 )
 level = "res://Scenes/Levels/Level2.tscn"
 sceneTransitionPath = NodePath("../../../CanvasLayer/SceneTransitionRect")
 
-[node name="Example Level" type="Button" parent="MenuOptions/VBoxContainer"]
+[node name="Gold Source" type="Button" parent="MenuOptions/VBoxContainer"]
 margin_top = 102.0
 margin_right = 342.0
 margin_bottom = 149.0
@@ -110,11 +110,11 @@ rect_min_size = Vector2( 122, 47 )
 size_flags_horizontal = 7
 size_flags_vertical = 7
 custom_fonts/font = SubResource( 2 )
-text = "Example Level"
+text = "Gold Src"
 flat = true
 align = 0
 script = ExtResource( 2 )
-level = "res://Scenes/Levels/ExampleLevel.tscn"
+level = "res://Scenes/Levels/Level3.tscn"
 sceneTransitionPath = NodePath("../../../CanvasLayer/SceneTransitionRect")
 
 [node name="Exit" type="Button" parent="MenuOptions"]
@@ -135,10 +135,11 @@ __meta__ = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="SceneTransitionRect" parent="CanvasLayer" instance=ExtResource( 7 )]
+visible = false
 margin_top = 0.0
 margin_bottom = 0.0
 
 [connection signal="pressed" from="MenuOptions/VBoxContainer/Rooftop Parkour" to="MenuOptions/VBoxContainer/Rooftop Parkour" method="_on_level_start"]
 [connection signal="pressed" from="MenuOptions/VBoxContainer/Dash Cams" to="MenuOptions/VBoxContainer/Dash Cams" method="_on_level_start"]
-[connection signal="pressed" from="MenuOptions/VBoxContainer/Example Level" to="MenuOptions/VBoxContainer/Example Level" method="_on_level_start"]
+[connection signal="pressed" from="MenuOptions/VBoxContainer/Gold Source" to="MenuOptions/VBoxContainer/Gold Source" method="_on_level_start"]
 [connection signal="pressed" from="MenuOptions/Exit" to="MenuOptions" method="_on_Exit_pressed"]

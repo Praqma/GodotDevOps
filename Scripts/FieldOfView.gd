@@ -8,7 +8,8 @@ export var fovColor := Color(1,1,1,1)
 export var losUndetectColor := Color(1,1,0,1)
 export var losDetectColor := Color(1,0,0,1)
 # Number of rays per degree
-export (float) var coneResolution := 1.0
+export (float) var coneResolution : float = 1.0
+export (int) var edgeResolveIterations : int = 12
 
 onready var fovPolygon = $"Polygon2D"
 
@@ -73,21 +74,53 @@ func draw_field_of_view():
 	var vertices := PoolVector2Array()
 	vertices.append(Vector2.ZERO)
 	
+	var oldViewCast : ViewCastInfo
+	
 	for i in stepCount + 1:
 		var angle = global_rotation_degrees - viewAngle/2 + stepAngleSize * i
 		debugAngles.append(angle - global_rotation_degrees)
-		var newViewCast : ViewCastInfo = ViewCast(angle)
+		var newViewCast : ViewCastInfo = view_cast(angle)
+		
+		if i > 0:
+			if oldViewCast.hit != newViewCast.hit:
+				var edge : EdgeInfo = find_edge(oldViewCast, newViewCast)
+				if edge.pointA != Vector2.ZERO:
+					vertices.append(edge.pointA.rotated(-global_rotation))
+				if edge.pointB != Vector2.ZERO:
+					vertices.append(edge.pointB.rotated(-global_rotation))
+		
 		vertices.append(newViewCast.point.rotated(-global_rotation))
+		oldViewCast = newViewCast
+	
 	fovPolygon.polygons.clear()
 	fovPolygon.polygon = vertices
 
-func ViewCast(angle : float) -> ViewCastInfo:
+func view_cast(angle : float) -> ViewCastInfo:
 	var dir := Vector2(cos(deg2rad(angle)), sin(deg2rad(angle)))
 	var space_state = get_world_2d().direct_space_state
 	var hit = space_state.intersect_ray(global_position, global_position + dir.normalized() * detectRadius, [self], collisionLayer)
 	if hit:
 		return ViewCastInfo.new(true, hit.position - global_position, (hit.position - global_position).length(), angle)
 	return ViewCastInfo.new(false, dir * detectRadius, detectRadius, angle)
+
+func find_edge(minViewCast : ViewCastInfo, maxViewCast : ViewCastInfo) -> EdgeInfo:
+	var minAngle : float = minViewCast.angle
+	var maxAngle : float = maxViewCast.angle
+	var minPoint : Vector2 = Vector2.ZERO
+	var maxPoint : Vector2 = Vector2.ZERO
+	
+	for i in edgeResolveIterations:
+		var angle : float = (minAngle + maxAngle) / 2
+		var newViewCast : ViewCastInfo = view_cast(angle)
+		
+		if newViewCast.hit == minViewCast.hit:
+			minAngle = angle
+			minPoint = newViewCast.point
+		else:
+			maxAngle = angle
+			maxPoint = newViewCast.point
+	
+	return EdgeInfo.new(minPoint, maxPoint)
 
 class ViewCastInfo:
 	var hit : bool
@@ -100,6 +133,14 @@ class ViewCastInfo:
 		self.point = point
 		self.distance = distance
 		self.angle = angle
+
+class EdgeInfo:
+	var pointA : Vector2
+	var pointB : Vector2 
+	
+	func _init(pointA : Vector2, pointB : Vector2):
+		self.pointA = pointA
+		self.pointB = pointB
 
 func _draw():
 	for target in targets:

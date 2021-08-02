@@ -68,10 +68,11 @@ func ghostTrail_timer_timeout():
 func _ready():
 	setupValues()
 	$dash_timer.connect("timeout", self, "dash_timer_timeout")
-	
+
 func setupValues():
 	jumpCount = maxJumpCount
 	dashCount = maxDashCount
+	facingDir = Vector2.RIGHT
 
 func _process(delta):
 	if position.y > deathBarrier:
@@ -137,11 +138,9 @@ func dash():
 	if dashCount <= 0:
 		return
 	isDashing = true
-	
-	if moveInput.length() < 0.1:
-		dashDirection = facingDir * dashSpeed
-	else:
-		dashDirection = moveInput * dashSpeed
+
+	dashDirection = facingDir * dashSpeed
+
 	snap = false
 	dashCount -= 1
 

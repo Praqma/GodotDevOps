@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/LevelGoal.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/SceneTransitionRect.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Sprites/ExitSignBackground.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Materials/Flashing.tres" type="Material" id=4]
 [ext_resource path="res://Assets/Sprites/ExitSignForeground.png" type="Texture" id=5]
@@ -24,11 +23,5 @@ texture = ExtResource( 3 )
 [node name="ExitSignForeground" type="Sprite" parent="WinArea2D"]
 material = ExtResource( 4 )
 texture = ExtResource( 5 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="SceneTransitionRect" parent="CanvasLayer" instance=ExtResource( 2 )]
-margin_top = 0.0
-margin_bottom = 0.0
 
 [connection signal="body_entered" from="WinArea2D" to="." method="_on_WinArea2D_body_entered"]

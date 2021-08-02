@@ -5,7 +5,8 @@ var isTransitioning := false
 onready var _anim_player := $AnimationPlayer
 
 func _ready():
-	_anim_player.play_backwards("Fade");
+	set_visible(true)
+	_anim_player.play_backwards("Fade")
 
 func transition_to(_next_scene) -> void:
 	isTransitioning = true

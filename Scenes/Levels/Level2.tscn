@@ -167,6 +167,7 @@ rect_scale = Vector2( 12.5768, 7.37932 )
 
 [node name="LevelGoal" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1318.33, -117.416 )
+sceneTransitionPath = NodePath("../CanvasLayer/SceneTransitionRect")
 
 [connection signal="pressed" from="CanvasLayer/Pause/PauseOptions/Resume" to="CanvasLayer/Pause" method="_on_Resume_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/PauseOptions/Menu" to="CanvasLayer/Pause" method="_on_Menu_pressed"]

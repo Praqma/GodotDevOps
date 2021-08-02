@@ -1,8 +1,12 @@
 extends Node2D
 
-onready var _transition_rect := $"CanvasLayer/SceneTransitionRect"
+export (NodePath) var sceneTransitionPath
 
+var sceneTransition
+
+func _ready():
+	sceneTransition = get_node(sceneTransitionPath)
 
 func _on_WinArea2D_body_entered(body):
 	if(body.is_in_group("Player")) :
-		_transition_rect.transition_to("res://Scenes/MainMenu.tscn")
+		sceneTransition.transition_to("res://Scenes/MainMenu.tscn")

@@ -62,7 +62,7 @@ jobs:
         if: ${{ env.GIT_DESCRIBE != '' }}
         uses: actions/upload-artifact@v2
         with:
-          name: NeoMori-${{ github.sha }}-${{ github.job }}
+          name: NeoMori_${{ github.sha }}_${{ github.job }}
           path: ${{ github.workspace }}/override.cfg
 
   linux:
@@ -116,7 +116,7 @@ jobs:
         if: ${{ env.GIT_DESCRIBE != '' }}
         uses: actions/upload-artifact@v2
         with:
-          name: NeoMori-${{ github.sha }}-${{ github.job }}
+          name: NeoMori_${{ github.sha }}_${{ github.job }}
           path: ${{ github.workspace }}/override.cfg
 
   mac:
@@ -170,5 +170,5 @@ jobs:
         if: ${{ env.GIT_DESCRIBE != '' }}
         uses: actions/upload-artifact@v2
         with:
-          name: NeoMori-${{ github.sha }}-${{ github.job }}
+          name: NeoMori_${{ github.sha }}_${{ github.job }}
           path: ${{ github.workspace }}/override.cfg

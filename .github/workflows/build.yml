@@ -43,7 +43,7 @@ jobs:
         id: build
         run: |
           mkdir -v -p build/windows
-          godot -v ${{ steps.chooseExportMethod.outputs.value }} "Windows Desktop" ./build/windows/NeoMori.exe
+          godot -v ${{ steps.chooseExportMethod.outputs.value }} "windows" ./build/windows/NeoMori.exe
 
       - name: Git describe
         run: echo "GIT_DESCRIBE=$(git describe)" >> $GITHUB_ENV
@@ -97,7 +97,7 @@ jobs:
         id: build
         run: |
           mkdir -v -p build/linux
-          godot -v ${{ steps.chooseExportMethod.outputs.value }} "Linux/X11" ./build/linux/NeoMori
+          godot -v ${{ steps.chooseExportMethod.outputs.value }} "linux" ./build/linux/NeoMori
 
       - name: Git describe
         run: echo "GIT_DESCRIBE=$(git describe)" >> $GITHUB_ENV
@@ -151,7 +151,7 @@ jobs:
         id: build
         run: |
           mkdir -v -p build/mac
-          godot -v ${{ steps.chooseExportMethod.outputs.value }} "Mac OSX" ./build/mac/NeoMori.zip
+          godot -v ${{ steps.chooseExportMethod.outputs.value }} "mac" ./build/mac/NeoMori.zip
 
       - name: Git describe
         run: echo "GIT_DESCRIBE=$(git describe)" >> $GITHUB_ENV

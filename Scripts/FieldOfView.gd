@@ -7,15 +7,17 @@ export(int, LAYERS_3D_PHYSICS) var collisionLayer = 1
 export var fovColor := Color(1,1,1,1)
 export var losUndetectColor := Color(1,1,0,1)
 export var losDetectColor := Color(1,0,0,1)
-# Number of rays per degree
-export (float) var coneResolution : float = 1.0
-export (int) var edgeResolveIterations : int = 12
+export (float) var coneResolution : float = 0.5
+export (int) var edgeResolveIterations : int = 6
+export (float) var edgeDstThreshold : float = 30
+export (float) var refinementResolution : float = 6
 
 onready var fovPolygon = $"Polygon2D"
 
 var targets = PoolVector2Array()
 var losRange : float = 0
 
+export (bool) var drawDebugLines = true
 var debugAngles := []
 
 func find_targets_inside_radius(entities) -> PoolVector2Array:
@@ -55,14 +57,14 @@ func _physics_process(delta):
 	var inCone = find_targets_inside_cone(inRadius)
 	targets = find_targets_with_raycast(inCone)
 	
-	if targets:
-		losRange += losSpeed
-		for target in targets:
-			if global_position.distance_to(target) <= losRange:
-				get_tree().reload_current_scene()
-	else:
-		losRange -= losSpeed
-	losRange = clamp(losRange, 0, detectRadius)
+#	if targets:
+#		losRange += losSpeed
+#		for target in targets:
+#			if global_position.distance_to(target) <= losRange:
+#				get_tree().reload_current_scene()
+#	else:
+#		losRange -= losSpeed
+#	losRange = clamp(losRange, 0, detectRadius)
 	
 	draw_field_of_view()
 
@@ -72,8 +74,7 @@ func draw_field_of_view():
 	
 	debugAngles.clear()
 	var vertices := PoolVector2Array()
-	vertices.append(Vector2.ZERO)
-	
+	vertices.append(Vector2.ZERO)	
 	var oldViewCast : ViewCastInfo
 	
 	for i in stepCount + 1:
@@ -82,12 +83,22 @@ func draw_field_of_view():
 		var newViewCast : ViewCastInfo = view_cast(angle)
 		
 		if i > 0:
-			if oldViewCast.hit != newViewCast.hit:
+			var edgeDstThresholdExceeded : bool =  abs(oldViewCast.distance - newViewCast.distance) > edgeDstThreshold
+			if (oldViewCast.hit != newViewCast.hit 
+			or (oldViewCast.hit and newViewCast.hit and edgeDstThresholdExceeded)):
 				var edge : EdgeInfo = find_edge(oldViewCast, newViewCast)
 				if edge.pointA != Vector2.ZERO:
 					vertices.append(edge.pointA.rotated(-global_rotation))
 				if edge.pointB != Vector2.ZERO:
 					vertices.append(edge.pointB.rotated(-global_rotation))
+			elif ( i > 1
+			and oldViewCast.hit and newViewCast.hit
+			and newViewCast.normal != oldViewCast.normal):
+				var corner : EdgeInfo = find_corners(oldViewCast, newViewCast)
+				if corner.pointA != Vector2.ZERO:
+					vertices.append(corner.pointA.rotated(-global_rotation))
+				if corner.pointB != Vector2.ZERO:
+					vertices.append(corner.pointB.rotated(-global_rotation))
 		
 		vertices.append(newViewCast.point.rotated(-global_rotation))
 		oldViewCast = newViewCast
@@ -100,8 +111,8 @@ func view_cast(angle : float) -> ViewCastInfo:
 	var space_state = get_world_2d().direct_space_state
 	var hit = space_state.intersect_ray(global_position, global_position + dir.normalized() * detectRadius, [self], collisionLayer)
 	if hit:
-		return ViewCastInfo.new(true, hit.position - global_position, (hit.position - global_position).length(), angle)
-	return ViewCastInfo.new(false, dir * detectRadius, detectRadius, angle)
+		return ViewCastInfo.new(true, hit.position - global_position, (hit.position - global_position).length(), angle, hit.normal)
+	return ViewCastInfo.new(false, dir * detectRadius, detectRadius, angle, Vector2.ZERO)
 
 func find_edge(minViewCast : ViewCastInfo, maxViewCast : ViewCastInfo) -> EdgeInfo:
 	var minAngle : float = minViewCast.angle
@@ -113,13 +124,41 @@ func find_edge(minViewCast : ViewCastInfo, maxViewCast : ViewCastInfo) -> EdgeIn
 		var angle : float = (minAngle + maxAngle) / 2
 		var newViewCast : ViewCastInfo = view_cast(angle)
 		
-		if newViewCast.hit == minViewCast.hit:
+		var edgeDstThresholdExceeded = abs(minViewCast.distance - newViewCast.distance) > edgeDstThreshold
+		if newViewCast.hit == minViewCast.hit and not edgeDstThresholdExceeded:
 			minAngle = angle
 			minPoint = newViewCast.point
 		else:
 			maxAngle = angle
 			maxPoint = newViewCast.point
 	
+	debugAngles.append(minAngle - global_rotation_degrees)
+	debugAngles.append(maxAngle - global_rotation_degrees)
+	return EdgeInfo.new(minPoint, maxPoint)
+
+func find_corners(minViewCast : ViewCastInfo, maxViewCast : ViewCastInfo) -> EdgeInfo:
+	var minAngle : float = minViewCast.angle
+	var maxAngle : float = maxViewCast.angle	
+	var minNormal : Vector2 = minViewCast.normal
+	var maxNormal : Vector2 = maxViewCast.normal
+	var minPoint : Vector2 = Vector2.ZERO
+	var maxPoint : Vector2 = Vector2.ZERO
+
+	for i in refinementResolution:
+		var angle : float = (minAngle + maxAngle) / 2
+		var newViewCast : ViewCastInfo = view_cast(angle)
+
+		if newViewCast.normal == minNormal:
+			minAngle = angle
+			minNormal = newViewCast.normal
+			minPoint = newViewCast.point
+		if newViewCast.normal == maxNormal:
+			maxAngle = angle
+			maxNormal = newViewCast.normal
+			maxPoint = newViewCast.point
+
+	debugAngles.append(minAngle - global_rotation_degrees)
+	debugAngles.append(maxAngle - global_rotation_degrees)
 	return EdgeInfo.new(minPoint, maxPoint)
 
 class ViewCastInfo:
@@ -127,12 +166,14 @@ class ViewCastInfo:
 	var point : Vector2
 	var distance: float
 	var angle : float
+	var normal : Vector2
 
-	func _init(hit : bool, point : Vector2, distance : float, angle : float):
+	func _init(hit : bool, point : Vector2, distance : float, angle : float, normal : Vector2):
 		self.hit = hit
 		self.point = point
 		self.distance = distance
 		self.angle = angle
+		self.normal = normal
 
 class EdgeInfo:
 	var pointA : Vector2
@@ -143,13 +184,14 @@ class EdgeInfo:
 		self.pointB = pointB
 
 func _draw():
-	for target in targets:
-		draw_line(Vector2.ZERO, to_local(target), losUndetectColor)
-		draw_line(Vector2.ZERO, to_local(target).normalized() * losRange, losDetectColor, 2)
+#	for target in targets:
+#		draw_line(Vector2.ZERO, to_local(target), losUndetectColor)
+#		draw_line(Vector2.ZERO, to_local(target).normalized() * losRange, losDetectColor, 2)
 	
-#	for a in debugAngles:
-#		var dir := Vector2(cos(deg2rad(a)), sin(deg2rad(a)))
-#		draw_line(Vector2.ZERO, dir.normalized() * detectRadius, Color.blue)
+	if drawDebugLines:
+		for a in debugAngles:
+			var dir := Vector2(cos(deg2rad(a)), sin(deg2rad(a)))
+			draw_line(Vector2.ZERO, dir.normalized() * detectRadius, Color.blue)
 	
 #	draw_line(Vector2.ZERO, Vector2(cos(deg2rad(-viewAngle/2)) * detectRadius, sin(deg2rad(-viewAngle/2)) * detectRadius), fovColor)
 #	draw_line(Vector2.ZERO, Vector2(cos(deg2rad(viewAngle/2)) * detectRadius, sin(deg2rad(viewAngle/2)) * detectRadius), fovColor)

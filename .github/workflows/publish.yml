@@ -33,9 +33,20 @@ jobs:
     - name: Zip client
       run: zip -q -r ${{ env.FILENAME }}.zip NeoMori
 
-    - name: Publish clients
+    - name: Publish to github release
       uses: softprops/action-gh-release@v1
       with:
         files: ${{ env.FILENAME }}.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Publish to itch.io
+      uses: josephbmanley/butler-publish-itchio-action@v1.0.2
+      env:
+        BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+        CHANNEL: ${{ matrix.platform }}
+        ITCH_GAME: neomori
+        ITCH_USER: eficode
+        PACKAGE: ${{ env.FILENAME }}.zip
+        VERSION: ${GITHUB_REF/refs\/tags\//}\
+

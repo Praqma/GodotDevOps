@@ -24,11 +24,14 @@ jobs:
         name: NeoMori-${{ github.sha }}-${{ matrix.platform }}
         path: NeoMori
 
+    - name: Set version
+      run: echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
+
     - name: Update global/version in override.cfg
-      run: sed -i "s#global/version\s*=.*#global/version=\"${GITHUB_REF/refs\/tags\//}\"#g" NeoMori/override.cfg
+      run: sed -i "s#global/version\s*=.*#global/version=\"${{ env.VERSION }}\"#g" NeoMori/override.cfg
 
     - name: Set filename
-      run: echo "FILENAME=NeoMori-${GITHUB_REF/refs\/tags\//}-${{ matrix.platform }}" >> $GITHUB_ENV
+      run: echo "FILENAME=NeoMori-${{ env.VERSION }}-${{ matrix.platform }}" >> $GITHUB_ENV
 
     - name: Zip client
       run: zip -q -r ${{ env.FILENAME }}.zip NeoMori
@@ -48,5 +51,4 @@ jobs:
         ITCH_GAME: neomori
         ITCH_USER: eficode
         PACKAGE: ${{ env.FILENAME }}.zip
-        VERSION: ${GITHUB_REF/refs\/tags\//}
-
+        VERSION: ${{ env.VERSION }}

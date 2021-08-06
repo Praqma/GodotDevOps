@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5.29113, 2.15196 )
 
-[node name="Camera" type="Sprite"]
+[node name="LCamera" type="Sprite"]
 position = Vector2( -16, 0 )
 texture = ExtResource( 2 )
 centered = false

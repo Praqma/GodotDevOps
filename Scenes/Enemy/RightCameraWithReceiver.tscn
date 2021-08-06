@@ -30,3 +30,6 @@ shape = SubResource( 1 )
 
 [node name="ReceiverCamera" parent="." instance=ExtResource( 5 )]
 nodePaths = [ NodePath(".."), NodePath("../CameraHead/FieldOfView") ]
+fovPolygonPath = NodePath("../CameraHead/FieldOfView/Polygon2D")
+
+[editable path="CameraHead/FieldOfView"]

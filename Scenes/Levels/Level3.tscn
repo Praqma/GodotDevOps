@@ -8,8 +8,8 @@
 [ext_resource path="res://Assets/Sprites/Tileset32x32.tres" type="TileSet" id=6]
 [ext_resource path="res://addons/gut/fonts/CourierPrime-Bold.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://addons/gut/fonts/CourierPrime-BoldItalic.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://Scenes/Enemy/Camera.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scenes/Enemy/CameraWithReceiver.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Enemy/LeftCamera.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Enemy/RightCameraWithReceiver.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/Interactables/ActivatorPanel.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/Interactables/ReceiverDoor.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scenes/Interactables/Box.tscn" type="PackedScene" id=13]
@@ -48,7 +48,6 @@ id = 2
 
 [node name="Activator" parent="." instance=ExtResource( 11 )]
 position = Vector2( 406.707, -76.264 )
-scale = Vector2( 1, 1 )
 id = 1
 
 [node name="Player" parent="." groups=[
@@ -89,23 +88,22 @@ sceneTransitionPath = NodePath("../CanvasLayer/SceneTransitionRect")
 position = Vector2( 68.058, 12.3748 )
 scale = Vector2( 1.2, 1.2 )
 
-[node name="Camera" parent="." instance=ExtResource( 9 )]
-position = Vector2( 894.226, -114.076 )
-scale = Vector2( -1, 1 )
+[node name="RCameraRec" parent="." instance=ExtResource( 10 )]
+position = Vector2( 444.927, -117.489 )
 
-[node name="FieldOfView" parent="Camera/CameraHead" index="0"]
+[node name="CameraHead" parent="RCameraRec" index="0"]
+rotation = 0.785398
+
+[node name="ReceiverCamera" parent="RCameraRec" index="1"]
+id = 1
+
+[node name="LCamera" parent="." instance=ExtResource( 9 )]
+position = Vector2( 883.395, -113.702 )
+
+[node name="FieldOfView" parent="LCamera/CameraHead" index="0"]
 detectRadius = 250.0
 viewAngle = 70.0
 losSpeed = 9.0
-
-[node name="Camera2" parent="." instance=ExtResource( 10 )]
-position = Vector2( 448, -117.5 )
-
-[node name="CameraHead" parent="Camera2" index="0"]
-rotation = 0.785398
-
-[node name="ReceiverCamera" parent="Camera2" index="1"]
-id = 1
 
 [node name="Box3" parent="." instance=ExtResource( 13 )]
 position = Vector2( 644.704, -50.3893 )
@@ -202,5 +200,5 @@ rect_scale = Vector2( 12.5768, 7.37932 )
 [connection signal="pressed" from="CanvasLayer/Pause/PauseOptions/Restart" to="CanvasLayer/Pause" method="_on_Restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/PauseOptions/Exit" to="CanvasLayer/Pause" method="_on_Exit_pressed"]
 
-[editable path="Camera"]
-[editable path="Camera2"]
+[editable path="RCameraRec"]
+[editable path="LCamera"]

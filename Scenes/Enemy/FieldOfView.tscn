@@ -3,7 +3,9 @@
 [ext_resource path="res://Scripts/FieldOfView.gd" type="Script" id=1]
 
 [node name="FieldOfView" type="Node2D"]
+z_index = -2
 script = ExtResource( 1 )
+drawDebugLines = false
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color( 1, 1, 1, 0.196078 )

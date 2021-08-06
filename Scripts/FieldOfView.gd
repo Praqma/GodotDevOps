@@ -3,10 +3,11 @@ extends Node2D
 export var detectRadius : float = 200
 export var viewAngle : float = 90
 export var losSpeed : float = 3
-export(int, LAYERS_3D_PHYSICS) var collisionLayer = 1
+export(int, LAYERS_3D_PHYSICS) var collisionLayer = 5
 export var fovColor := Color(1,1,1,1)
 export var losUndetectColor := Color(1,1,0,1)
 export var losDetectColor := Color(1,0,0,1)
+export(int, LAYERS_3D_PHYSICS) var drawCollisionLayer = 1
 export (float) var coneResolution : float = 0.5
 export (int) var edgeResolveIterations : int = 6
 export (float) var edgeDstThreshold : float = 30
@@ -58,14 +59,14 @@ func _physics_process(delta):
 	var inCone = find_targets_inside_cone(inRadius)
 	targets = find_targets_with_raycast(inCone)
 	
-#	if targets:
-#		losRange += losSpeed
-#		for target in targets:
-#			if global_position.distance_to(target) <= losRange:
-#				get_tree().reload_current_scene()
-#	else:
-#		losRange -= losSpeed
-#	losRange = clamp(losRange, 0, detectRadius)
+	if targets:
+		losRange += losSpeed
+		for target in targets:
+			if global_position.distance_to(target) <= losRange:
+				get_tree().reload_current_scene()
+	else:
+		losRange -= losSpeed
+	losRange = clamp(losRange, 0, detectRadius)
 	
 	for n in detectablesPos:
 		if global_position.distance_to(n) < drawDistance:
@@ -78,7 +79,7 @@ func draw_field_of_view():
 	
 	debugAngles.clear()
 	var vertices := PoolVector2Array()
-	vertices.append(Vector2.ZERO)	
+	vertices.append(Vector2.ZERO)
 	var oldViewCast : ViewCastInfo
 	
 	for i in stepCount + 1:
@@ -113,7 +114,7 @@ func draw_field_of_view():
 func view_cast(angle : float) -> ViewCastInfo:
 	var dir := Vector2(cos(deg2rad(angle)), sin(deg2rad(angle)))
 	var space_state = get_world_2d().direct_space_state
-	var hit = space_state.intersect_ray(global_position, global_position + dir.normalized() * detectRadius, [self], collisionLayer)
+	var hit = space_state.intersect_ray(global_position, global_position + dir.normalized() * detectRadius, [self], drawCollisionLayer)
 	if hit:
 		return ViewCastInfo.new(true, hit.position - global_position, (hit.position - global_position).length(), angle, hit.normal)
 	return ViewCastInfo.new(false, dir * detectRadius, detectRadius, angle, Vector2.ZERO)
@@ -188,9 +189,9 @@ class EdgeInfo:
 		self.pointB = pointB
 
 func _draw():
-#	for target in targets:
-#		draw_line(Vector2.ZERO, to_local(target), losUndetectColor)
-#		draw_line(Vector2.ZERO, to_local(target).normalized() * losRange, losDetectColor, 2)
+	for target in targets:
+		draw_line(Vector2.ZERO, to_local(target), losUndetectColor)
+		draw_line(Vector2.ZERO, to_local(target).normalized() * losRange, losDetectColor, 2)
 	
 	if drawDebugLines:
 		for a in debugAngles:

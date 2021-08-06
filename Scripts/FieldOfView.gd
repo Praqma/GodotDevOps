@@ -11,6 +11,7 @@ export (float) var coneResolution : float = 0.5
 export (int) var edgeResolveIterations : int = 6
 export (float) var edgeDstThreshold : float = 30
 export (float) var refinementResolution : float = 6
+export (int) var drawDistance : int = 750
 
 onready var fovPolygon = $"Polygon2D"
 
@@ -66,7 +67,10 @@ func _physics_process(delta):
 #		losRange -= losSpeed
 #	losRange = clamp(losRange, 0, detectRadius)
 	
-	draw_field_of_view()
+	for n in detectablesPos:
+		if global_position.distance_to(n) < drawDistance:
+			draw_field_of_view()
+			break
 
 func draw_field_of_view():
 	var stepCount = round(viewAngle * coneResolution)

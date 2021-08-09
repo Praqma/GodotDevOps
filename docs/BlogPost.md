@@ -81,10 +81,6 @@ We hope our experiences and notes can be of use to other aspiring developers and
 
 ### Getting started <a name="getting-started"/>
 
-- How to get started creaing a game dev project
-  - Creating repo
-  - Inviting collaborators
-
 Before we can begin we need to set up our project repository on GitHub. This is necessary when collaborating with other developers, something you will likely encounter at some point working with games.
 
 If you are a solo dev you might be tempted to skip this point. Don't. Putting your project on GitHub has a lot of benefits. You decouple your project from your machine in favor of access on any machine. Your entire project history is saved on their servers for you to look at whenever you need. A lot of the practices we'll discuss expect the project to be on GitHub.
@@ -96,8 +92,35 @@ This article is written with mid sized projects in mind. If you plan on booting 
 Our examples use Godot and Unity, however you can use your engine of choice. Some of the sections will need to be adapted to work with your engine.
 
 *Links on how to create a GitHub repo for Godot or Unity projects*
+#### Create a GitHub repository <a name="repository-creation"/>
 
-### Project Planning/ Task Management
+https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/creating-a-new-repository
+https://www.youtube.com/watch?v=qpXxcvS-g3g&ab_channel=Brackeys
+- How to get started creaing a game dev project
+  - Creating repo
+  - Inviting collaborators
+
+#### Inviting collaborators <a name="inviting-collaborators"/>
+#### Using Git <a name="using-git"/>
+
+- Why use version control in game development
+- How to use it right!
+  - Commit and branch habits
+- How to use it right with other collaborators!
+- Benefits
+  - Project planning (issues)
+  - Control of and access to entire history
+  - Used in continuous integration
+
+
+#### Using git LFS <a name="git-lfs"/>
+
+- The unique issue of large binaries like models, music, textures etc. in game development
+- LFS, the possible solution
+- Unfortunate reality of no "real" solution for larger projects (with minimal cost or work)
+
+### Organizing your work <a name="oraganizing-work"/>
+
 - Why project planning in game development
   - For collaboration projects its important to structure the development
   - Ties well into version control
@@ -108,29 +131,25 @@ When working on larger projects it is important to establish a workflow that is 
 
 Task management plays a pivotal role in how we adopt a healthy way of working. There are many ways of doing project planning but we use a simple kanban board on the GitHub page to break down our game into simple and short issues. The idea is that no issue should take longer than one workday to complete. This way you may undertake many different types of tasks instead of being stuck with one for a long period of time. There is also something gratifying about being able to mark something as done by the end of the day. Another rule of task management is that there should never be more issues in progress than the number of project members.
 
-### Version Control
-- Why use version control in game development
-- How to use it right!
-  - Commit and branch habits
-- How to use it right with other collaborators!
-- Benefits
-  - Project planning (issues)
-  - Control of and access to entire history
-  - Used in continuous integration
+#### Creating a project board <a name="project-board"/>
 
-### Large Binaries
-- The unique issue of large binaries like models, music, textures etc. in game development
-- LFS, the possible solution
-- Unfortunate reality of no "real" solution for larger projects (with minimal cost or work)
 
-### TDD
+#### Task management <a name="task-management"/>
+#### Referencing issues in your commits <a name="referencing-issues"/>
+
+### Creating your development workflow <a name="development-workflow"/>
+#### Test Driven Development <a name="tdd"/>
 - Why TDD in game development
 - Pros/cons
 - When/When not to (tied to engine)
 - Examples from Unity
 - Examples from Godot
 
-### Continuous Integration
+
+#### Branching and merging <a name="branching-and-merging"/>
+
+### Automating work <a name="getting-automated"/>
+
 - GitHub actions and workflows
 - Automation for Unity (Licensing issue)
 - Automation (Godot)
@@ -139,6 +158,15 @@ Task management plays a pivotal role in how we adopt a healthy way of working. T
   - Release notes
   - Publish
     - Dependencies (action-download-artifact@v2)
+
+#### GitHub Actions <a name="github-actions"/>
+
+
+#### Continous integration <a name="continous-integration"/>
+
+#### Automating releases <a name="automating-releases"/>
+
+#### Automating release notes <a name="automating-release-notes"/>
 
 ### Practice Using the Command Line Interface
 - Used heavily throughout our development

@@ -133,6 +133,7 @@ Task management plays a pivotal role in how we adopt a healthy way of working. T
 
 #### Creating a project board <a name="project-board"/>
 
+https://github.com/Praqma/GodotDevOps/projects/1
 
 #### Task management <a name="task-management"/>
 #### Referencing issues in your commits <a name="referencing-issues"/>
@@ -145,8 +146,13 @@ Task management plays a pivotal role in how we adopt a healthy way of working. T
 - Examples from Unity
 - Examples from Godot
 
+https://github.com/bitwes/Gut
+https://www.youtube.com/watch?v=R1aO4Tmw3zA&ab_channel=InfallibleCode
+https://www.youtube.com/watch?v=eovjb5xn8y0&ab_channel=GameDevGuide
 
 #### Branching and merging <a name="branching-and-merging"/>
+
+https://nvie.com/posts/a-successful-git-branching-model/
 
 ### Automating work <a name="getting-automated"/>
 
@@ -164,7 +170,12 @@ Task management plays a pivotal role in how we adopt a healthy way of working. T
 
 #### Continous integration <a name="continous-integration"/>
 
+https://game.ci/
+https://github.com/abarichello/godot-ci
+
 #### Automating releases <a name="automating-releases"/>
+
+https://trstringer.com/github-actions-create-release-upload-artifacts/
 
 #### Automating release notes <a name="automating-release-notes"/>
 
@@ -180,5 +191,8 @@ Task management plays a pivotal role in how we adopt a healthy way of working. T
 You might be asking yourself "Doesn't it cost more time to work this way than to just develop features for the game?". That depends on how you look at it. The first time you create your pipelines, absolutely it is going to eat up some time. Having to plan out every issue in a Kanban board instead of jumping straight into coding, that can feel cumbersome after a while too. Learning and adopting these things into your workflow does have some cost but it is all mostly frontloaded. Take the pipelines for instance. Once you got them set up, you can reuse them in any project. Never again do you have to manually run an export. TDD is another case where it can feel like it takes longer to develop features and you never really see the benefit. That probably means it is working. Your code is less prone to errors and as a result you don't have to deal with new features breaking old ones. If you are still unsure, give them a go and see if you change your mind. Our GitHub repository is a great place to start. Everything there is for you to use in your own projects. Our solutions obviously are not perfect and were developed in a way that worked for us so take our foundation and improve it. There is no one correct way on how to use these techniques. That's the beauty of it. Adopt it into your workflow and create something that works for you.
 
 ### Resources
+
+https://www.gdquest.com/
+https://www.youtube.com/c/GameDevGuide/videos
 
 ### Personal Thoughts

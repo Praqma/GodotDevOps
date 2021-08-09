@@ -51,6 +51,18 @@ We are two game development students who had the opportunity to collaborate with
   - Creating repo
   - Inviting collaborators
 
+Before we can begin we need to set up our project repository on GitHub. This is necessary when collaborating with other developers, something you will likely encounter at some point working with games.
+
+If you are a solo dev you might be tempted to skip this point. Don't. Putting your project on GitHub has a lot of benefits. You decouple your project from your machine in favor of access on any machine. Your entire project history is saved on their servers for you to look at whenever you need. A lot of the practices we'll discuss expect the project to be on GitHub.
+
+In the following sections our experience and examples use GitHub. This is not a requirement. Any version control software can be used.
+
+This article is written with mid sized projects in mind. If you plan on booting up your game engine of choice to build a hobby game over the weekend, then these steps are obviously overkill.
+
+Our examples use Godot and Unity, however you can use your engine of choice. Some of the sections will need to be adapted to work with your engine.
+
+*Links on how to create a GitHub repo for Godot or Unity projects*
+
 ### Project Planning/ Task Management
 - Why project planning in game development
   - For collaboration projects its important to structure the development

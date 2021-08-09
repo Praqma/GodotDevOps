@@ -26,11 +26,7 @@ Encourage people to learn more about DevOps and continuous integration and apply
 ## Tone
 Humble, laid back, not corporate. We ourselves are beginner developers reaching out to fellow beginners and want to come across as such.
 
-# Structure
-
-# Title
-
-## Subtitle
+# Blog
 
 ### Kicker
 ~~Are you an aspiring game developer? \
@@ -50,12 +46,10 @@ We are two game development students who had the opportunity to collaborate with
 
  *(We are still beginners ourselves so keep in mind that there are be better ways to do what we have done and if you know please do share, we want to keep learning.)*
 
-### TDD
-- Why TDD in game development
-- Pros/cons
-- When/When not to (tied to engine)
-- Examples from Unity
-- Examples from Godot
+### Getting started
+- How to get started creaing a game dev project
+  - Creating repo
+  - Inviting collaborators
 
 ### Project Planning/ Task Management
 - Why project planning in game development
@@ -67,6 +61,7 @@ We are two game development students who had the opportunity to collaborate with
 ### Version Control
 - Why use version control in game development
 - How to use it right!
+  - Commit and branch habits
 - How to use it right with other collaborators!
 - Benefits
   - Project planning (issues)
@@ -78,12 +73,19 @@ We are two game development students who had the opportunity to collaborate with
 - LFS, the possible solution
 - Unfortunate reality of no "real" solution for larger projects (with minimal cost or work)
 
+### TDD
+- Why TDD in game development
+- Pros/cons
+- When/When not to (tied to engine)
+- Examples from Unity
+- Examples from Godot
+
 ### Continuous Integration
 - GitHub actions and workflows
 - Automation for Unity (Licensing issue)
 - Automation (Godot)
-  - Unit tests
-  - Game builds for tests
+  - Unit tests (verification)
+  - Game builds for tests (verification)
   - Release notes
   - Publish
     - Dependencies (action-download-artifact@v2)

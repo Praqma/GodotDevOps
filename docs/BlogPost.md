@@ -1,7 +1,9 @@
 # Ground Rules
 
 ## Subject
+
 How to apply DevOps in a game development setting.
+
 - Game development
   - Test driven development (Unity and Godot as examples)
     - Automated testing (continuous integration)
@@ -18,35 +20,67 @@ How to apply DevOps in a game development setting.
     - Release note generation
 
 ## Target audience
+
 The target is the beginner game developer or students with average experience in writing code and working in game engines. They don't have any experience working with contemporary software development techniques or how to apply these to game development.
 
 ## Goal
+
 Encourage people to learn more about DevOps and continuous integration and apply these to their game development habits.
 
 ## Tone
+
 Humble, laid back, not corporate. We ourselves are beginner developers reaching out to fellow beginners and want to come across as such.
 
-# Blog
+-----------
 
-### Kicker
-~~Are you an aspiring game developer? \
-Do you struggle using TDD when writing scripts in Unity? \
-Does your Git history look like the great Egyptian pyramids? \
-Then we have the solution for you!~~
+# Title
+
+# Subtitle
+
+## Kicker
+
+- This summer, we coached two student game developers on modern development techniques. ...
+- After a summer of coaching, two game development students share ...
+- ...
 
 ### Introduction
 
-- How DevOps applies to Game Development
-- 2 paragraphs
-  - Start with what to expect
-    - How to setup indie game project etc.
-  - Personal introduction
+Hi there!
+We're two game development students who had the opportunity to collaborate with [Eficode](https://www.eficode.com) over summer.
 
-We are two game development students who had the opportunity to collaborate with Eficode, a consultant company with a lot of experience in DevOps and continuous delivery. Over the summer we implemented various software development techniques into our game development practices. Test driven development, project planning, version control, automated pipelines, these are topics that we found useful but think aren't commonly discussed or taught. We felt that our experiences can be of use to other aspiring developers and show a different aspect to game development outside of scripting, modeling and level design.
+Game development is a notoriously special form of software development with many unique challenges.
+However, that doesn't mean we can't learn from contemporary practices outside of the game dev world.
+We did just that this summer, this post serves as a summary of what we've learned to help guide those interested.
 
- *(We are still beginners ourselves so keep in mind that there are be better ways to do what we have done and if you know please do share, we want to keep learning.)*
+### The summer project
 
-### Getting started
+We set out to develop a humble indie game while learning and applying as many modern development techniques and practices as we could.
+Thus we dove headfirst into test driven development (TDD), project planning, automated pipelines, etc.
+These are topics we found useful but feel aren't discussed/taught often enough.
+We hope our experiences and notes can be of use to other aspiring developers and show a different aspect to game development outside of scripting, modeling and level design.
+
+[Something about using this as _inspiration_ and not blindly following everything. (recap in summary)]
+
+- [Getting started](#getting-started)
+  - [Creating a GitHub repository](#repository-creation)
+  - [Inviting collaborators](#inviting-collaborators)
+  - [Using git](#using-git)
+  - [Using git LFS](#git-lfs)
+- [Organizing your work](#organizing-work)
+  - [Creating a project board](#project-board)
+  - [Task management](#task-management)
+  - [Referencing issues in your commits](#referencing-issues)
+- [Creating your development workflow](#development-workflow)
+  - [Test Driven Development](#tdd)
+  - [Branching and merging](#branching-and-merging)
+- [Automating work](#getting-automated)
+  - [GitHub Actions](#github-actions)
+  - [Continuous integration](#continuous-integration)
+  - [Automating releases](#automating-releases)
+  - [Automating release notes](#automating-release-notes)
+
+### Getting started <a name="getting-started"/>
+
 - How to get started creaing a game dev project
   - Creating repo
   - Inviting collaborators

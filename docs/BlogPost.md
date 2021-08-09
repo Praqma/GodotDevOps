@@ -70,6 +70,10 @@ Our examples use Godot and Unity, however you can use your engine of choice. Som
 - How/How not to plan a Kanban board
 - Examples from Kanban board
 
+When working on larger projects it is important to establish a workflow that is structered and visible. This becomes increasingly more important as the project and number of collaborators grow. Games consists of a large subset of features, a lot of which can be broken into their respective subsets. It is easy to get lost in a large scope or in huge tasks that take weeks to finish.
+
+Task management plays a pivotal role in how we adopt a healthy way of working. There are many ways of doing project planning but we use a simple kanban board on the GitHub page to break down our game into simple and short issues. The idea is that no issue should take longer than one workday to complete. This way you may undertake many different types of tasks instead of being stuck with one for a long period of time. There is also something gratifying about being able to mark something as done by the end of the day. Another rule of task management is that there should never be more issues in progress than the number of project members.
+
 ### Version Control
 - Why use version control in game development
 - How to use it right!

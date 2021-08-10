@@ -79,7 +79,7 @@ We hope our experiences and notes can be of use to other aspiring developers and
   - [Automating releases](#automating-releases)
   - [Automating release notes](#automating-release-notes)
 
-### Getting started <a name="getting-started"/>
+### Getting started <a name="getting-started"></a>
 
 Before we can begin we need to set up our project repository on GitHub. This is necessary when collaborating with other developers, something you will likely encounter at some point working with games.
 
@@ -92,7 +92,7 @@ This article is written with mid sized projects in mind. If you plan on booting 
 Our examples use Godot and Unity, however you can use your engine of choice. Some of the sections will need to be adapted to work with your engine.
 
 *Links on how to create a GitHub repo for Godot or Unity projects*
-#### Create a GitHub repository <a name="repository-creation"/>
+#### Create a GitHub repository <a name="repository-creation"></a>
 
 https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/creating-a-new-repository
 https://www.youtube.com/watch?v=qpXxcvS-g3g&ab_channel=Brackeys
@@ -100,8 +100,8 @@ https://www.youtube.com/watch?v=qpXxcvS-g3g&ab_channel=Brackeys
   - Creating repo
   - Inviting collaborators
 
-#### Inviting collaborators <a name="inviting-collaborators"/>
-#### Using Git <a name="using-git"/>
+#### Inviting collaborators <a name="inviting-collaborators"></a>
+#### Using Git <a name="using-git"></a>
 
 - Why use version control in game development
 - How to use it right!
@@ -113,13 +113,13 @@ https://www.youtube.com/watch?v=qpXxcvS-g3g&ab_channel=Brackeys
   - Used in continuous integration
 
 
-#### Using git LFS <a name="git-lfs"/>
+#### Using git LFS <a name="git-lfs"></a>
 
 - The unique issue of large binaries like models, music, textures etc. in game development
 - LFS, the possible solution
 - Unfortunate reality of no "real" solution for larger projects (with minimal cost or work)
 
-### Organizing your work <a name="oraganizing-work"/>
+### Organizing your work <a name="oraganizing-work"></a>
 
 - Why project planning in game development
   - For collaboration projects its important to structure the development
@@ -131,15 +131,15 @@ When working on larger projects it is important to establish a workflow that is 
 
 Task management plays a pivotal role in how we adopt a healthy way of working. There are many ways of doing project planning but we use a simple kanban board on the GitHub page to break down our game into simple and short issues. The idea is that no issue should take longer than one workday to complete. This way you may undertake many different types of tasks instead of being stuck with one for a long period of time. There is also something gratifying about being able to mark something as done by the end of the day. Another rule of task management is that there should never be more issues in progress than the number of project members.
 
-#### Creating a project board <a name="project-board"/>
+#### Creating a project board <a name="project-board"></a>
 
 https://github.com/Praqma/GodotDevOps/projects/1
 
-#### Task management <a name="task-management"/>
-#### Referencing issues in your commits <a name="referencing-issues"/>
+#### Task management <a name="task-management"></a>
+#### Referencing issues in your commits <a name="referencing-issues"></a>
 
-### Creating your development workflow <a name="development-workflow"/>
-#### Test Driven Development <a name="tdd"/>
+### Creating your development workflow <a name="development-workflow"></a>
+#### Test Driven Development <a name="tdd"></a>
 - Why TDD in game development
 - Pros/cons
 - When/When not to (tied to engine)
@@ -150,11 +150,11 @@ https://github.com/bitwes/Gut
 https://www.youtube.com/watch?v=R1aO4Tmw3zA&ab_channel=InfallibleCode
 https://www.youtube.com/watch?v=eovjb5xn8y0&ab_channel=GameDevGuide
 
-#### Branching and merging <a name="branching-and-merging"/>
+#### Branching and merging <a name="branching-and-merging"></a>
 
 https://nvie.com/posts/a-successful-git-branching-model/
 
-### Automating work <a name="getting-automated"/>
+### Automating work <a name="getting-automated"></a>
 
 - GitHub actions and workflows
 - Automation for Unity (Licensing issue)
@@ -165,19 +165,19 @@ https://nvie.com/posts/a-successful-git-branching-model/
   - Publish
     - Dependencies (action-download-artifact@v2)
 
-#### GitHub Actions <a name="github-actions"/>
+#### GitHub Actions <a name="github-actions"></a>
 
 
-#### Continous integration <a name="continous-integration"/>
+#### Continous integration <a name="continous-integration"></a>
 
 https://game.ci/
 https://github.com/abarichello/godot-ci
 
-#### Automating releases <a name="automating-releases"/>
+#### Automating releases <a name="automating-releases"></a>
 
 https://trstringer.com/github-actions-create-release-upload-artifacts/
 
-#### Automating release notes <a name="automating-release-notes"/>
+#### Automating release notes <a name="automating-release-notes"></a>
 
 ### Practice Using the Command Line Interface
 - Used heavily throughout our development

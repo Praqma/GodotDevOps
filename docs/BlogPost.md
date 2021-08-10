@@ -103,28 +103,16 @@ https://www.youtube.com/watch?v=qpXxcvS-g3g&ab_channel=Brackeys
 LINK MISSING: How to set up GitHub repo for Godot project\
 *Find source
 
-- How to get started creaing a game dev project
-  - Creating repo
-  - Inviting collaborators
-
 #### Inviting collaborators <a name="inviting-collaborators"></a>
 #### Using Git <a name="using-git"></a>
 
-- Why use version control in game development
-- How to use it right!
-  - Commit and branch habits
-- How to use it right with other collaborators!
-- Benefits
-  - Project planning (issues)
-  - Control of and access to entire history
-  - Used in continuous integration
+Don't worry too much about making mistakes. When we started using Git one common worry was that a bad merge or commit would erase each others hard work. Because of how Git works you always have a backlog of all the changes and thus a complete project history. Besides, with proper Git habits you won't run into these issues.
 
+The GitHub Desktop app is a fine solution to use when working with GitHub. We still recommend learning to work from the command line interface. The desktop app can do a lot but not all and being able to turn to the CLI will be a lifesaver. So learn to work with both. Understanding Git in the CLI will help you understand where a lot of features in the GitHub Desktop come from. It will also help you find new ones (honestly, the amount of times we found new things because we knew about their command line counterpart).
 
 #### Using git LFS <a name="git-lfs"></a>
 
-- The unique issue of large binaries like models, music, textures etc. in game development
-- LFS, the possible solution
-- Unfortunate reality of no "real" solution for larger projects (with minimal cost or work)
+Unfortunately Git LFS does not seem to be a solution for larger projects unless you intend to purchase more storage space or host your own remote.
 
 Installation and getting started page for Git LFS\
 https://git-lfs.github.com/

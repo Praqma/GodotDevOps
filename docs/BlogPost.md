@@ -94,8 +94,15 @@ Our examples use Godot and Unity, however you can use your engine of choice. Som
 *Links on how to create a GitHub repo for Godot or Unity projects*
 #### Create a GitHub repository <a name="repository-creation"></a>
 
+Instructions on how to create a GitHub repo\
 https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/creating-a-new-repository
+
+Guide for setting up GitHub repo with Unity project
 https://www.youtube.com/watch?v=qpXxcvS-g3g&ab_channel=Brackeys
+
+LINK MISSING: How to set up GitHub repo for Godot project\
+*Find source
+
 - How to get started creaing a game dev project
   - Creating repo
   - Inviting collaborators
@@ -119,6 +126,9 @@ https://www.youtube.com/watch?v=qpXxcvS-g3g&ab_channel=Brackeys
 - LFS, the possible solution
 - Unfortunate reality of no "real" solution for larger projects (with minimal cost or work)
 
+Installation and getting started page for Git LFS\
+https://git-lfs.github.com/
+
 ### Organizing your work <a name="oraganizing-work"></a>
 
 - Why project planning in game development
@@ -133,6 +143,7 @@ Task management plays a pivotal role in how we adopt a healthy way of working. T
 
 #### Creating a project board <a name="project-board"></a>
 
+Our own kanban board
 https://github.com/Praqma/GodotDevOps/projects/1
 
 #### Task management <a name="task-management"></a>
@@ -146,8 +157,22 @@ https://github.com/Praqma/GodotDevOps/projects/1
 - Examples from Unity
 - Examples from Godot
 
+LINK MISSING: How to write tests\
+*Find source
+
+GUT set up in Godot by Rainware\
+https://www.youtube.com/watch?v=vBbqlfmcAlc
+
+GUT tutorial by Bitwes (creator of GUT)\
+https://www.youtube.com/watch?v=nF2gPF69Dc4
+
+GUT documentation\
 https://github.com/bitwes/Gut
+
+Step by step on how to do TDD in Unity by InfallibleCode\
 https://www.youtube.com/watch?v=R1aO4Tmw3zA&ab_channel=InfallibleCode
+
+Creating assembly in Unity. Used for TDD in Unity\
 https://www.youtube.com/watch?v=eovjb5xn8y0&ab_channel=GameDevGuide
 
 #### Branching and merging <a name="branching-and-merging"></a>
@@ -170,12 +195,35 @@ https://nvie.com/posts/a-successful-git-branching-model/
 
 #### Continous integration <a name="continous-integration"></a>
 
+Set of useful actions for Unity\
+Because of licensing issues we never had the chance to try them out but this includes some of the actions we were planning on using\
 https://game.ci/
+
+Container with Godot installed. Used to export project from the command line inside the container.
 https://github.com/abarichello/godot-ci
 
-#### Automating releases <a name="automating-releases"></a>
+Checks out GitHub repository
+https://github.com/actions/checkout
 
+Use boolean expression to save a value\
+https://github.com/haya14busa/action-cond
+
+Uploads an artifact to the workflow\
+https://github.com/actions/upload-artifact
+
+Guide on how to release and upload artifacts with GitHub actions\
 https://trstringer.com/github-actions-create-release-upload-artifacts/
+
+Download artifact from a workflow
+https://github.com/dawidd6/action-download-artifact
+
+Upload as GitHub release\
+https://github.com/softprops/action-gh-release
+
+Upload to itch.io\
+https://github.com/josephbmanley/butler-publish-itchio-action
+
+#### Automating releases <a name="automating-releases"></a>
 
 #### Automating release notes <a name="automating-release-notes"></a>
 
@@ -191,8 +239,9 @@ https://trstringer.com/github-actions-create-release-upload-artifacts/
 You might be asking yourself "Doesn't it cost more time to work this way than to just develop features for the game?". That depends on how you look at it. The first time you create your pipelines, absolutely it is going to eat up some time. Having to plan out every issue in a Kanban board instead of jumping straight into coding, that can feel cumbersome after a while too. Learning and adopting these things into your workflow does have some cost but it is all mostly frontloaded. Take the pipelines for instance. Once you got them set up, you can reuse them in any project. Never again do you have to manually run an export. TDD is another case where it can feel like it takes longer to develop features and you never really see the benefit. That probably means it is working. Your code is less prone to errors and as a result you don't have to deal with new features breaking old ones. If you are still unsure, give them a go and see if you change your mind. Our GitHub repository is a great place to start. Everything there is for you to use in your own projects. Our solutions obviously are not perfect and were developed in a way that worked for us so take our foundation and improve it. There is no one correct way on how to use these techniques. That's the beauty of it. Adopt it into your workflow and create something that works for you.
 
 ### Resources
-
+Useful source for game development in Godot
 https://www.gdquest.com/
+Useful source for game development in Unity
 https://www.youtube.com/c/GameDevGuide/videos
 
 ### Personal Thoughts

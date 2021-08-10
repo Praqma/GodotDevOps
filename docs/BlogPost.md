@@ -137,12 +137,18 @@ https://github.com/Praqma/GodotDevOps/projects/1
 #### Referencing issues in your commits <a name="referencing-issues"></a>
 
 ### Creating your development workflow <a name="development-workflow"></a>
+
 #### Test Driven Development <a name="tdd"></a>
-- Why TDD in game development
-- Pros/cons
-- When/When not to (tied to engine)
-- Examples from Unity
-- Examples from Godot
+
+It will take time to seperate your code from the engine but it will be worth it. Long term benefits are that you can take those scripts with you into any project since they are not engine bound. It also allows you to test a lot more of your code. The more you can test the better since tests can provide quick feedback when new features break old ones.
+
+Dont test the engine. Some features will rely upon the engine. When writing tests for them remember to not test parts of the engine. Raycasting or physics are good examples of this. Don't write tests that assert them, they have already been tested by the engine provider.
+
+While it is good to test as much as possible remember that you can't isolate everything from your engine. Some of your features will need to use the engine. Use wrapper classes as an intermediary between test based classes and the engine.
+
+One thing we never had a chance to try are play mode test. These are tests that require you to spin up the engine but allow you to test closer to it. This might be of use to you so keep it in mind.
+
+TDD is difficult. Not just the test writing part but using it overall in a game development setting. It is a new way of developing code. It will be hard to spot when you can and can't use it. In our Godot project we didn't utilize it as much as we wanted to partly because a lot of features were tied to the engine.
 
 LINK MISSING: How to write tests\
 *Find source
@@ -163,6 +169,16 @@ Creating assembly in Unity. Used for TDD in Unity\
 https://www.youtube.com/watch?v=eovjb5xn8y0&ab_channel=GameDevGuide
 
 #### Branching and merging <a name="branching-and-merging"></a>
+
+Our workflow uses rebasing and fast forward merging to get a liner history. This is just a preference. If you rather use three-way merges then absolutely go for it. Do what works for you. Just make sure that the entire team is on the same page when it comes to branching and merging and you will be good.
+
+Branches should preferbly be short lived. This lowers the risk of merge conflicts and works well with the task management where an issue should be completable in one workday.
+
+Avoid working directly on main. You can lock pushing to main and use pull requests and merges instead.
+
+Determine a pull request workflow. Do you create a pull request at the beginning of a branch's lifecycle? Or right before you merge it simply to run your workflows and tests? Do you assign members and actively evaluate and comment on it? These are things that need to be discussed within your team. For us, pull requests were mainly a way to run our workflow before merging with main. Since our team is very small and we are on calls when working, creating pull requests early and evaluating them felt redundant. This might not be the case for you.
+
+You can rewrite history but this is a team effort. Force pushing changes can be detrimental if people have unfinished work on branches so make sure to carefully plan when history rewrites take place and include everyone.
 
 https://nvie.com/posts/a-successful-git-branching-model/
 

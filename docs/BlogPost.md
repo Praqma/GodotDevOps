@@ -119,15 +119,13 @@ https://git-lfs.github.com/
 
 ### Organizing your work <a name="oraganizing-work"></a>
 
-- Why project planning in game development
-  - For collaboration projects its important to structure the development
-  - Ties well into version control
-- How/How not to plan a Kanban board
-- Examples from Kanban board
+Don't get stuck on large issues. An issue shouldn't take longer than a day. If you underestimated an issue's timeframe don't push through. Take a moment to break the issue down further and then continue work on one of those issues. Better to be done with one than none.
 
-When working on larger projects it is important to establish a workflow that is structered and visible. This becomes increasingly more important as the project and number of collaborators grow. Games consists of a large subset of features, a lot of which can be broken into their respective subsets. It is easy to get lost in a large scope or in huge tasks that take weeks to finish.
+If you are unsure about how to do something, don't create an issue and begin immediate work. Instead create a spike during which you intend to find out how you implement a feature or if it is even possible. Assign it a duration and by the end of it you can more confidently create an issue on the subject if possible. When in doubt, make sure to scout.
 
-Task management plays a pivotal role in how we adopt a healthy way of working. There are many ways of doing project planning but we use a simple kanban board on the GitHub page to break down our game into simple and short issues. The idea is that no issue should take longer than one workday to complete. This way you may undertake many different types of tasks instead of being stuck with one for a long period of time. There is also something gratifying about being able to mark something as done by the end of the day. Another rule of task management is that there should never be more issues in progress than the number of project members.
+**When working on larger projects it is important to establish a workflow that is structered and visible. This becomes increasingly more important as the project and number of collaborators grow. Games consists of a large subset of features, a lot of which can be broken into their respective subsets. It is easy to get lost in a large scope or in huge tasks that take weeks to finish.*
+
+*Task management plays a pivotal role in how we adopt a healthy way of working. There are many ways of doing project planning but we use a simple kanban board on the GitHub page to break down our game into simple and short issues. The idea is that no issue should take longer than one workday to complete. This way you may undertake many different types of tasks instead of being stuck with one for a long period of time. There is also something gratifying about being able to mark something as done by the end of the day. Another rule of task management is that there should never be more issues in progress than the number of project members.*
 
 #### Creating a project board <a name="project-board"></a>
 
@@ -135,6 +133,7 @@ Our own kanban board
 https://github.com/Praqma/GodotDevOps/projects/1
 
 #### Task management <a name="task-management"></a>
+
 #### Referencing issues in your commits <a name="referencing-issues"></a>
 
 ### Creating your development workflow <a name="development-workflow"></a>

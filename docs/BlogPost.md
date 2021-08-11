@@ -206,6 +206,15 @@ You can rewrite history but this is a team effort. Force pushing changes can be 
   - Publish
     - Dependencies (action-download-artifact@v2)
 
+Setting up a build and publish workflow can take some time, testing and iterating. Once you have the workflow you don't have to worry about it again and you get a lot of benefits.
+
+While working on the workflow you should try and limit the dependencies you use as much as possible. Where you are forced to or its too hard to get it working yourself, you should lock those dependencies to a specific version so that they don't update when you don't want them to.
+We had a pipeline break for a day because GitHub changed something in the backend making our publish workflow not find the artifact from the build.
+
+When using a build workflow you can easily run your tests before it builds. So that when you forget to run tests manually it still makes sure that the change you made didn't break any of the tests and cancel the action before merging it into the main. This works better the more tests and the higher code coverage you have.
+
+This allows you to have newly updated builds that you can send out for testing. If you can include the version or commit sha that this build comes from you can then easily know where the bug reports you get comes from.
+
 ### GitHub Actions <a name="github-actions"></a>
 
 ### Continuous integration <a name="continuous-integration"></a>

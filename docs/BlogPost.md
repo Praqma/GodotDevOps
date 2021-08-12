@@ -148,10 +148,25 @@ Write small commits. One change per commit is ideal.
 
 ### Using git LFS <a name="git-lfs"></a>
 
-Unfortunately Git LFS does not seem to be a solution for larger projects unless you intend to purchase more storage space or host your own remote.
+Your git repository contains the full history of your project.
+This means that every version of every texture, model, sound, etc. gets stored.
+Over a long period of time, this can cause your repository to swell to an incredible size.
 
-Installation and getting started page for Git LFS\
-https://git-lfs.github.com/
+Git Large File Storage (LFS) is a tool that allows you to mark certain file types to be stored outside of your repository.
+These files will get stored on an external file server, while your git repository will only store a lightweight reference to them.
+
+Conveniently, GitHub offers LFS integration as well.
+It works seamlessly, but it's only free up to a certain amount of storage/traffic.
+Luckily, we didn't even get close to the limit with our humble 2D platformer.
+
+If you don't want to use LFS and would rather cram your big files into your repository, you should look into [shallow clones](https://www.git-scm.com/docs/git-clone#Documentation/git-clone.txt---depthltdepthgt).
+You'll need it before too long.
+
+**Resources**:
+
+- [git lfs - Homepage](https://git-lfs.github.com/)
+- [GitHub - Managing billing for LFS](https://docs.github.com/en/billing/managing-billing-for-git-large-file-storage/about-billing-for-git-large-file-storage)
+- [git-scm - Shallow clone](https://www.git-scm.com/docs/git-clone#Documentation/git-clone.txt---depthltdepthgt)
 
 ## Organizing your work <a name="organizing-work"></a>
 

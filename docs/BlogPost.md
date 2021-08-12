@@ -50,16 +50,18 @@ We're two game development students who had the opportunity to collaborate with 
 
 Game development is a notoriously special form of software development with many unique challenges.
 However, that doesn't mean we can't learn from contemporary practices outside of the game dev world.
-We did just that this summer, this post serves as a summary of what we've learned to help guide those interested.
+We did just that this summer, and this post serves as a summary of what we've learned.
+We hope it can be of use to other aspiring developers and show a different aspect to game development outside of scripting, modeling and level design.
 
 While we used [Godot](https://godotengine.org/) for our engine, we'll try to include [Unity](https://unity.com/) examples as well.
+
+You'll find everything in our [GodotDevOps](https://github.com/Praqma/GodotDevOps) repository.
 
 ## The summer project
 
 We set out to develop a humble indie game while learning and applying as many modern development techniques and practices as we could.
 Thus we dove headfirst into test driven development (TDD), project planning, automated pipelines, etc.
 These are topics we found useful but feel aren't discussed/taught often enough.
-We hope our experiences and notes can be of use to other aspiring developers and show a different aspect to game development outside of scripting, modeling and level design.
 
 [Something about using this as _inspiration_ and not blindly following everything. (recap in summary)]
 
@@ -100,22 +102,49 @@ The benefits are absolutely worth the learning effort.
 
 ### Creating a GitHub repository <a name="repository-creation"></a>
 
-Instructions on how to create a GitHub repo\
-https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/creating-a-new-repository
+Your repository is the heart of your project.
+It's where you store your code, keep track of your work and set up your automated builds.
 
-Guide for setting up GitHub repo with Unity project
-https://www.youtube.com/watch?v=qpXxcvS-g3g&ab_channel=Brackeys
+If you haven't created a GitHub account yet, head over to [github.com/signup](https://github.com/signup) and make one.
 
-LINK MISSING: How to set up GitHub repo for Godot project\
-*Find source
+To create a repository, you can hit the `+` sign in the top right when logged in, or head over to [github.com/new](https://github.com/new).
+
+**Resources**:
+
+- [GitHub docs - Create a repo](https://docs.github.com/en/get-started/quickstart/create-a-repo)
+- [Brackeys - How to use GitHub with Unity](https://www.youtube.com/watch?v=qpXxcvS-g3g)
 
 ### Inviting collaborators <a name="inviting-collaborators"></a>
 
+If you're working as a group, you'll want to invite everyone as collaborators, so they can contribute to the repository.
+This can be done in the repository's settings page, given that they have a GitHub account.
+
+**Resources**:
+
+- [GitHub docs - Inviting collaborators](https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository)
+
 ### Using Git <a name="using-git"></a>
 
-Don't worry too much about making mistakes. When we started using Git one common worry was that a bad merge or commit would erase each others hard work. Because of how Git works you always have a backlog of all the changes and thus a complete project history. Besides, with proper Git habits you won't run into these issues.
+It's worth it to learn git.
 
-The GitHub Desktop app is a fine solution to use when working with GitHub. We still recommend learning to work from the command line interface. The desktop app can do a lot but not all and being able to turn to the CLI will be a lifesaver. So learn to work with both. Understanding Git in the CLI will help you understand where a lot of features in the GitHub Desktop come from. It will also help you find new ones (honestly, the amount of times we found new things because we knew about their command line counterpart).
+We had used it before, but it often felt more of a hindrance than a help.
+Admittedly, we hadn't taken the time to learn it properly.
+We were just fumbling around in [GitHub Desktop](https://desktop.github.com/).
+
+GitHub Desktop is great, mind you.
+Still, we'd recommend learning to work from the command line interface (CLI).
+While the app can do a lot, being able to turn to the CLI for troubleshooting will be a lifesaver.
+Plus, once you know your way around the CLI, the app itself becomes a lot less arcane.
+
+You should also pick up some good git habits.
+We'll cover some in our workflow, but one bears mentioning already:
+Write small commits. One change per commit is ideal.
+
+**Resources**:
+
+- [GitHub docs - Getting started with GitHub Desktop](https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/overview/getting-started-with-github-desktop)
+- [Tom Preston-Werner - The Git Parable](https://tom.preston-werner.com/2009/05/19/the-git-parable.html)
+- [Katacoda - Git Course](https://www.katacoda.com/courses/git)
 
 ### Using git LFS <a name="git-lfs"></a>
 

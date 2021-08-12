@@ -180,8 +180,18 @@ If you are unsure about how to do something, don't create an issue and begin imm
 
 ### Creating a project board <a name="project-board"></a>
 
-Our own Kanban board
-https://github.com/Praqma/GodotDevOps/projects/1
+Your project board is where you plan and track your work.
+You could use a humble notebook, [Trello](https://trello.com) or some other tracking system.
+We opted to use GitHub Projects. It has some nice features and comes with the GitHub repository.
+You can create a project board from the `Projects` tab in your GitHub repository.
+
+We'll go into detail on how we organized our board, but how you organize yours is ultimately up to you.
+
+You'll find our board over at our [GodotDevOps](https://github.com/Praqma/GodotDevOps/projects/1) repo.
+
+**Resources:**
+
+- [GitHub docs - About project boards](https://docs.github.com/en/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)
 
 ### Task management <a name="task-management"></a>
 

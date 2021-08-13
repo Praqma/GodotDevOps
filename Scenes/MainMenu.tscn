@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Version.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/Level.gd" type="Script" id=2]
 [ext_resource path="res://addons/gut/fonts/AnonymousPro-Bold.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://addons/gut/fonts/CourierPrime-Bold.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=6]
@@ -13,10 +12,6 @@ size = 52
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 40
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=3]
 size = 28
 font_data = ExtResource( 4 )
 
@@ -47,87 +42,54 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MenuOptions" type="VBoxContainer" parent="."]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_left = 40.0
-margin_top = -80.5
-margin_right = 248.0
-margin_bottom = 80.5
-script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="MenuOptions"]
-margin_right = 342.0
-margin_bottom = 59.0
+[node name="Label" type="Label" parent="."]
+margin_left = 26.5305
+margin_top = 74.7024
+margin_right = 368.53
+margin_bottom = 133.702
 custom_fonts/font = SubResource( 1 )
 text = "Neo Mori"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MenuOptions"]
-margin_top = 63.0
-margin_right = 342.0
-margin_bottom = 212.0
+[node name="MenuOptions" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -208.0
+margin_top = -161.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Rooftop Parkour" type="Button" parent="MenuOptions/VBoxContainer"]
-margin_right = 342.0
-margin_bottom = 47.0
+[node name="Controls" type="Button" parent="MenuOptions"]
+margin_right = 208.0
+margin_bottom = 78.0
 rect_min_size = Vector2( 122, 47 )
 size_flags_horizontal = 7
 size_flags_vertical = 7
 custom_fonts/font = SubResource( 2 )
-text = "Rooftop Parkour"
+text = "Controls"
 flat = true
-align = 0
-script = ExtResource( 2 )
-level = "res://Scenes/Levels/Level1.tscn"
-sceneTransitionPath = NodePath("../../../CanvasLayer/SceneTransitionRect")
-
-[node name="Dash Cams" type="Button" parent="MenuOptions/VBoxContainer"]
-margin_top = 51.0
-margin_right = 342.0
-margin_bottom = 98.0
-rect_min_size = Vector2( 122, 47 )
-size_flags_horizontal = 7
-size_flags_vertical = 7
-custom_fonts/font = SubResource( 2 )
-text = "Dash Cams"
-flat = true
-align = 0
-script = ExtResource( 2 )
-level = "res://Scenes/Levels/Level2.tscn"
-sceneTransitionPath = NodePath("../../../CanvasLayer/SceneTransitionRect")
-
-[node name="Gold Source" type="Button" parent="MenuOptions/VBoxContainer"]
-margin_top = 102.0
-margin_right = 342.0
-margin_bottom = 149.0
-rect_min_size = Vector2( 122, 47 )
-size_flags_horizontal = 7
-size_flags_vertical = 7
-custom_fonts/font = SubResource( 2 )
-text = "Gold Src"
-flat = true
-align = 0
-script = ExtResource( 2 )
-level = "res://Scenes/Levels/Level3.tscn"
-sceneTransitionPath = NodePath("../../../CanvasLayer/SceneTransitionRect")
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Exit" type="Button" parent="MenuOptions"]
-margin_top = 216.0
-margin_right = 342.0
-margin_bottom = 263.0
+margin_top = 82.0
+margin_right = 208.0
+margin_bottom = 161.0
 rect_min_size = Vector2( 122, 47 )
 size_flags_horizontal = 7
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Exit"
 flat = true
-align = 0
+align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -139,7 +101,95 @@ visible = false
 margin_top = 0.0
 margin_bottom = 0.0
 
-[connection signal="pressed" from="MenuOptions/VBoxContainer/Rooftop Parkour" to="MenuOptions/VBoxContainer/Rooftop Parkour" method="_on_level_start"]
-[connection signal="pressed" from="MenuOptions/VBoxContainer/Dash Cams" to="MenuOptions/VBoxContainer/Dash Cams" method="_on_level_start"]
-[connection signal="pressed" from="MenuOptions/VBoxContainer/Gold Source" to="MenuOptions/VBoxContainer/Gold Source" method="_on_level_start"]
+[node name="Panel" type="Panel" parent="."]
+modulate = Color( 1, 1, 1, 0.780392 )
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = -85.0
+margin_bottom = 85.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label9" type="Label" parent="Panel/VBoxContainer"]
+margin_right = 140.0
+margin_bottom = 14.0
+valign = 1
+uppercase = true
+
+[node name="Label6" type="Label" parent="Panel/VBoxContainer"]
+margin_top = 18.0
+margin_right = 140.0
+margin_bottom = 32.0
+text = "Q - start level"
+valign = 1
+uppercase = true
+
+[node name="Label7" type="Label" parent="Panel/VBoxContainer"]
+margin_top = 36.0
+margin_right = 140.0
+margin_bottom = 50.0
+text = "W/S - change level"
+valign = 1
+uppercase = true
+
+[node name="Label8" type="Label" parent="Panel/VBoxContainer"]
+margin_top = 54.0
+margin_right = 140.0
+margin_bottom = 68.0
+valign = 1
+uppercase = true
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+margin_top = 72.0
+margin_right = 140.0
+margin_bottom = 86.0
+text = "A/D - move"
+valign = 1
+uppercase = true
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer"]
+margin_top = 90.0
+margin_right = 140.0
+margin_bottom = 104.0
+text = "Space - jump"
+valign = 1
+uppercase = true
+
+[node name="Label3" type="Label" parent="Panel/VBoxContainer"]
+margin_top = 108.0
+margin_right = 140.0
+margin_bottom = 122.0
+text = "Shift - dash"
+valign = 1
+uppercase = true
+
+[node name="Label4" type="Label" parent="Panel/VBoxContainer"]
+margin_top = 126.0
+margin_right = 140.0
+margin_bottom = 140.0
+text = "Ctrl - push boxes"
+valign = 1
+uppercase = true
+
+[node name="Label5" type="Label" parent="Panel/VBoxContainer"]
+margin_top = 144.0
+margin_right = 140.0
+margin_bottom = 158.0
+text = "E - interact"
+valign = 1
+uppercase = true
+
+[connection signal="pressed" from="MenuOptions/Controls" to="MenuOptions" method="_on_Controls_pressed"]
 [connection signal="pressed" from="MenuOptions/Exit" to="MenuOptions" method="_on_Exit_pressed"]

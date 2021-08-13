@@ -5,10 +5,8 @@ export(int) var id := 0
 var active := false
 
 onready var collisionShape := get_node("CollisionShape2D")
-onready var sprite := get_node("Sprite")
-
-var doorClosed = preload("res://Assets/Sprites/DoorClosed.png")
-var doorOpen = preload("res://Assets/Sprites/DoorOpened.png")
+onready var spriteClosed := get_node("Closed")
+onready var spriteOpen := get_node("Open")
 
 func _ready():
 	collisionShape.disabled = false
@@ -18,6 +16,8 @@ func change_state() -> void:
 	collisionShape.disabled = active
 	
 	if active:
-		sprite.texture = doorOpen
+		spriteOpen.visible = true
+		spriteClosed.visible = false
 	else:
-		sprite.texture = doorClosed
+		spriteOpen.visible = false
+		spriteClosed.visible = true

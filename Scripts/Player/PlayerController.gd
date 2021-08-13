@@ -62,6 +62,7 @@ func ghostTrail_timer_timeout():
 		var ghost = preload("res://Scenes/GhostTrail.tscn").instance()
 		get_parent().add_child(ghost)
 		ghost.position = position
+		ghost.scale = scale
 		ghost.texture = animatedSprite.frames.get_frame(animatedSprite.animation, animatedSprite.frame)
 		ghost.flip_h = animatedSprite.flip_h
 
@@ -70,6 +71,7 @@ func _ready():
 	$dash_timer.connect("timeout", self, "dash_timer_timeout")
 
 func setupValues():
+	moveSpeed = groundMoveSpeed
 	jumpCount = maxJumpCount
 	dashCount = maxDashCount
 	facingDir = Vector2.RIGHT

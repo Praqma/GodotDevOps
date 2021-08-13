@@ -1,103 +1,82 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/Player/PlayerController.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Sprites/Player Spritesheets/PlayerCharacter_Idle.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Sprites/Player Spritesheets/PlayerCharacter_Running.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Sprites/Player Spritesheets/PlayerCharacter_Falling.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Sprites/Player Spritesheets/PlayerCharacter_Dashing.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Sprites/Player Spritesheets/PlayerCharacter_Jumping.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/Player/Running/frame0000.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Player/Running/frame0012.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Player/Falling/frame0000.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Player/Jumping/frame0006.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Player/Running/frame0018.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/Player/Dashing/frame0000.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/Player/Jumping/frame0000.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/Player/Running/frame0006.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/Player/Idle/frame0006.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/Player/Falling/frame0006.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sprites/Player/Jumping/frame0012.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sprites/Player/Idle/frame0000.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Sprites/Player/Running/frame0024.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Sprites/Player/Running/frame0030.png" type="Texture" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4.84694, 13.5 )
+extents = Vector2( 88.1784, 402.778 )
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 7 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 4 )
-region = Rect2( 32, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 4 )
-region = Rect2( 64, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 4 )
-region = Rect2( 96, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 3 )
-region = Rect2( 32, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 3 )
-region = Rect2( 64, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 3 )
-region = Rect2( 96, 0, 32, 32 )
-
-[sub_resource type="SpriteFrames" id=13]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ SubResource( 2 ) ],
-"loop": true,
-"name": "Falling",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 3 ) ],
-"loop": true,
+"frames": [ ExtResource( 8 ), ExtResource( 5 ), ExtResource( 12 ) ],
+"loop": false,
 "name": "Jumping",
-"speed": 5.0
+"speed": 12.0
 }, {
-"frames": [ SubResource( 4 ) ],
+"frames": [ ExtResource( 7 ) ],
 "loop": true,
 "name": "Dashing",
-"speed": 5.0
+"speed": 1.0
 }, {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "Falling",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 9 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 14 ), ExtResource( 15 ) ],
 "loop": true,
 "name": "Running",
-"speed": 7.0
+"speed": 12.0
 }, {
-"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"frames": [ ExtResource( 13 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "Idle",
-"speed": 2.0
+"speed": 3.0
 } ]
 
 [node name="Player" type="KinematicBody2D" groups=[
+"Player",
 "detectable",
 ]]
+scale = Vector2( 0.25, 0.25 )
 collision_layer = 4
 script = ExtResource( 1 )
+airMoveSpeed = 25.0
+groundMoveSpeed = 750.0
+pushMoveSpeed = 250.0
+gravity = 1350.0
+jumpForce = 900.0
+snapLength = 25.0
+slopeSlideThreshold = 60.0
+dashLength = 0.5
+dashSpeed = 1500
+deathBarrier = 2000
+pushRange = 25.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 1.15306, 2.41294 )
+position = Vector2( 1.15306, -3.93667 )
 shape = SubResource( 1 )
 
 [node name="dash_timer" type="Timer" parent="."]
 one_shot = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 13 )
+frames = SubResource( 2 )
 animation = "Idle"
+frame = 1
 playing = true
 
 [node name="ghostTrail_timer" type="Timer" parent="."]

@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/MenuOptions.gd" type="Script" id=1]
+
+[node name="Menu" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+levelPaths = [ "res://Scenes/Levels/Level1.tscn", "res://Scenes/Levels/Level2.tscn", "res://Scenes/Levels/Level3.tscn" ]
+levelNames = [ "Rooftop Parkour", "Dash Cams", "Gold Src" ]
+sceneTransitionPath = NodePath("../SceneTransitionRect")
+
+[node name="Level" type="Label" parent="."]
+margin_left = 449.72
+margin_top = 337.997
+margin_right = 489.72
+margin_bottom = 351.997
+text = "Level 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level2" type="Label" parent="."]
+margin_left = 253.144
+margin_top = 346.482
+margin_right = 293.144
+margin_bottom = 360.482
+text = "Level 2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level3" type="Label" parent="."]
+margin_left = 640.639
+margin_top = 340.825
+margin_right = 680.639
+margin_bottom = 354.825
+text = "Level 3"
+__meta__ = {
+"_edit_use_anchors_": false
+}

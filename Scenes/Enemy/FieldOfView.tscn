@@ -5,6 +5,9 @@
 [node name="FieldOfView" type="Node2D"]
 z_index = -2
 script = ExtResource( 1 )
+detectRadius = 1000.0
+losSpeed = 25.0
+drawDistance = 3500
 drawDebugLines = false
 
 [node name="Polygon2D" type="Polygon2D" parent="."]

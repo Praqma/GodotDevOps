@@ -26,7 +26,9 @@ config/icon="res://Assets/Sprites/icon.png"
 
 [display]
 
-window/stretch/mode="viewport"
+window/size/width=1920
+window/size/height=1080
+window/stretch/mode="2d"
 window/stretch/aspect="expand"
 
 [editor_plugins]
@@ -96,4 +98,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+2d/snapping/use_gpu_pixel_snap=true
 quality/dynamic_fonts/use_oversampling=false

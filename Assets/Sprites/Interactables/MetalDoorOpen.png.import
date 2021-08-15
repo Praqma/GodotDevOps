@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LevelExitForeFlashing.png-c350c33b70e62296bb5bd7ceaf477289.stex"
+path="res://.import/MetalDoorOpen.png-6cd8b758c5d9a720a4dcdfe3136807b4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/ManualPlacement/LevelExitForeFlashing.png"
-dest_files=[ "res://.import/LevelExitForeFlashing.png-c350c33b70e62296bb5bd7ceaf477289.stex" ]
+source_file="res://Assets/Sprites/Interactables/MetalDoorOpen.png"
+dest_files=[ "res://.import/MetalDoorOpen.png-6cd8b758c5d9a720a4dcdfe3136807b4.stex" ]
 
 [params]
 

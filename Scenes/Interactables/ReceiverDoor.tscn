@@ -1,9 +1,10 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Assets/Sprites/ManualPlacement/LightRays.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/Interactables/LightRays.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Interactables/ReceiverDoor.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Sprites/ManualPlacement/MetalDoorClosed.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Sprites/ManualPlacement/MetalDoorOpen.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Interactables/MetalDoorClosed.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Interactables/MetalDoorOpen.png" type="Texture" id=4]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 122.844, 449.423 )

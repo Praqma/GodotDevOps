@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ControlPanelScreen.png-4c537f1f8be1dbde1b06a8abd3775763.stex"
+path="res://.import/LevelExitFore.png-ee986bc6c8a05387fb2d934cf0962e77.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/ManualPlacement/ControlPanelScreen.png"
-dest_files=[ "res://.import/ControlPanelScreen.png-4c537f1f8be1dbde1b06a8abd3775763.stex" ]
+source_file="res://Assets/Sprites/Interactables/LevelExitFore.png"
+dest_files=[ "res://.import/LevelExitFore.png-ee986bc6c8a05387fb2d934cf0962e77.stex" ]
 
 [params]
 

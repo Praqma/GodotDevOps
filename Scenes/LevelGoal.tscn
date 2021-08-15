@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/LevelGoal.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Sprites/ManualPlacement/LevelExitBack.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Sprites/ManualPlacement/LevelExitBackFlashing.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Interactables/LevelExitBack.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Interactables/LevelExitBackFlashing.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Materials/Flashing.tres" type="Material" id=4]
-[ext_resource path="res://Assets/Sprites/ManualPlacement/LevelExitFore.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Sprites/ManualPlacement/LevelExitForeFlashing.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/Interactables/LevelExitFore.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Interactables/LevelExitForeFlashing.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Shaders/FlashingShader.shader" type="Shader" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]

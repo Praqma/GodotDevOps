@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/UnlockedIcon.png-9d7e3a3efbd7e15c5b9dfbf29fc3592e.stex"
+path="res://.import/Crate.png-257072dd5b6f1e62c5cd3be6a099707e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/ManualPlacement/UnlockedIcon.png"
-dest_files=[ "res://.import/UnlockedIcon.png-9d7e3a3efbd7e15c5b9dfbf29fc3592e.stex" ]
+source_file="res://Assets/Sprites/Interactables/Crate.png"
+dest_files=[ "res://.import/Crate.png-257072dd5b6f1e62c5cd3be6a099707e.stex" ]
 
 [params]
 

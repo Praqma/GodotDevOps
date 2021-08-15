@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LevelExitBackFlashing.png-e69242386459f9fececac752070bf507.stex"
+path="res://.import/CameraBody.png-afcd5c33122da131049179cec32d58e6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/ManualPlacement/LevelExitBackFlashing.png"
-dest_files=[ "res://.import/LevelExitBackFlashing.png-e69242386459f9fececac752070bf507.stex" ]
+source_file="res://Assets/Sprites/Interactables/CameraBody.png"
+dest_files=[ "res://.import/CameraBody.png-afcd5c33122da131049179cec32d58e6.stex" ]
 
 [params]
 

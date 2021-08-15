@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PlayerCharacter_Dashing.png-f4e74aa10e07bf8d5626491cc30ae630.stex"
+path="res://.import/LockedIcon.png-22b1dcab9c76330f6da8557b751777c4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Player Spritesheets/PlayerCharacter_Dashing.png"
-dest_files=[ "res://.import/PlayerCharacter_Dashing.png-f4e74aa10e07bf8d5626491cc30ae630.stex" ]
+source_file="res://Assets/Sprites/Interactables/LockedIcon.png"
+dest_files=[ "res://.import/LockedIcon.png-22b1dcab9c76330f6da8557b751777c4.stex" ]
 
 [params]
 
@@ -20,8 +20,8 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
-flags/mipmaps=false
+flags/filter=true
+flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

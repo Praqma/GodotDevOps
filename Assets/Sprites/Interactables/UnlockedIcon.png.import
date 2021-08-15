@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LockedIcon.png-47f252752f6869fa33302e26440c4b13.stex"
+path="res://.import/UnlockedIcon.png-be5d7d3e9aa4fc1a82268b8bcc99b634.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/ManualPlacement/LockedIcon.png"
-dest_files=[ "res://.import/LockedIcon.png-47f252752f6869fa33302e26440c4b13.stex" ]
+source_file="res://Assets/Sprites/Interactables/UnlockedIcon.png"
+dest_files=[ "res://.import/UnlockedIcon.png-be5d7d3e9aa4fc1a82268b8bcc99b634.stex" ]
 
 [params]
 

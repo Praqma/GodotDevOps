@@ -1,9 +1,10 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Assets/Sprites/ManualPlacement/CameraHead.png" type="Texture" id=1]
-[ext_resource path="res://Assets/Sprites/ManualPlacement/CameraBody.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Interactables/CameraHead.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/Interactables/CameraBody.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Enemy/FieldOfView.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/Enemy/Camera.gd" type="Script" id=4]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 105.351, 35.695 )

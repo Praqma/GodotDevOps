@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LevelExitFore.png-96556e5a3f4f4fde206d7453d810a79d.stex"
+path="res://.import/MetalDoorClosed.png-2bfd98b0d9ad003d61d7b30e9e35cbf7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/ManualPlacement/LevelExitFore.png"
-dest_files=[ "res://.import/LevelExitFore.png-96556e5a3f4f4fde206d7453d810a79d.stex" ]
+source_file="res://Assets/Sprites/Interactables/MetalDoorClosed.png"
+dest_files=[ "res://.import/MetalDoorClosed.png-2bfd98b0d9ad003d61d7b30e9e35cbf7.stex" ]
 
 [params]
 

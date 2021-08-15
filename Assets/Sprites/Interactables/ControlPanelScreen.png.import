@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CameraBody.png-55f945b46b4147456b6be67d0bae19a0.stex"
+path="res://.import/ControlPanelScreen.png-11100fd3b900855361ceda04744afdcd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/ManualPlacement/CameraBody.png"
-dest_files=[ "res://.import/CameraBody.png-55f945b46b4147456b6be67d0bae19a0.stex" ]
+source_file="res://Assets/Sprites/Interactables/ControlPanelScreen.png"
+dest_files=[ "res://.import/ControlPanelScreen.png-11100fd3b900855361ceda04744afdcd.stex" ]
 
 [params]
 

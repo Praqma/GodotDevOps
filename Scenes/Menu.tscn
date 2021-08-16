@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/MenuOptions.gd" type="Script" id=1]
+[ext_resource path="res://addons/gut/fonts/AnonymousPro-Regular.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
 
 [node name="Menu" type="Control"]
 margin_right = 40.0
@@ -18,7 +25,13 @@ margin_left = 449.72
 margin_top = 337.997
 margin_right = 489.72
 margin_bottom = 351.997
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.101961, 0.0980392, 0.145098, 1 )
 text = "Level 1"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -28,7 +41,13 @@ margin_left = 253.144
 margin_top = 346.482
 margin_right = 293.144
 margin_bottom = 360.482
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.101961, 0.0980392, 0.145098, 1 )
 text = "Level 2"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -38,7 +57,13 @@ margin_left = 640.639
 margin_top = 340.825
 margin_right = 680.639
 margin_bottom = 354.825
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.101961, 0.0980392, 0.145098, 1 )
 text = "Level 3"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

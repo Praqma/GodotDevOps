@@ -226,6 +226,19 @@ In case we ever want to revisit them, or remind ourselves why we decided against
 
 ### Referencing issues in your commits <a name="referencing-issues"></a>
 
+A good habit is to reference your issues/tasks in your commit message.
+To reference an issue or task, we add the following to our commit message body:
+
+- **WIP #12**
+  Adding this means this commit is related to issue #12.
+- **Fixes #12**
+  Adding this means this commit is the commit that finally completes issue #12.
+  Once this commit is merged into our main branch, GitHub will automatically close the issue and move it to *Done*.
+
+Doing this makes every change in your repository link back to the issue that spawned it.
+It's great for traceability and finding out why specific changes were made.
+It also helps you stay disciplined and keep to your tasks.
+
 ## Creating your development workflow <a name="development-workflow"></a>
 
 ### Test Driven Development <a name="tdd"></a>

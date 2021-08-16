@@ -1,38 +1,3 @@
-# Ground Rules
-
-## Subject
-
-How to apply DevOps in a game development setting.
-
-- Game development
-  - Test driven development (Unity and Godot as examples)
-    - Automated testing (continuous integration)
-  - Project planning
-    - Kanban board
-  - Version control (Git)
-    - Benefits of project planning with version control (commits connected to issues)
-  - Large binaries
-    - LFS
-  - Continuous integration
-    - GitHub actions
-    - workflow
-    - automated releases
-    - Release note generation
-
-## Target audience
-
-The target is the beginner game developer or students with average experience in writing code and working in game engines. They don't have any experience working with contemporary software development techniques or how to apply these to game development.
-
-## Goal
-
-Encourage people to learn more about DevOps and continuous integration and apply these to their game development habits.
-
-## Tone
-
-Humble, laid back, not corporate. We ourselves are beginner developers reaching out to fellow beginners and want to come across as such.
-
------------
-
 # Title
 
 # Subtitle
@@ -194,6 +159,70 @@ You'll find our board over at our [GodotDevOps](https://github.com/Praqma/GodotD
 - [GitHub docs - About project boards](https://docs.github.com/en/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)
 
 ### Task management <a name="task-management"></a>
+
+We organized our work by placing our tasks into various columns.
+Each column has a few ground rules to keep things organized.
+We ended up with: Unrefined, To Do, In Progress, Done and Scrapped.
+Tasks flow from left to right until they're done, or end up in Scrapped.
+
+As a reminder: How you organize your tasks is up to you.
+Feel free to take inspiration from us or others, but don't be afraid to tailor it to your own needs.
+Ultimately, what works for you is better than someone else's idea of 'best practice'.
+
+#### Unrefined
+
+This swimlane contains our vague ideas and features.
+It's anything we (might) want to do at one point.
+
+For a task to leave Unrefined, it needs to:
+
+- **Have a clear definition of done.**
+  The task has a list of criteria that need to be fulfilled before we call it "Done".
+  Without this, we risk having feature creep and tasks that never get finished.
+- **Be less than a day's work.**
+  The task should take less than a day to complete.
+  This means larger tasks should be broken up into smaller ones.
+  Doing this helps set realistic task goals and prevents us from writing "Just Make The Game"-style tasks.
+
+#### To Do
+
+This swimlane contains all our refined tasks.
+They have a clear list of things to do before they're finished and should take less than a day to complete.
+Tasks are generally sorted by priority, with the most important at the top.
+
+For convenience's sake, we also allow "Epic" tasks to exist here.
+"Epic" tasks represent a larger chunk of work, with references to the smaller tasks that will end up implementing it.
+These are purely to help organize other tasks and are _never_ worked on directly.
+
+Another special type of task we have are "Spike" tasks; exploratory tasks with a short time limit.
+Spikes are great to gain insight on the feasibility or workload of unrefined tasks.
+Spend (at most) some hours trying to implement or research an unrefined task.
+You can always do another spike, so be disciplined and stick to your time limit.
+
+For a task to leave To Do, a developer just needs to pick it up and start working on it.
+
+#### In Progress
+
+These are tasks currently being worked on.
+There shouldn't be more tasks in progress than you have people to work on them.
+No multi-tasking!
+
+For a task to leave In Progress, its definition of done must be completed.
+
+#### Done
+
+These are all the tasks that are done.
+
+Tasks never leave Done.
+If something was overlooked, a new task can be created.
+
+#### Scrapped
+
+These are tasks that we decided against doing.
+
+These are mostly features that didn't make the cut.
+We keep them around with a comment on why they were scrapped.
+In case we ever want to revisit them, or remind ourselves why we decided against them, we can find them here.
 
 ### Referencing issues in your commits <a name="referencing-issues"></a>
 

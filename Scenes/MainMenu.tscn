@@ -1,17 +1,28 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/Version.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sprites/Train/Train.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Train/TrainInterior.png" type="Texture" id=3]
 [ext_resource path="res://addons/gut/fonts/AnonymousPro-Bold.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://addons/gut/fonts/CourierPrime-Bold.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=6]
 [ext_resource path="res://Scenes/SceneTransitionRect.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Parallax.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Sprites/Train/Windows.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/Train/PosterLevelStart.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/Train/PosterLevelSelect.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sprites/Train/TrapDoorOpen.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sprites/Train/DestinationScreen.png" type="Texture" id=13]
+[ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=14]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 2476 )
+
+[sub_resource type="DynamicFont" id=2]
 size = 52
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 28
 font_data = ExtResource( 4 )
 
@@ -26,7 +37,114 @@ __meta__ = {
 offset = Vector2( 0, 400 )
 transform = Transform2D( 1, 0, 0, 1, 0, 400 )
 autoScroll = true
-autoScrollSpeed = 200
+autoScrollSpeed = 1000
+
+[node name="Train" type="KinematicBody2D" parent="."]
+position = Vector2( 910.849, 849.235 )
+scale = Vector2( 0.25, 0.25 )
+
+[node name="TrainInterior" type="Sprite" parent="Train"]
+z_index = -10
+texture = ExtResource( 3 )
+
+[node name="PosterLevelSelect" type="Sprite" parent="Train"]
+z_index = -9
+texture = ExtResource( 11 )
+
+[node name="PosterLevelStart" type="Sprite" parent="Train"]
+z_index = -9
+texture = ExtResource( 10 )
+
+[node name="Windows" type="Sprite" parent="Train"]
+texture = ExtResource( 9 )
+
+[node name="TrapDoor" type="Sprite" parent="Train"]
+texture = ExtResource( 12 )
+
+[node name="TrainOuter" type="Sprite" parent="Train"]
+texture = ExtResource( 2 )
+
+[node name="DestScreen" type="Sprite" parent="Train"]
+texture = ExtResource( 13 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Train"]
+polygon = PoolVector2Array( 800, -688, -3376, -688, -3392, -656, -3424, -544, -3424, 592, 3408, 592, 3408, -544, 3376, -656, 3360, -688, 1392, -688, 1392, -640, 3264, -640, 3264, 464, -3264, 464, -3264, -640, 800, -640 )
+
+[node name="Train2" type="KinematicBody2D" parent="."]
+position = Vector2( 2684, 849.235 )
+scale = Vector2( 0.25, 0.25 )
+
+[node name="TrainInterior" type="Sprite" parent="Train2"]
+z_index = -10
+texture = ExtResource( 3 )
+
+[node name="PosterLevelSelect" type="Sprite" parent="Train2"]
+z_index = -9
+texture = ExtResource( 11 )
+
+[node name="PosterLevelStart" type="Sprite" parent="Train2"]
+z_index = -9
+texture = ExtResource( 10 )
+
+[node name="Windows" type="Sprite" parent="Train2"]
+texture = ExtResource( 9 )
+
+[node name="TrapDoor" type="Sprite" parent="Train2"]
+texture = ExtResource( 12 )
+
+[node name="TrainOuter" type="Sprite" parent="Train2"]
+texture = ExtResource( 2 )
+
+[node name="DestScreen" type="Sprite" parent="Train2"]
+texture = ExtResource( 13 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Train2"]
+polygon = PoolVector2Array( 800, -688, -3376, -688, -3392, -656, -3424, -544, -3424, 592, 3408, 592, 3408, -544, 3376, -656, 3360, -688, 1392, -688, 1392, -640, 3264, -640, 3264, 464, -3264, 464, -3264, -640, 800, -640 )
+
+[node name="Train3" type="KinematicBody2D" parent="."]
+position = Vector2( -864, 849.235 )
+scale = Vector2( 0.25, 0.25 )
+
+[node name="TrainInterior" type="Sprite" parent="Train3"]
+z_index = -10
+texture = ExtResource( 3 )
+
+[node name="PosterLevelSelect" type="Sprite" parent="Train3"]
+z_index = -9
+texture = ExtResource( 11 )
+
+[node name="PosterLevelStart" type="Sprite" parent="Train3"]
+z_index = -9
+texture = ExtResource( 10 )
+
+[node name="Windows" type="Sprite" parent="Train3"]
+texture = ExtResource( 9 )
+
+[node name="TrapDoor" type="Sprite" parent="Train3"]
+texture = ExtResource( 12 )
+
+[node name="TrainOuter" type="Sprite" parent="Train3"]
+texture = ExtResource( 2 )
+
+[node name="DestScreen" type="Sprite" parent="Train3"]
+texture = ExtResource( 13 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Train3"]
+polygon = PoolVector2Array( 800, -688, -3376, -688, -3392, -656, -3424, -544, -3424, 592, 3408, 592, 3408, -544, 3376, -656, 3360, -688, 1392, -688, 1392, -640, 3264, -640, 3264, 464, -3264, 464, -3264, -640, 800, -640 )
+
+[node name="WorldBarrier" type="KinematicBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBarrier"]
+position = Vector2( -352, 616 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBarrier"]
+position = Vector2( 2272, 616 )
+shape = SubResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 14 )]
+position = Vector2( 631.69, 863.554 )
+z_index = -1
 
 [node name="Version" type="Label" parent="."]
 anchor_top = 1.0
@@ -47,7 +165,7 @@ margin_left = 26.5305
 margin_top = 74.7024
 margin_right = 368.53
 margin_bottom = 133.702
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Neo Mori"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -71,7 +189,7 @@ margin_bottom = 78.0
 rect_min_size = Vector2( 122, 47 )
 size_flags_horizontal = 7
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Controls"
 flat = true
 align = 2
@@ -86,7 +204,7 @@ margin_bottom = 161.0
 rect_min_size = Vector2( 122, 47 )
 size_flags_horizontal = 7
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Exit"
 flat = true
 align = 2

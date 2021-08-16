@@ -135,13 +135,22 @@ You'll need it before too long.
 
 ## Organizing your work <a name="organizing-work"></a>
 
-Don't get stuck on large issues. An issue shouldn't take longer than a day. If you underestimated an issue's time frame don't push through. Take a moment to break the issue down further and then continue work on one of those issues. Better to be done with one than none.
+Organizing game development is tricky, especially when you're multiple people.
+Defining and improving how you organize your work is critical to a project's success.
+Where good habits and discipline can do wonders, bad habits and cowboy coding can result in lots of wasted time.
 
-If you are unsure about how to do something, don't create an issue and begin immediate work. Instead create a spike during which you intend to find out how you implement a feature or if it is even possible. Assign it a duration and by the end of it you can more confidently create an issue on the subject if possible. When in doubt, make sure to scout.
+We'll go into detail on how we organized our work, but there's one _very important_ thing to bring up before that:
+_Your workflow is as much your product as your game._
 
-**When working on larger projects it is important to establish a workflow that is structured and visible. This becomes increasingly more important as the project and number of collaborators grow. Games consists of a large subset of features, a lot of which can be broken into their respective subsets. It is easy to get lost in a large scope or in huge tasks that take weeks to finish.*
+It's a common trap for people to adopt some "best practice" workflow.
+While you can certainly draw inspiration from other workflows, doing so blindly will never net you a comfortable flow.
+It's vital you develop the habits and skills to continuously assess and improve your own way of working.
+Start small, start simple and continuously improve.
 
-*Task management plays a pivotal role in how we adopt a healthy way of working. There are many ways of doing project planning but we use a simple kanban board on the GitHub page to break down our game into simple and short issues. The idea is that no issue should take longer than one workday to complete. This way you may undertake many different types of tasks instead of being stuck with one for a long period of time. There is also something gratifying about being able to mark something as done by the end of the day. Another rule of task management is that there should never be more issues in progress than the number of project members.*
+We decided to start with a simple project board and some basic rules regarding task management.
+Whenever something felt annoying or tedious in our workflow, we'd create a task to fix that.
+This was an easy way of weaving process improvements into our game development.
+Note that below we described what we ended up with after a few weeks, not our original starting point.
 
 ### Creating a project board <a name="project-board"></a>
 
@@ -162,12 +171,12 @@ You'll find our board over at our [GodotDevOps](https://github.com/Praqma/GodotD
 
 We organized our work by placing our tasks into various columns.
 Each column has a few ground rules to keep things organized.
-We ended up with: Unrefined, To Do, In Progress, Done and Scrapped.
-Tasks flow from left to right until they're done, or end up in Scrapped.
+We ended up with: _Unrefined_, _To Do_, _In Progress_, _Done_ and _Scrapped_.
+Tasks generally flow from left to right until they're done or get scrapped.
 
 As a reminder: How you organize your tasks is up to you.
-Feel free to take inspiration from us or others, but don't be afraid to tailor it to your own needs.
-Ultimately, what works for you is better than someone else's idea of 'best practice'.
+Feel free to take inspiration from us or others, but tailor it to your own needs.
+Ultimately, whatever works for you is better than someone else's idea of "best practice".
 
 #### Unrefined
 
@@ -179,7 +188,7 @@ For a task to leave Unrefined, it needs to:
 - **Have a clear definition of done.**
   The task has a list of criteria that need to be fulfilled before we call it "Done".
   Without this, we risk having feature creep and tasks that never get finished.
-- **Be less than a day's work.**
+- **Be less than one day's work.**
   The task should take less than a day to complete.
   This means larger tasks should be broken up into smaller ones.
   Doing this helps set realistic task goals and prevents us from writing "Just Make The Game"-style tasks.
@@ -191,7 +200,7 @@ They have a clear list of things to do before they're finished and should take l
 Tasks are generally sorted by priority, with the most important at the top.
 
 For convenience's sake, we also allow "Epic" tasks to exist here.
-"Epic" tasks represent a larger chunk of work, with references to the smaller tasks that will end up implementing it.
+Epics represent a larger chunk of work, with references to the smaller tasks that will end up implementing it.
 These are purely to help organize other tasks and are _never_ worked on directly.
 
 Another special type of task we have are "Spike" tasks; exploratory tasks with a short time limit.
@@ -239,7 +248,45 @@ Doing this makes every change in your repository link back to the issue that spa
 It's great for traceability and finding out why specific changes were made.
 It also helps you stay disciplined and keep to your tasks.
 
+**References:**
+
+- [GitHub guides - Mastering Issues](https://guides.github.com/features/issues/#notifications)
+
 ## Creating your development workflow <a name="development-workflow"></a>
+
+In this section we'll go into how we do the technical work.
+Our testing and publishing work is all automated, allowing us to spend most of our time doing the fun part of game development.
+
+Note that we didn't conjure this workflow up on day one.
+Throughout the project, we constantly improved and automated our way of working.
+In fact, there's still improvements we'd like to make, but we're very happy with how far we got.
+
+Our flow is as follows:
+
+**Development**
+
+- Move issue from **To Do** to **In Progress**
+- Create a local branch to isolate your work
+- Implements the feature
+  - Use TDD where applicable
+  - Create small [atomic commits](https://www.aleksandrhovhannisyan.com/blog/atomic-git-commits/)
+- Pushes your branch to GitHub when you're ready or taking a break
+
+**Integration**
+
+- Make sure your branch is up-to-date ([rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) accordingly)
+- Create a [Pull Request](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) for your branch
+- When the automatic build pipeline finishes with success, merge and close the Pull Request.
+
+**Release**
+
+- Check out the commit you want to create a release for
+- Run the release script, which will:
+  - Prompt you for a release name
+  - Generate release notes
+  - Create and push a [git tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) with the release notes as its body
+
+This will trigger the release pipeline, publishing it to our [GitHub](https://github.com/Praqma/GodotDevOps/releases) and [Itch.io](https://eficode.itch.io/neomori) pages.
 
 ### Test Driven Development <a name="tdd"></a>
 

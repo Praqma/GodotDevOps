@@ -290,41 +290,30 @@ This will trigger the release pipeline, publishing it to our [GitHub](https://gi
 
 ### Test Driven Development <a name="tdd"></a>
 
-- Why TDD in game development
-- Pros/cons
-- When/When not to (tied to engine)
-- Examples from Unity
-- Examples from Godot
+Testing never gets the attention it deserves in game development.
+And why would it?
+It's easy to start up your game and check if things work.
+But as the game grows, there will be more to test, there will more systems that can fail.
+More time will be spent checking if things still work, and less on actually developing the game.
+You'll want you automate your tests, but you'll find your code tightly coupled to your engine or otherwise tough to test.
 
-While it is good to test as much as possible remember that you can't isolate everything from your engine. Some of your features will need to use the engine. Use wrapper classes as an intermediary between test based classes and the engine.
+This is the scenario Test Driven Development (TDD) aims to avoid.
+With TDD, you write tests _before_ writing the code.
+It essentially forces you to write tests _and_ testable code.
 
-One thing we never had a chance to try are play mode test. These are tests that require you to spin up the engine but allow you to test closer to it. This might be of use to you so keep it in mind.
+We found TDD difficult at first, especially isolating our code from the engine.
+After practicing it in Unity for a while, we got the hang of it and were very happy with the results.
+We regret not using it as much in our Godot project, but there just wasn't much for us to test as the engine takes care of almost everything in a 2D platformer.
 
-TDD is difficult. Not just the test writing part but using it overall in a game development setting. It is a new way of developing code. It will be hard to spot when you can and can't use it. In our Godot project we didn't utilize it as much as we wanted to partly because a lot of features were tied to the engine.
+Check out some of the excellent resources for getting started with TDD below.
 
-```
-It will take time to separate your code from the engine but it will be worth it. Long term benefits are that you can take those scripts with you into any project since they are not engine bound. It also allows you to test a lot more of your code. The more you can test the better since tests can provide quick feedback when new features break old ones.
+**Resources:**
 
-Don't test the engine. Some features will rely upon the engine. When writing tests for them remember to not test parts of the engine. Raycasting or physics are good examples of this. Don't write tests that assert them, they have already been tested by the engine provider.
-```
-
-LINK MISSING: How to write tests\
-*Find source
-
-GUT set up in Godot by Rainware\
-https://www.youtube.com/watch?v=vBbqlfmcAlc
-
-GUT tutorial by Bitwes (creator of GUT)\
-https://www.youtube.com/watch?v=nF2gPF69Dc4
-
-GUT documentation\
-https://github.com/bitwes/Gut
-
-Step by step on how to do TDD in Unity by InfallibleCode\
-https://www.youtube.com/watch?v=R1aO4Tmw3zA&ab_channel=InfallibleCode
-
-Creating assembly in Unity. Used for TDD in Unity\
-https://www.youtube.com/watch?v=eovjb5xn8y0&ab_channel=GameDevGuide
+- [Infallible Code - Step by step guide on how to TDD in Unity](https://www.youtube.com/watch?v=R1aO4Tmw3zA&ab_channel=InfallibleCode)
+- [Game Dev Guide - Creating Assemblies in Unity](https://www.youtube.com/watch?v=eovjb5xn8y0&ab_channel=GameDevGuide)
+- [RainWare - GUT set up in Godot](https://www.youtube.com/watch?v=vBbqlfmcAlc)
+- [Bitwes (Creator of GUT) - GUT tutorial](https://www.youtube.com/watch?v=nF2gPF69Dc4)
+- [Official GUT documentation](https://github.com/bitwes/Gut)
 
 #### Branching and merging <a name="branching-and-merging"></a>
 

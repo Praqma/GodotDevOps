@@ -24,7 +24,7 @@ texture = ExtResource( 1 )
 
 [node name="FieldOfView" parent="CameraHead" instance=ExtResource( 3 )]
 position = Vector2( -112.307, 24.4734 )
-rotation = 3.14159
+rotation = 2.9147
 scale = Vector2( 4, 4 )
 
 [node name="CameraCollider" type="StaticBody2D" parent="CameraHead"]

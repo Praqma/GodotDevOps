@@ -24,6 +24,7 @@ flip_h = true
 
 [node name="FieldOfView" parent="CameraHead" instance=ExtResource( 3 )]
 position = Vector2( 117.658, 25.8748 )
+rotation = 0.226893
 scale = Vector2( 4, 4 )
 
 [node name="CameraCollider" type="StaticBody2D" parent="CameraHead"]

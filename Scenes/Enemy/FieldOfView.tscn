@@ -5,8 +5,8 @@
 [node name="FieldOfView" type="Node2D"]
 z_index = -2
 script = ExtResource( 1 )
-detectRadius = 1000.0
-losSpeed = 25.0
+detectRadius = 900.0
+losSpeed = 20.0
 drawDistance = 3500
 drawDebugLines = false
 

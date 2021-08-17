@@ -3,7 +3,6 @@
 [ext_resource path="res://Assets/Sprites/Interactables/Crate.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Interactables/Body.gd" type="Script" id=2]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 521.698, 519.819 )
 
@@ -11,6 +10,7 @@ extents = Vector2( 521.698, 519.819 )
 "body",
 ]]
 scale = Vector2( 0.25, 0.25 )
+z_index = -5
 script = ExtResource( 2 )
 gravity = 1250
 

@@ -5,13 +5,13 @@
 [ext_resource path="res://Scenes/Enemy/FieldOfView.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/Enemy/Camera.gd" type="Script" id=4]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 105.351, 35.695 )
 
 [node name="LCamera" type="Sprite"]
 position = Vector2( -64, 0 )
 scale = Vector2( 0.25, 0.25 )
+z_index = -5
 texture = ExtResource( 2 )
 centered = false
 script = ExtResource( 4 )

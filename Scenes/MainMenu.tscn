@@ -17,7 +17,7 @@
 [ext_resource path="res://addons/gut/fonts/AnonymousPro-Regular.ttf" type="DynamicFontData" id=15]
 [ext_resource path="res://Scenes/Menu.tscn" type="PackedScene" id=16]
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=1]
 resource_name = "SETUP"
 length = 0.001
 step = 0.03
@@ -58,7 +58,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=2]
 resource_name = "TRAIN SHAKE"
 length = 6.0
 loop = true
@@ -112,22 +112,22 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -10 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 32, 2476 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=4]
 size = 25
 font_data = ExtResource( 15 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=5]
 size = 100
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=6]
 size = 50
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=7]
 size = 32
 font_data = ExtResource( 4 )
 
@@ -250,18 +250,18 @@ polygon = PoolVector2Array( 800, -688, -3376, -688, -3392, -656, -3424, -544, -3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Train"]
 autoplay = "TRAIN SHAKE"
-anims/SETUP = SubResource( 6 )
-"anims/TRAIN SHAKE" = SubResource( 7 )
+anims/SETUP = SubResource( 1 )
+"anims/TRAIN SHAKE" = SubResource( 2 )
 
 [node name="WorldBarrier" type="KinematicBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBarrier"]
 position = Vector2( -352, 616 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBarrier"]
 position = Vector2( 2272, 616 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 14 )]
 position = Vector2( 631.69, 863.554 )
@@ -272,7 +272,7 @@ margin_left = 10.0
 margin_top = 1044.0
 margin_right = 1866.0
 margin_bottom = 1080.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 text = "{version}"
 script = ExtResource( 1 )
 __meta__ = {
@@ -286,7 +286,7 @@ margin_left = 25.0
 margin_top = -57.0
 margin_right = 420.0
 margin_bottom = 57.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 5 )
 text = "NeoMori"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -315,7 +315,7 @@ rect_min_size = Vector2( 122, 47 )
 focus_mode = 0
 size_flags_horizontal = 7
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 6 )
 enabled_focus_mode = 0
 text = "Controls"
 flat = true
@@ -331,7 +331,7 @@ margin_bottom = 118.0
 rect_min_size = Vector2( 122, 47 )
 size_flags_horizontal = 7
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 6 )
 text = "Exit"
 flat = true
 align = 2
@@ -379,7 +379,7 @@ __meta__ = {
 margin_right = 324.0
 margin_bottom = 53.0
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 text = "Q - start level"
 valign = 1
 uppercase = true
@@ -389,7 +389,7 @@ margin_top = 57.0
 margin_right = 324.0
 margin_bottom = 110.0
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 text = "W/S - select level"
 valign = 1
 uppercase = true
@@ -399,7 +399,7 @@ margin_top = 114.0
 margin_right = 324.0
 margin_bottom = 167.0
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 valign = 1
 uppercase = true
 
@@ -408,7 +408,7 @@ margin_top = 171.0
 margin_right = 324.0
 margin_bottom = 225.0
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 text = "A/D - move"
 valign = 1
 uppercase = true
@@ -418,7 +418,7 @@ margin_top = 229.0
 margin_right = 324.0
 margin_bottom = 282.0
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 text = "Space - jump 2x"
 valign = 1
 uppercase = true
@@ -428,7 +428,7 @@ margin_top = 286.0
 margin_right = 324.0
 margin_bottom = 339.0
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 text = "LShift - dash 2x"
 valign = 1
 uppercase = true
@@ -438,7 +438,7 @@ margin_top = 343.0
 margin_right = 324.0
 margin_bottom = 396.0
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 text = "LCtrl - push boxes"
 valign = 1
 uppercase = true
@@ -448,7 +448,7 @@ margin_top = 400.0
 margin_right = 324.0
 margin_bottom = 454.0
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 text = "E - interact"
 valign = 1
 uppercase = true

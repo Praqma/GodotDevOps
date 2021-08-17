@@ -20,6 +20,7 @@ shader_param/flash_speed = 4.014
 
 [node name="LevelGoal" type="Node2D"]
 scale = Vector2( 0.25, 0.25 )
+z_index = -4
 script = ExtResource( 1 )
 
 [node name="WinArea2D" type="Area2D" parent="."]

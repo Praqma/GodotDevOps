@@ -317,15 +317,32 @@ Check out some of the excellent resources for getting started with TDD below.
 
 #### Branching and merging <a name="branching-and-merging"></a>
 
-Our workflow uses rebasing and fast forward merging to get a liner history. This is just a preference. If you rather use three-way merges then absolutely go for it. Do what works for you. Just make sure that the entire team is on the same page when it comes to branching and merging and you will be good.
+A big part of your development workflow is how you interact with your version control system.
+There's a lot to consider when it comes to defining that flow.
+Below are some of the decisions that led us to our current way of working.
+Remember that these aren't the _correct_ ways to work with git, they're just what worked for us.
 
-Branches should preferably be short lived. This lowers the risk of merge conflicts and works well with the task management where an issue should be completable in one workday.
+> We found that everyone working on the main branch turned messy quickly.<br/>
+> Thus we opted for people to work on their issues on separate branches.<br/>
+> We enforced this by locking the main branch in our project settings.
 
-Avoid working directly on main. You can lock pushing to main and use pull requests and merges instead.
+> We found that long-lived branches led to challenging merges and many merge conflicts.<br/>
+> Thus we opted for working on short-lived branches that we merged as soon as the task was done.<br/>
+> We enforced this by refining tasks down to small sizes.
 
-Determine a pull request workflow. Do you create a pull request at the beginning of a branch's lifecycle? Or right before you merge it simply to run your workflows and tests? Do you assign members and actively evaluate and comment on it? These are things that need to be discussed within your team. For us, pull requests were mainly a way to run our workflow before merging with main. Since our team is very small and we are on calls when working, creating pull requests early and evaluating them felt redundant. This might not be the case for you.
+> We found that linear history was easier to read.<br/>
+> Thus we opted for using rebasing and fast-forward merging over the traditional three-way merges.<br/>
+> We enforced this by forcing Pull Requests to be up-to-date with main in our project settings.
 
-You can rewrite history but this is a team effort. Force pushing changes can be detrimental if people have unfinished work on branches so make sure to carefully plan when history rewrites take place and include everyone.
+> We found a clean history important, but rewriting the history of our main branch to be painful.<br/>
+> Thus we opted to rewrite the history of our branches to be neat _before_ we merged them in.<br/>
+> We enforced this by disabling force pushing to main.
+
+> We're a small team that collaborates mostly synchronously.<br/>
+> Thus we opted to use Pull Requests purely as a platform for automated builds, rather than a place to collaborate.
+
+As you see, there's a lot of room for preference here and much that depends on your team size.
+The only thing that really matters is that your team agrees on the workflow, actually follows it and is open to improving it along the way.
 
 ## Automating work <a name="getting-automated"></a>
 

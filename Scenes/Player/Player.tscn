@@ -26,10 +26,10 @@ animations = [ {
 "name": "Jumping",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 7 ) ],
+"frames": [ ExtResource( 13 ), ExtResource( 10 ) ],
 "loop": true,
-"name": "Dashing",
-"speed": 1.0
+"name": "Idle",
+"speed": 3.0
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 11 ) ],
 "loop": true,
@@ -41,10 +41,10 @@ animations = [ {
 "name": "Running",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 7 ) ],
 "loop": true,
-"name": "Idle",
-"speed": 3.0
+"name": "Dashing",
+"speed": 1.0
 } ]
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -54,16 +54,16 @@ animations = [ {
 scale = Vector2( 0.25, 0.25 )
 collision_layer = 4
 script = ExtResource( 1 )
-airMoveSpeed = 25.0
+airMoveSpeed = 15.0
 groundMoveSpeed = 750.0
 pushMoveSpeed = 250.0
-gravity = 1350.0
-jumpForce = 900.0
+gravity = 2750.0
+jumpForce = 1250.0
 snapLength = 25.0
 slopeSlideThreshold = 60.0
-dashLength = 0.5
+dashLength = 0.35
 dashSpeed = 1500
-deathBarrier = 2000
+deathBarrier = 1500
 pushRange = 25.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -76,7 +76,6 @@ one_shot = true
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
 animation = "Idle"
-frame = 1
 playing = true
 
 [node name="ghostTrail_timer" type="Timer" parent="."]

@@ -368,6 +368,12 @@ We'll go into detail on our builds, but there's definitely some learnings we'd l
   It's easy to go overboard and make very intelligent automation.
   You'll spend a lot of time making something brittle and hard to maintain.
 
+**Resources**:
+
+- *TODO: shell intro*
+- *TODO: regex intro*
+- [regex101 - RegEx Playground](https://regex101.com/)
+
 ### GitHub Actions <a name="github-actions"></a>
 
 ### Continuous integration <a name="continuous-integration"></a>

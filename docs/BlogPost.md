@@ -346,23 +346,27 @@ The only thing that really matters is that your team agrees on the workflow, act
 
 ## Automating work <a name="getting-automated"></a>
 
-- GitHub actions and workflows
-- Automation for Unity (Licensing issue)
-- Automation (Godot)
-  - Unit tests (verification)
-  - Game builds for tests (verification)
-  - Release notes
-  - Publish
-    - Dependencies (action-download-artifact@v2)
+We automated away much of the tedium in our workflow.
+Running tests, building test clients, writing release notes, publishing to Itch.io, etc.
+These are all things we no longer do ourselves, we've automated it.
 
-Setting up a build and publish workflow can take some time, testing and iterating. Once you have the workflow you don't have to worry about it again and you get a lot of benefits.
+We used GitHub Actions, the automation platform that comes with GitHub.
+It's free up until a certain point, but we never hit maximum usage even when some builds got stuck for hours.
 
-While working on the workflow you should try and limit the dependencies you use as much as possible. Where you are forced to or its too hard to get it working yourself, you should lock those dependencies to a specific version so that they don't update when you don't want them to.
-We had a pipeline break for a day because GitHub changed something in the backend making our publish workflow not find the artifact from the build.
+Setting up your first build can be a daunting task.
+Don't give up!
+It's a great skill to learn.
 
-When using a build workflow you can easily run your tests before it builds. So that when you forget to run tests manually it still makes sure that the change you made didn't break any of the tests and cancel the action before merging it into the main. This works better the more tests and the higher code coverage you have.
+We'll go into detail on our builds, but there's definitely some learnings we'd like to share first:
 
-This allows you to have newly updated builds that you can send out for testing. If you can include the version or commit sha that this build comes from you can then easily know where the bug reports you get comes from.
+- **Learn some basic shell scripting and RegEx**.
+  They can make minor automation trivial work.
+- **Limit your reliance on pre-built Actions**.
+  Pre-built actions are opaque and can't be run locally.
+  A short script is preferable.
+- **Keep it simple, start small**.
+  It's easy to go overboard and make very intelligent automation.
+  You'll spend a lot of time making something brittle and hard to maintain.
 
 ### GitHub Actions <a name="github-actions"></a>
 

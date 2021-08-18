@@ -64,7 +64,7 @@ slopeSlideThreshold = 60.0
 dashLength = 0.35
 dashSpeed = 1500
 deathBarrier = 1500
-pushRange = 25.0
+pushRange = 40.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1.15306, -3.93667 )

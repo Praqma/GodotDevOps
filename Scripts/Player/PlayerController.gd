@@ -162,7 +162,7 @@ func detect_rigidbodies() -> bool:
 	if collision:
 		return true
 	
-	rayTo.y += collisionShape.shape.extents.y
+	rayTo.y += collisionShape.shape.extents.y * scale.y - 2
 	collision = space_state.intersect_ray(global_position, rayTo, [self])
 	push_rigidbodies(collision)
 	

@@ -376,28 +376,106 @@ We'll go into detail on our builds, but there's definitely some learnings we'd l
 
 ### GitHub Actions <a name="github-actions"></a>
 
+With GitHub Actions you define your workflows in dedicated configuration files.
+These workflows consist of an event they trigger on, an environment they run in and the steps they execute.
+An example workflow would be: "When a Pull Request gets a new change, spin up a Ubuntu environment with Godot and run my GUT tests."
+
+It took us a while to get used to the concepts and syntax.
+Once we did, we set up two workflows: one for building and testing, another for publishing a release.
+Getting it all working proved frustrating at times, but it was well worth it.
+
+We've really come to appreciate always having up-to-date clients available.
+The tests prevented us from merging in botched commits.
+Releasing was hassle-free.
+It was just very pleasant having all this automated.
+
+We'll go over our workflows below, hopefully you can draw some inspiration from them.
+
+**Resources:**
+
+- [Isaac Broyles - Building Unity with GitHub Actions](https://isaacbroyles.com/gamedev/2020/07/04/unity-github-actions.html)
+- [Thomas Stringer - Create a Release and Upload Artifacts with GitHub Actions](https://trstringer.com/github-actions-create-release-upload-artifacts/)
+
 ### Continuous integration <a name="continuous-integration"></a>
 
-Set of useful actions for Unity
-Because of licensing issues we never had the chance to try them out but this includes some of the actions we were planning on using\
-https://game.ci/
+Our first workflow was one to build and test our newest changes.
+It lives in the [.github/workflows/build.yml](https://github.com/Praqma/GodotDevOps/blob/main/.github/workflows/build.yml) file.
 
-Container with Godot installed. Used to export project from the command line inside the container.
-https://github.com/abarichello/godot-ci
+#### Trigger
 
-Checks out GitHub repository
-https://github.com/actions/checkout
+This job is triggered:
+
+- on commits to main
+- on commits to Pull Requests to main
+- manually
+
+```yaml
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+```
+
+#### Environments
+
+The workflow is divided into three jobs, one for each platform (Windows/Linux/Mac).
+These run in parallel in their own environment.
+
+The environments themselves are Ubuntu environments with Godot available.
+The image for the environment is maintained over at [github.com/abarichello/godot-ci](https://github.com/abarichello/godot-ci).
+
+```yaml
+runs-on: ubuntu-latest
+container:
+  image: barichello/godot-ci:3.3.2
+```
+
+Early on, we only used `ubuntu-latest` and not the `godot-ci` image.
+We used pre-built Actions to [build](https://github.com/marketplace/actions/build-godot) and [test](https://github.com/marketplace/actions/run-gut-tests) our project.
+We prefer our current solution as the steps are more transparent than the pre-built actions.
+
+#### Steps
+
+The steps differ slightly between target platforms, but they all follow the same trend.
+
+- First, we get the relevant code using the pre-built [https://github.com/actions/checkout](checkout action).
+  We use `lfs: true` to get our LFS files, and `fetch-depth: 0` to get our entire history as we'll need it later.
+- Then we pick between a building a debug or release client using the [Conditional value](https://github.com/haya14busa/action-cond) action.
+  We were a bit surprised it wasn't trivial to get a conditional value, but here we are.
+- Then we use the [godot command line interface](https://docs.godotengine.org/en/stable/getting_started/editor/command_line_tutorial.html) to run GUT and export the client.
+- Finally, we upload the game clients as build artifacts using the pre-built [upload-artifact](https://github.com/actions/upload-artifact) action.
+That's it, automated tests and builds are up and running!
+
+**On embedding the version:**
+
+We wanted to display the version in the game's main menu.
+However, we didn't want to (forget to) manually update the label every time.
+
+We learned we can override [Godot project settings](https://docs.godotengine.org/en/stable/classes/class_projectsettings.html#class-projectsettings) using an `override.cfg` file, even after building the game. Instead of using a hardcoded value, we store the version in a project setting and render that. Then we use [git tags](https://git-scm.com/book/en/v2/Git-Basics-Tagging) and [git describe](https://git-scm.com/docs/git-describe) to determine the version at build time and generate the `override.cfg` then and there.
+
+Is it clever? Yes.
+Too clever? Maybe.
+Do we like it? Absolutely.
+
+```yaml
+- name: Get version using git describe
+  run: echo "GIT_DESCRIBE=$(git describe)" >> $GITHUB_ENV
+
+- name: Create override.cfg
+  if: ${{ env.GIT_DESCRIBE != '' }}
+  run: echo "global/version = \"$GIT_DESCRIBE\"" >> override.cfg
+
+- name: Upload override.cfg
+  if: ${{ env.GIT_DESCRIBE != '' }}
+  uses: actions/upload-artifact@v2
+  with:
+    name: NeoMori-${{ github.sha }}-${{ github.job }}
+    path: ${{ github.workspace }}/override.cfg
+```
 
 ### Automating releases <a name="automating-releases"></a>
-
-Use boolean expression to save a value\
-https://github.com/haya14busa/action-cond
-
-Uploads an artifact to the workflow\
-https://github.com/actions/upload-artifact
-
-Guide on how to release and upload artifacts with GitHub actions\
-https://trstringer.com/github-actions-create-release-upload-artifacts/
 
 Download artifact from a workflow
 https://github.com/dawidd6/action-download-artifact

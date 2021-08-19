@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/LevelTimer.gd" type="Script" id=1]
+[ext_resource path="res://addons/gut/fonts/AnonymousPro-Regular.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -441.5
+margin_top = -120.0
+margin_right = 441.5
+margin_bottom = 120.0
+grow_vertical = 2
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+text = "Timer"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

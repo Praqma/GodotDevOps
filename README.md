@@ -12,7 +12,7 @@ NeoMori is a summer project exploring contemporary software development and DevO
   - [Project flow](#project-flow)
 - [License](#license)
 
-![NeoMori_Dashing](https://user-images.githubusercontent.com/62639702/126960849-7fe79e43-6ff5-489e-8cad-0f4ac8e0ca6a.gif "NeoMori Dashing")
+![NeoMori_Preview](https://user-images.githubusercontent.com/62639702/130251239-f00fed33-7242-4c85-9a87-3bf3df3015b0.gif "NeoMori Preview")
 
 ## Project goals <a name="project-goals"/>
 
@@ -29,16 +29,14 @@ Underlying the project is the development of NeoMori, a fast-paced stealth platf
 
 ## Installation <a name="installation"/>
 
-1. Navigate to the [**Releases**](https://github.com/Praqma/GodotDevOps/releases) page
+1. Navigate to the GitHub [**Releases**](https://github.com/Praqma/GodotDevOps/releases) page or the [**itch.io**](https://eficode.itch.io/neomori) page
 2. Download the latest release for your distribution
 3. Unzip the release to a chosen directory
 4. Follow instructions below for your distribution
 
 ### Windows
 
-5. Rename the *`NeoMori`* file (not ~~*`NeoMori.pck`*~~) to *`NeoMori.exe`*
-   - *This will be fixed in the future!*
-6. Run *`NeoMori.exe`* and enjoy!
+5. Run *`NeoMori.exe`* and enjoy!
 
 ### Linux
 
@@ -95,7 +93,7 @@ For convenience's sake we allow "epics" to reside here as well. These are large 
 
 In Progress are issues currently being worked on.
 
-As a rule of thumb, the amount of issues here shouldn't surpass the amount of project members at any given time. 
+As a rule of thumb, the amount of issues here shouldn't surpass the amount of project members at any given time.
 Essentially, a developer can't work on two  things at once.
 
 It is perfectly fine to move issues back and forth between `To Do` and `In Progress`.
@@ -104,7 +102,7 @@ If an issue is larger than expected it can be broken down into smaller issues an
 
 When an issue has all its _definition of done_ marks checked, it can be merged in, closed and moved to `Done`.
 
-#### Done 
+#### Done
 
 Issues in `Done` are done and stay done.
 
@@ -129,7 +127,7 @@ The `publish` workflow is triggered on tag.
 
 It takes the built clients from the `build` workflow and publishes them as a GitHub Release.
 
-### Creating a release <a name="releasing"/>
+### Creating a release <a name="creating-a-release"/>
 
 1. Check out the commit you wish to release
     - *Only works if the commit has a successful build on main*

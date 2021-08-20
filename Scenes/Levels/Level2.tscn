@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scripts/Pause.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/SceneTransitionRect.tscn" type="PackedScene" id=2]
@@ -13,12 +13,28 @@
 [ext_resource path="res://Scenes/Enemy/RightCamera.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scenes/Interactables/ReceiverDoor.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Assets/Sprites/Interactables/LightRays.png" type="Texture" id=13]
+[ext_resource path="res://Scripts/WinScreen.gd" type="Script" id=14]
+[ext_resource path="res://Scenes/LevelTimer.tscn" type="PackedScene" id=15]
+[ext_resource path="res://addons/gut/fonts/AnonymousPro-Regular.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://addons/gut/fonts/AnonymousPro-Bold.ttf" type="DynamicFontData" id=17]
 
 [sub_resource type="DynamicFont" id=1]
+size = 110
+font_data = ExtResource( 17 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 75
+font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 55
+font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=4]
 size = 48
 font_data = ExtResource( 8 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=5]
 size = 30
 font_data = ExtResource( 7 )
 
@@ -234,9 +250,94 @@ texture = ExtResource( 13 )
 
 [node name="LevelGoal" parent="." instance=ExtResource( 4 )]
 position = Vector2( 9472, -512 )
-sceneTransitionPath = NodePath("../CanvasLayer/SceneTransitionRect")
+winScreenPath = NodePath("../CanvasLayer/WinScreen")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="WinScreen" type="Control" parent="CanvasLayer"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+pausePath = NodePath("../Pause")
+
+[node name="WinOverlay" type="ColorRect" parent="CanvasLayer/WinScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.470588 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/WinScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -340.0
+margin_right = 513.0
+margin_bottom = -124.0
+custom_fonts/font = SubResource( 1 )
+text = "LEVEL CLEAR"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="CanvasLayer/WinScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -84.0
+margin_right = 513.0
+margin_bottom = 132.0
+custom_fonts/font = SubResource( 2 )
+text = "TIME"
+align = 1
+valign = 1
+
+[node name="Control" parent="CanvasLayer/WinScreen" instance=ExtResource( 15 )]
+pause_mode = 1
+margin_top = 112.0
+margin_bottom = 112.0
+
+[node name="Menu" type="Button" parent="CanvasLayer/WinScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -256.0
+margin_top = 348.0
+margin_right = 256.0
+margin_bottom = 452.0
+custom_fonts/font = SubResource( 6 )
+text = "MENU"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Restart" type="Button" parent="CanvasLayer/WinScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -256.0
+margin_top = 220.0
+margin_right = 256.0
+margin_bottom = 324.0
+custom_fonts/font = SubResource( 6 )
+text = "RESTART"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Pause" type="Control" parent="CanvasLayer"]
 pause_mode = 2
@@ -270,14 +371,14 @@ __meta__ = {
 [node name="Pause" type="Label" parent="CanvasLayer/Pause/PauseOptions"]
 margin_right = 174.0
 margin_bottom = 55.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 4 )
 text = "Paused"
 
 [node name="Resume" type="Button" parent="CanvasLayer/Pause/PauseOptions"]
 margin_top = 59.0
 margin_right = 174.0
 margin_bottom = 100.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 5 )
 text = "Resume"
 flat = true
 align = 0
@@ -286,7 +387,7 @@ align = 0
 margin_top = 104.0
 margin_right = 174.0
 margin_bottom = 145.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 5 )
 text = "Menu"
 flat = true
 align = 0
@@ -295,7 +396,7 @@ align = 0
 margin_top = 149.0
 margin_right = 174.0
 margin_bottom = 190.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 5 )
 text = "Restart"
 flat = true
 align = 0
@@ -304,7 +405,7 @@ align = 0
 margin_top = 194.0
 margin_right = 174.0
 margin_bottom = 235.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 5 )
 text = "Exit"
 flat = true
 align = 0
@@ -318,6 +419,8 @@ margin_right = -253.11
 margin_bottom = -149.68
 rect_scale = Vector2( 12.5768, 7.37932 )
 
+[connection signal="pressed" from="CanvasLayer/WinScreen/Menu" to="CanvasLayer/WinScreen" method="_on_Menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/WinScreen/Restart" to="CanvasLayer/WinScreen" method="_on_Restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/PauseOptions/Resume" to="CanvasLayer/Pause" method="_on_Resume_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/PauseOptions/Menu" to="CanvasLayer/Pause" method="_on_Menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/PauseOptions/Restart" to="CanvasLayer/Pause" method="_on_Restart_pressed"]

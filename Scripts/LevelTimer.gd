@@ -5,6 +5,9 @@ var runTimer : bool = false
 
 onready var label = get_node("Label")
 
+func _ready():
+	runTimer = true
+
 func _process(delta):
 	if runTimer:
 		time += delta
@@ -15,5 +18,3 @@ func _process(delta):
 		
 		label.text = "%02d:%02d:%03d" % [mins, secs, mils]
 
-func _ready():
-	runTimer = true

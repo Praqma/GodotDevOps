@@ -2,6 +2,8 @@
 
 onready var _transition_rect := $"../SceneTransitionRect"
 
+var didWin : bool = false
+
 func _input(event):
 	if event.is_action_pressed("pause") and not _transition_rect.isTransitioning:
 		pause()
@@ -21,6 +23,9 @@ func _on_Exit_pressed():
 	get_tree().quit()
 
 func pause():
+	if didWin:
+		return
+	
 	var new_pause_state = not get_tree().paused
 	get_tree().paused = new_pause_state
 	visible = new_pause_state

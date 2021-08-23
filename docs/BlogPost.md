@@ -526,6 +526,47 @@ Using the `GITHUB_REF` environment variable provided by GitHub, we're just a few
 
 ### Automating release notes <a name="automating-release-notes"></a>
 
+While working on our release workflow, we realized we had two pieces in place that would allow us to automate our release notes:
+
+- **We tag our releases.**
+  Combining `git describe` and `git log`, we can easily get a list of commits made since the last release.
+- **We reference issues in our commits.**
+  We can tell by a commit's message what issue was worked on/completed.
+
+Our first idea was to:
+
+- Use `git describe` and `git log` to get a list of commits since the last release.
+- Use RegEx to get a list of all the completed issues from those commits.
+- Get the titles of the issues through the [GitHub Issues API](https://docs.github.com/en/rest/reference/issues#get-an-issue).
+- Format the titles into neat release notes.
+
+A basic but sound approach.
+However, there were two few minor things that bothered us:
+
+- Not all issues are interesting enough to make it to the release notes
+- Issue titles aren't the greatest release note entries
+
+So we decided to simplify it even further:
+
+- _If_ we want an issue to be added to the release notes, we slightly modify how we reference it in our commit message.
+- While we're at it, we write the release note entry in the commit message.
+
+Here's an example commit message:
+
+```text
+Clean up remaining placeholder assets
+
+Fixes #137 > New Feature: Graphics and animations have been updated
+```
+
+Which will end up as `- New Feature: Graphics and animations have been updated (#137)` in the release notes.
+
+The magic happens in our release note generation script ([.buildscripts/release-notes.sh](https://github.com/Praqma/GodotDevOps/blob/main/.buildscripts/release-notes.sh)). It's a simple concatenation of `git log`, a RegEx find/replace and a sort.
+
+When we tag a commit to make a release, we use the output of the script as the tag's body.
+That way our GitHub Release immediately has patch notes attached, as it defaults to the tag body for its message.
+It's all pretty siple, but it gets the job done and saves us a lot of work.
+
 ## Extras <a name="extras"></a>
 
 ### Practice Using the Command Line Interface <a name="cli"></a>

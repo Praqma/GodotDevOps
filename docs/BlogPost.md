@@ -15,7 +15,7 @@ We're two game development students who had the opportunity to collaborate with 
 
 Game development is a notoriously special form of software development with many unique challenges.
 However, that doesn't mean we can't learn from contemporary practices outside of the game dev world.
-We did just that this summer, and this post serves as a summary of what we've learned.
+We did exactly that this summer, and this post serves as a summary of what we've learned.
 We hope it can be of use to other aspiring developers and show a different aspect to game development outside of scripting, modeling and level design.
 
 While we used [Godot](https://godotengine.org/) for our engine, we'll try to include [Unity](https://unity.com/) examples as well.
@@ -47,8 +47,6 @@ These are topics we found useful but feel aren't discussed/taught often enough.
   - [Continuous integration](#continuous-integration)
   - [Automating releases](#automating-releases)
   - [Automating release notes](#automating-release-notes)
-- [Extras](#extras)
-  - [Using command line interfaces](#cli)
 - [Summary](#summary)
 
 ## Getting started <a name="getting-started"></a>
@@ -208,7 +206,7 @@ Spikes are great to gain insight on the feasibility or workload of unrefined tas
 Spend (at most) some hours trying to implement or research an unrefined task.
 You can always do another spike, so be disciplined and stick to your time limit.
 
-For a task to leave To Do, a developer just needs to pick it up and start working on it.
+For a task to leave To Do, a developer only needs to pick it up and start working on it.
 
 #### In Progress
 
@@ -494,7 +492,7 @@ on:
 
 #### Environments
 
-Our release workflow's pretty lightweight with few requirements, so we just run on `ubuntu-latest`:
+Our release workflow's pretty lightweight with few requirements, so `ubuntu-latest` works fine:
 
 ```yaml
 runs-on: ubuntu-latest
@@ -514,7 +512,7 @@ Finally, we use the [josephbmanley/butler-publish-itchio-action](https://github.
 **On embedding the version:**
 
 You'll notice part of our release workflow is dedicated to updating the `override.cfg` file we created in the build workflow.
-Using the `GITHUB_REF` environment variable provided by GitHub, we're just a few RegEx replaces away from updating the version in our main menu:
+Using the `GITHUB_REF` environment variable provided by GitHub, we're only a few RegEx replaces away from updating the version in our main menu:
 
 ```yaml
 - name: Set version
@@ -580,11 +578,27 @@ It's all pretty siple, but it gets the job done and saves us a lot of work.
 
 ## Summary <a name="summary"></a>
 
-You might be asking yourself "Doesn't it cost more time to work this way than to just develop features for the game?". That depends on how you look at it. The first time you create your pipelines, absolutely it is going to eat up some time. Having to plan out every issue in a Kanban board instead of jumping straight into coding, that can feel cumbersome after a while too. Learning and adopting these things into your workflow does have some cost but it is all mostly frontloaded. Take the pipelines for instance. Once you got them set up, you can reuse them in any project. Never again do you have to manually run an export. TDD is another case where it can feel like it takes longer to develop features and you never really see the benefit. That probably means it is working. Your code is less prone to errors and as a result you don't have to deal with new features breaking old ones. If you are still unsure, give them a go and see if you change your mind. Our GitHub repository is a great place to start. Everything there is for you to use in your own projects. Our solutions obviously are not perfect and were developed in a way that worked for us so take our foundation and improve it. There is no one correct way on how to use these techniques. That's the beauty of it. Adopt it into your workflow and create something that works for you.
+A core theme to this project was payoff.
 
-### Resources
+- Why spend so much time organizing and refining project tasks when you can jump straight to coding?
+- Why take all that extra time to do Test Driven Development when you can churn out more game features without it?
+- Why go through the effort of setting up automated workflows when building and sharing the game is so easy?
 
-Useful source for game development in Godot
-https://www.gdquest.com/
-Useful source for game development in Unity
-https://www.youtube.com/c/GameDevGuide/videos
+Going into the project, we didn't really know the answers to these questions.
+We knew it was the "correct way" of working, but considered it enterprisey and stifling.
+It all seemed like a lot of time spent not developing the game.
+But now we understand:
+
+- By organizing your tasks properly, you waste less time figuring out what is or isn't done, and spend more time developing the game.
+- By using Test Driven Development, you waste less time chasing new bugs or digging through ugly code, and spend more time developing the game.
+- By setting up the automated workflows, you remove mundane and boring tasks from your work, and spend more time developing the game.
+
+We didn't notice it at first, because it's difficult to notice when things are _missing_.
+We slowly realized we weren't doing as many boring or frustrating tasks as usual.
+These practices ultimately enabled us to spend more time developing the game.
+
+Sure, it took time and effort to learn and set up everything.
+But we won't have to relearn TDD in our next project, and much of the automation we've done is reusable.
+
+In the end, it's worth it to create a workflow that works for you,
+and it's worth it to learn the skills that enable you to do so.

@@ -477,14 +477,52 @@ Do we like it? Absolutely.
 
 ### Automating releases <a name="automating-releases"></a>
 
-Download artifact from a workflow
-https://github.com/dawidd6/action-download-artifact
+Our second workflow was automating our release process.
+You'll find the workflow YAML file in [.github/workflows/publish.yml](https://github.com/Praqma/GodotDevOps/blob/main/.github/workflows/publish.yml).
 
-Upload as GitHub release\
-https://github.com/softprops/action-gh-release
+#### Trigger
 
-Upload to itch.io\
-https://github.com/josephbmanley/butler-publish-itchio-action
+To trigger our release workflows, we simply push a [git tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging).
+This will kick off the pipeline for the commit we tagged.
+
+```yaml
+on:
+  push:
+    tags:
+      - '*'
+```
+
+#### Environments
+
+Our release workflow's pretty lightweight with few requirements, so we just run on `ubuntu-latest`:
+
+```yaml
+runs-on: ubuntu-latest
+```
+
+#### Steps
+
+Unlike the build workflows, the release workflow is identical for Windows, Linux and Mac.
+Thus we made it a [matrix workflow](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstrategymatrix), allowing us to define three near-identical workflows without duplication.
+
+Our fist step is to use the [dawidd6/action-download-artifact](https://github.com/dawidd6/action-download-artifact) action to download the clients we've already built in our build workflow. This way we avoid a redundant build and ensures the client we're releasing is the one we've been play-testing.
+
+Then we zip up the client and use the [softprops/action-gh-release](https://github.com/softprops/action-gh-release) action to publish it as a GitHub release. Making them available on our [Releases page](https://github.com/Praqma/GodotDevOps/releases).
+
+Finally, we use the [josephbmanley/butler-publish-itchio-action](https://github.com/josephbmanley/butler-publish-itchio-action) action to publish it to our [itch.io page](https://eficode.itch.io/neomori).
+
+**On embedding the version:**
+
+You'll notice part of our release workflow is dedicated to updating the `override.cfg` file we created in the build workflow.
+Using the `GITHUB_REF` environment variable provided by GitHub, we're just a few RegEx replaces away from updating the version in our main menu:
+
+```yaml
+- name: Set version
+  run: echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
+
+- name: Update global/version in override.cfg
+  run: sed -i "s#global/version\s*=.*#global/version=\"${{ env.VERSION }}\"#g" NeoMori/override.cfg
+```
 
 ### Automating release notes <a name="automating-release-notes"></a>
 

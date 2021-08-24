@@ -19,12 +19,11 @@ With the help of some Eficodeans, we dove headfirst into Test Driven Development
 
 This post serves as a summary of our learnings.
 We hope it can be of use to other aspiring game developers and show a different aspect of the development process outside of scripting, modeling and level design.
+While we used [Godot](https://godotengine.org/) for our engine, our learnings apply to other engines as well.
 
 You'll find everything in our [GodotDevOps GitHub repository](https://github.com/Praqma/GodotDevOps).
 
 The game is also hosted on our [NeoMori itch.io page](https://eficode.itch.io/neomori).
-
-While we used [Godot](https://godotengine.org/) for our engine, we'll try to include [Unity](https://unity.com/) examples as well.
 
 ## Table of contents
 
@@ -36,7 +35,7 @@ While we used [Godot](https://godotengine.org/) for our engine, we'll try to inc
   - [Creating a GitHub repository](#repository-creation)
   - [Inviting collaborators](#inviting-collaborators)
   - [Using git](#using-git)
-  - [Using git LFS](#git-lfs)
+  - [Dealing with large files in git](#git-lfs)
 - [Organizing your work](#organizing-work)
   - [Creating a project board](#project-board)
   - [Task management](#task-management)
@@ -81,57 +80,53 @@ It's worth it to create a workflow that works for you, and it's worth it to lear
 
 ## Getting started <a name="getting-started"></a>
 
-These first steps detail how we set up our project repository on [GitHub](https://www.github.com).
-For those unaware, GitHub is a collaboration platform offering free code hosting, task management, build automation and more.
-It's a great place to organize your work both solo or as a team.
+The very first part of our project was creating a repository on [GitHub](https://www.github.com) and getting comfortable using [git](git-scm.com/).
 
-If you're tempted to skip this step, don't.
-Solo developers or Dropbox enthusiasts often do and end up missing out.
-Many modern practices depend on having such a repository, and it comes laden with free tooling.
+For those unaware:
 
-Note that using GitHub goes hand in hand with using [git](git-scm.com/).
-Don't let that intimidate you, though.
-The benefits are absolutely worth the learning effort.
+- [git](git-scm.com/) is a version control system enabling you to save and share your work.
+- [GitHub](https://www.github.com) is a collaboration platform offering free git repository hosting, task management, build automation and more.
+
+If you're tempted to skip this: don't.
+Many modern practices depend on using version control like git, and GitHub comes laden with free tooling.
+There's a lot of bells and whistles, which can be intimidating, but don't let that stop you.
+We eased into it, using only what we needed and we won't be going back to Dropbox any time soon.
+The benefits of a project repository and its tooling are absolutely worth the learning effort.
 
 ### Creating a GitHub repository <a name="repository-creation"></a>
 
-Your repository is the heart of your project.
-It's where you store your code, keep track of your work and set up your automated builds.
+GitHub is a great place to organize your work whether you fly solo or as a team.
+Before too long it'll become the heart of your project.
 
-If you haven't created a GitHub account yet, head over to [github.com/signup](https://github.com/signup) and make one.
+Creating one isn't difficult either:
 
-To create a repository, you can hit the `+` sign in the top right when logged in, or head over to [github.com/new](https://github.com/new).
+- If you haven't created a GitHub account yet, head over to [github.com/signup](https://github.com/signup) to make one.
+- Once signed up, you can hit the `+` sign in the top right or head over to [github.com/new](https://github.com/new) to create your repository.
+- Finally, under your newly created repository's settings page, you can invite your team mates as collaborators.
 
-**Resources**:
+**Resources:**
 
+- [Our project repository](https://github.com/Praqma/GodotDevOps)
 - [GitHub docs - Create a repo](https://docs.github.com/en/get-started/quickstart/create-a-repo)
-- [Brackeys - How to use GitHub with Unity](https://www.youtube.com/watch?v=qpXxcvS-g3g)
-
-### Inviting collaborators <a name="inviting-collaborators"></a>
-
-If you're working as a group, you'll want to invite everyone as collaborators, so they can contribute to the repository.
-This can be done in the repository's settings page, given that they have a GitHub account.
-
-**Resources**:
-
 - [GitHub docs - Inviting collaborators](https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository)
+- [Brackeys - How to use GitHub with Unity](https://www.youtube.com/watch?v=qpXxcvS-g3g)
 
 ### Using Git <a name="using-git"></a>
 
-It's worth it to learn git.
-
-We had used it before, but it often felt more of a hindrance than a help.
+We had used git before, but it often felt more of a hindrance than a help.
 Admittedly, we hadn't taken the time to learn it properly.
-We were just fumbling around in [GitHub Desktop](https://desktop.github.com/).
+We were just fumbling around in the [GitHub Desktop](https://desktop.github.com/) client.
 
 GitHub Desktop is great, mind you.
 Still, we'd recommend learning to work from the command line interface (CLI).
 While the app can do a lot, being able to turn to the CLI for troubleshooting will be a lifesaver.
 Plus, once you know your way around the CLI, the app itself becomes a lot less arcane.
 
-You should also pick up some good git habits.
-We'll cover some in our workflow, but one bears mentioning already:
-Write small commits. One change per commit is ideal.
+How to use git _properly_ is a trickier subject.
+Git is a popular tool with many ways of achieving similar goals, so there's a lot of opinions out there.
+To avoid unnecessary confusion, we started with a very simple workflow, slowly changing it over time to suit our needs.
+
+If you want a good tip (opinion) to get you stated: Write small commits. One change per commit is ideal.
 
 **Resources**:
 
@@ -139,21 +134,22 @@ Write small commits. One change per commit is ideal.
 - [Tom Preston-Werner - The Git Parable](https://tom.preston-werner.com/2009/05/19/the-git-parable.html)
 - [Katacoda - Git Course](https://www.katacoda.com/courses/git)
 
-### Using git LFS <a name="git-lfs"></a>
+### Dealing with large files in git <a name="git-lfs"></a>
 
-Your git repository contains the full history of your project.
-This means that every version of every texture, model, sound, etc. gets stored.
-Over a long period of time, this can cause your repository to swell to an incredible size.
+By design, a git repository contains the full history of its contents.
+This is what allows you to interact with the history even while offline.
+However, storing every version of every texture, model, sound file, etc. can cause a game dev repository to swell to an incredible size.
+
+Not storing every version isn't an option.
+Luckily there's two ways to deal with the size issue: Git LFS and shallow cloning.
 
 Git Large File Storage (LFS) is a tool that allows you to mark certain file types to be stored outside of your repository.
 These files will get stored on an external file server, while your git repository will only store a lightweight reference to them.
+GitHub conveniently offers LFS integration, so we tried it out and found it working seamlessly.
+Its LFS service is only free up to a certain amount of storage/traffic, but we didn't even get close to the limit with our humble 2D platformer.
 
-Conveniently, GitHub offers LFS integration as well.
-It works seamlessly, but it's only free up to a certain amount of storage/traffic.
-Luckily, we didn't even get close to the limit with our humble 2D platformer.
-
-If you don't want to use LFS and would rather cram your big files into your repository, you should look into [shallow clones](https://www.git-scm.com/docs/git-clone#Documentation/git-clone.txt---depthltdepthgt).
-You'll need it before too long.
+If you don't want to use LFS and would rather cram your big files into your repository, you should look into [shallow cloning](https://www.git-scm.com/docs/git-clone#Documentation/git-clone.txt---depthltdepthgt).
+It allows you to fetch a fragment of your repository's history, sparing you from downloading unnecessary history.
 
 **Resources**:
 

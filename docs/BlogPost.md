@@ -13,23 +13,25 @@
 Hi there!
 We're two game development students who had the opportunity to collaborate with [Eficode](https://www.eficode.com) over summer.
 
-Game development is a notoriously special form of software development with many unique challenges.
-However, that doesn't mean we can't learn from contemporary practices outside of the game dev world.
-We did exactly that this summer, and this post serves as a summary of what we've learned.
-We hope it can be of use to other aspiring developers and show a different aspect to game development outside of scripting, modeling and level design.
+While game development is notoriously special, we can still learn from contemporary development practices used outside of it.
+We set out to develop a humble game while learning and applying as many modern development techniques and practices as we could.
+With the help of some Eficodeans, we dove headfirst into Test Driven Development (TDD), project planning, automated pipelines and more.
+
+This post serves as a summary of our learnings.
+We hope it can be of use to other aspiring game developers and show a different aspect of the development process outside of scripting, modeling and level design.
+
+You'll find everything in our [GodotDevOps GitHub repository](https://github.com/Praqma/GodotDevOps).
+
+The game is also hosted on our [NeoMori itch.io page](https://eficode.itch.io/neomori).
 
 While we used [Godot](https://godotengine.org/) for our engine, we'll try to include [Unity](https://unity.com/) examples as well.
 
-You'll find everything in our [GodotDevOps](https://github.com/Praqma/GodotDevOps) repository.
+## Table of contents
 
-## The summer project
-
-We set out to develop a humble indie game while learning and applying as many modern development techniques and practices as we could.
-Thus we dove headfirst into test driven development (TDD), project planning, automated pipelines, etc.
-These are topics we found useful but feel aren't discussed/taught often enough.
-
+[Something to introduce the TOC]
 [Something about using this as _inspiration_ and not blindly following everything. (recap in summary)]
 
+- [Is it worth it?](#worth)
 - [Getting started](#getting-started)
   - [Creating a GitHub repository](#repository-creation)
   - [Inviting collaborators](#inviting-collaborators)
@@ -47,7 +49,35 @@ These are topics we found useful but feel aren't discussed/taught often enough.
   - [Continuous integration](#continuous-integration)
   - [Automating releases](#automating-releases)
   - [Automating release notes](#automating-release-notes)
-- [Summary](#summary)
+- [Conclusion](#Conclusion)
+
+## Is it worth it? <a name="worth"></a>
+
+Before we dip into technical details, we wanted to share if and how learning all of this was worth it.
+
+We had heard of many of the practices (version control, task management, Test Driven Development, etc.), but we didn't understand of the payoffs of using them:
+
+- Why spend so much time organizing and refining tasks when you can jump straight to coding?
+- Why take extra time doing Test Driven Development when you can churn out more game features without it?
+- Why struggle setting up automation when the tasks you're automating are trivial anyway?
+
+Going into the project, we didn't really know the answers to these questions.
+We knew these were the "correct way" of working, but considered them "enterprisey" and stifling.
+It all seemed like a lot of time spent not developing the game.
+
+Even after implementing and using these practices, we didn't really notice the payoffs.
+But that's because it's difficult to notice when things are _missing_.
+We slowly realized we weren't spending as much time doing the boring or frustrating parts of development.
+
+- By organizing and refining our tasks properly, we always had clear and concrete tasks to work on and the project never got stuck.
+- By using Test Driven Development, we wasted less time chasing bugs or digging through old code.
+- By setting up the automated workflows, we completely removed many mundane, boring and distracting tasks from our work.
+
+These practices ultimately enabled us to spend _more_ time doing the fun part: developing the game.
+While it took us much time and effort to learn everything, we won't have to relearn it for our next project, and much of the automation we've done is reusable.
+In hindsight, we wish we'd have learned this stuff far sooner, before our previous collaborative projects.
+
+It's worth it to create a workflow that works for you, and it's worth it to learn the skills that enable you to do so.
 
 ## Getting started <a name="getting-started"></a>
 
@@ -576,29 +606,6 @@ It's all pretty siple, but it gets the job done and saves us a lot of work.
   - Run Gut tests from CL
   - Export Godot builds from CL
 
-## Summary <a name="summary"></a>
+## Conclusion <a name="conclusion"></a>
 
-A core theme to this project was payoff.
-
-- Why spend so much time organizing and refining project tasks when you can jump straight to coding?
-- Why take all that extra time to do Test Driven Development when you can churn out more game features without it?
-- Why go through the effort of setting up automated workflows when building and sharing the game is so easy?
-
-Going into the project, we didn't really know the answers to these questions.
-We knew it was the "correct way" of working, but considered it enterprisey and stifling.
-It all seemed like a lot of time spent not developing the game.
-But now we understand:
-
-- By organizing your tasks properly, you waste less time figuring out what is or isn't done, and spend more time developing the game.
-- By using Test Driven Development, you waste less time chasing new bugs or digging through ugly code, and spend more time developing the game.
-- By setting up the automated workflows, you remove mundane and boring tasks from your work, and spend more time developing the game.
-
-We didn't notice it at first, because it's difficult to notice when things are _missing_.
-We slowly realized we weren't doing as many boring or frustrating tasks as usual.
-These practices ultimately enabled us to spend more time developing the game.
-
-Sure, it took time and effort to learn and set up everything.
-But we won't have to relearn TDD in our next project, and much of the automation we've done is reusable.
-
-In the end, it's worth it to create a workflow that works for you,
-and it's worth it to learn the skills that enable you to do so.
+[quick wrap-up, point to things we didn't get a chance to do]

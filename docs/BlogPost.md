@@ -77,6 +77,7 @@ While it took us much time and effort to learn everything, we won't have to rele
 In hindsight, we wish we'd have learned this stuff far sooner, before our previous collaborative projects.
 
 It's worth it to create a workflow that works for you, and it's worth it to learn the skills that enable you to do so.
+_Your workflow is as much your product as your game._
 
 ## Getting started <a name="getting-started"></a>
 
@@ -136,11 +137,11 @@ If you want a good tip (opinion) to get you stated: Write small commits. One cha
 
 ### Dealing with large files in git <a name="git-lfs"></a>
 
-By design, a git repository contains the full history of its contents.
+By design, a git repository contains the full history of all its contents.
 This is what allows you to interact with the history even while offline.
-However, storing every version of every texture, model, sound file, etc. can cause a game dev repository to swell to an incredible size.
+However, storing every version of every texture, model, sound file, etc. can cause a game development repository to swell to an incredible size.
 
-Not storing every version isn't an option.
+Not storing every version isn't an option, it's core to git.
 Luckily there's two ways to deal with the size issue: Git LFS and shallow cloning.
 
 Git Large File Storage (LFS) is a tool that allows you to mark certain file types to be stored outside of your repository.
@@ -159,22 +160,20 @@ It allows you to fetch a fragment of your repository's history, sparing you from
 
 ## Organizing your work <a name="organizing-work"></a>
 
-Organizing game development is tricky, especially when you're multiple people.
-Defining and improving how you organize your work is critical to a project's success.
-Where good habits and discipline can do wonders, bad habits and cowboy coding can result in lots of wasted time.
+We've always created project boards to organize our tasks when starting on a new game.
+Without fail, these fell into disrepair and made way for cowboy coding.
+They didn't provide us enough value to bother.
 
-We'll go into detail on how we organized our work, but there's one _very important_ thing to bring up before that:
-_Your workflow is as much your product as your game._
-
-It's a common trap for people to adopt some "best practice" workflow.
-While you can certainly draw inspiration from other workflows, doing so blindly will never net you a comfortable flow.
-It's vital you develop the habits and skills to continuously assess and improve your own way of working.
-Start small, start simple and continuously improve.
-
+This time things went differently.
+We were advised to start with a simple workflow, to gradually and deliberately expand on it.
 We decided to start with a simple project board and some basic rules regarding task management.
 Whenever something felt annoying or tedious in our workflow, we'd create a task to fix that.
 This was an easy way of weaving process improvements into our game development.
-Note that below we described what we ended up with after a few weeks, not our original starting point.
+The result was a genuinely comfortable workflow which only got better over time.
+
+Below we go into the details of our workflow, feel free to draw inspiration from it.
+Noe that what we describe below is what we ended up with after a few weeks, not our original starting point.
+We highly recommend you start small, and actively work on developing it as you would your game.
 
 ### Creating a project board <a name="project-board"></a>
 

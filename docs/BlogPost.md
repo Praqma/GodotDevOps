@@ -33,14 +33,13 @@ The game is also hosted on our [NeoMori itch.io page](https://eficode.itch.io/ne
 - [Is it worth it?](#worth)
 - [Getting started](#getting-started)
   - [Creating a GitHub repository](#repository-creation)
-  - [Inviting collaborators](#inviting-collaborators)
   - [Using git](#using-git)
   - [Dealing with large files in git](#git-lfs)
-- [Organizing your work](#organizing-work)
+- [Organizing the work](#organizing-work)
   - [Creating a project board](#project-board)
   - [Task management](#task-management)
-  - [Referencing issues in your commits](#referencing-issues)
-- [Creating your development workflow](#development-workflow)
+  - [Referencing issues in commits](#referencing-issues)
+- [Creating a development workflow](#development-workflow)
   - [Test Driven Development](#tdd)
   - [Branching and merging](#branching-and-merging)
 - [Automating work](#getting-automated)
@@ -158,7 +157,7 @@ It allows you to fetch a fragment of your repository's history, sparing you from
 - [GitHub - Managing billing for LFS](https://docs.github.com/en/billing/managing-billing-for-git-large-file-storage/about-billing-for-git-large-file-storage)
 - [git-scm - Shallow clone](https://www.git-scm.com/docs/git-clone#Documentation/git-clone.txt---depthltdepthgt)
 
-## Organizing your work <a name="organizing-work"></a>
+## Organizing the work <a name="organizing-work"></a>
 
 We've always created project boards to organize our tasks when starting on a new game.
 Without fail, these fell into disrepair and made way for cowboy coding.
@@ -177,17 +176,16 @@ We highly recommend you start small, and actively work on developing it as you w
 
 ### Creating a project board <a name="project-board"></a>
 
-Your project board is where you plan and track your work.
+The project board is where you plan and track your work.
 You could use a humble notebook, [Trello](https://trello.com) or some other tracking system.
 We opted to use GitHub Projects. It has some nice features and comes with the GitHub repository.
 You can create a project board from the `Projects` tab in your GitHub repository.
 
 We'll go into detail on how we organized our board, but how you organize yours is ultimately up to you.
 
-You'll find our board over at our [GodotDevOps](https://github.com/Praqma/GodotDevOps/projects/1) repo.
-
 **Resources:**
 
+- [Our project board](https://github.com/Praqma/GodotDevOps/projects/1)
 - [GitHub docs - About project boards](https://docs.github.com/en/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)
 
 ### Task management <a name="task-management"></a>
@@ -197,13 +195,9 @@ Each column has a few ground rules to keep things organized.
 We ended up with: _Unrefined_, _To Do_, _In Progress_, _Done_ and _Scrapped_.
 Tasks generally flow from left to right until they're done or get scrapped.
 
-As a reminder: How you organize your tasks is up to you.
-Feel free to take inspiration from us or others, but tailor it to your own needs.
-Ultimately, whatever works for you is better than someone else's idea of "best practice".
-
 #### Unrefined
 
-This swimlane contains our vague ideas and features.
+This column contains our vague ideas and features.
 It's anything we (might) want to do at one point.
 
 For a task to leave Unrefined, it needs to:
@@ -218,7 +212,7 @@ For a task to leave Unrefined, it needs to:
 
 #### To Do
 
-This swimlane contains all our refined tasks.
+This column contains all our refined tasks.
 They have a clear list of things to do before they're finished and should take less than a day to complete.
 Tasks are generally sorted by priority, with the most important at the top.
 
@@ -247,6 +241,7 @@ These are all the tasks that are done.
 
 Tasks never leave Done.
 If something was overlooked, a new task can be created.
+This is once more to avoid feature creep and endless tasks.
 
 #### Scrapped
 
@@ -256,9 +251,9 @@ These are mostly features that didn't make the cut.
 We keep them around with a comment on why they were scrapped.
 In case we ever want to revisit them, or remind ourselves why we decided against them, we can find them here.
 
-### Referencing issues in your commits <a name="referencing-issues"></a>
+### Referencing issues in commits <a name="referencing-issues"></a>
 
-A good habit is to reference your issues/tasks in your commit message.
+A good habit is to reference issues/tasks in a commit's message.
 To reference an issue or task, we add the following to our commit message body:
 
 - **WIP #12**
@@ -266,19 +261,22 @@ To reference an issue or task, we add the following to our commit message body:
 - **Fixes #12**
   Adding this means this commit is the commit that finally completes issue #12.
   Once this commit is merged into our main branch, GitHub will automatically close the issue and move it to *Done*.
+- **Fixes #12 > Added a new level**
+  This behaves the same as the one above, but the extra text gets used in our [automated release notes](#automating-release-notes).
+  Note that this is a purely custom script and not something that comes out of the box.
 
-Doing this makes every change in your repository link back to the issue that spawned it.
+Doing this makes every change in our repository link back to the issue that spawned it.
 It's great for traceability and finding out why specific changes were made.
-It also helps you stay disciplined and keep to your tasks.
+It also helped us stay disciplined and keep to our tasks.
 
 **References:**
 
 - [GitHub guides - Mastering Issues](https://guides.github.com/features/issues/#notifications)
 
-## Creating your development workflow <a name="development-workflow"></a>
+## Creating a development workflow <a name="development-workflow"></a>
 
 In this section we'll go into how we do the technical work.
-Our testing and publishing work is all automated, allowing us to spend most of our time doing the fun part of game development.
+Our verification and publishing work is automated, allowing us to spend most of our time doing the fun part of game development.
 
 Note that we didn't conjure this workflow up on day one.
 Throughout the project, we constantly improved and automated our way of working.
@@ -313,12 +311,10 @@ This will trigger the release pipeline, publishing it to our [GitHub](https://gi
 
 ### Test Driven Development <a name="tdd"></a>
 
-Testing never gets the attention it deserves in game development.
-And why would it?
-It's easy to start up your game and check if things work.
-But as the game grows, there will be more to test, there will more systems that can fail.
-More time will be spent checking if things still work, and less on actually developing the game.
-You'll want you automate your tests, but you'll find your code tightly coupled to your engine or otherwise tough to test.
+We never gave testing the attention it deserves, and why would we?
+It's easy to boot up the game and check if things work.
+But as a game grows, there's' more to test and more that can fail.
+That's when we'd look into adding some automated tests, but we'd our code hard to test and tightly coupled to the engine.
 
 This is the scenario Test Driven Development (TDD) aims to avoid.
 With TDD, you write tests _before_ writing the code.
@@ -340,20 +336,20 @@ Check out some of the excellent resources for getting started with TDD below.
 
 #### Branching and merging <a name="branching-and-merging"></a>
 
-A big part of your development workflow is how you interact with your version control system.
-There's a lot to consider when it comes to defining that flow.
+A big part of our development workflow is how we interact with git.
 Below are some of the decisions that led us to our current way of working.
 Remember that these aren't the _correct_ ways to work with git, they're just what worked for us.
 
 > We found that everyone working on the main branch turned messy quickly.<br/>
+> You'd trip over unfinished work and abandoned features regularly.
 > Thus we opted for people to work on their issues on separate branches.<br/>
 > We enforced this by locking the main branch in our project settings.
 
-> We found that long-lived branches led to challenging merges and many merge conflicts.<br/>
+> We found that doing too much work on a branch led to challenging merges and many merge conflicts.<br/>
 > Thus we opted for working on short-lived branches that we merged as soon as the task was done.<br/>
 > We enforced this by refining tasks down to small sizes.
 
-> We found that linear history was easier to read.<br/>
+> We found that linear history was easier to read than one with many fork/merge points.<br/>
 > Thus we opted for using rebasing and fast-forward merging over the traditional three-way merges.<br/>
 > We enforced this by forcing Pull Requests to be up-to-date with main in our project settings.
 
@@ -364,8 +360,8 @@ Remember that these aren't the _correct_ ways to work with git, they're just wha
 > We're a small team that collaborates mostly synchronously.<br/>
 > Thus we opted to use Pull Requests purely as a platform for automated builds, rather than a place to collaborate.
 
-As you see, there's a lot of room for preference here and much that depends on your team size.
-The only thing that really matters is that your team agrees on the workflow, actually follows it and is open to improving it along the way.
+As you see, there's a lot of room for preference here and much that depends on team size.
+The only thing that really matters is that the team agrees on the workflow, actually follows it and is open to improving it along the way.
 
 ## Automating work <a name="getting-automated"></a>
 
@@ -376,14 +372,13 @@ These are all things we no longer do ourselves, we've automated it.
 We used GitHub Actions, the automation platform that comes with GitHub.
 It's free up until a certain point, but we never hit maximum usage even when some builds got stuck for hours.
 
-Setting up your first build can be a daunting task.
-Don't give up!
+Setting up your first build can be a daunting task, but don't give up!
 It's a great skill to learn.
 
-We'll go into detail on our builds, but there's definitely some learnings we'd like to share first:
+We'll go into detail on our builds, but there's some learnings we'd like to share first:
 
 - **Learn some basic shell scripting and RegEx**.
-  They can make minor automation trivial work.
+  It can turn minor automation tasks into trivial work.
 - **Limit your reliance on pre-built Actions**.
   Pre-built actions are opaque and can't be run locally.
   A short script is preferable.
@@ -399,19 +394,19 @@ We'll go into detail on our builds, but there's definitely some learnings we'd l
 
 ### GitHub Actions <a name="github-actions"></a>
 
-With GitHub Actions you define your workflows in dedicated configuration files.
-These workflows consist of an event they trigger on, an environment they run in and the steps they execute.
-An example workflow would be: "When a Pull Request gets a new change, spin up a Ubuntu environment with Godot and run my GUT tests."
+With GitHub Actions you define workflows in dedicated configuration files.
+A workflows consists of an event that triggers it, an environment it runs in and steps it executes.
+An example workflow could be: "When a Pull Request gets a new change, spin up a Ubuntu environment with Godot and run my unit tests."
 
 It took us a while to get used to the concepts and syntax.
-Once we did, we set up two workflows: one for building and testing, another for publishing a release.
-Getting it all working proved frustrating at times, but it was well worth it.
+Once we did, we set up two workflows: one for building and testing, another for publishing releases.
+Getting it all working proved frustrating at times, but it was well worth it:
 
-We've really come to appreciate always having up-to-date clients available.
-The tests prevented us from merging in botched commits.
-Releasing was hassle-free.
+- We've really come to appreciate always having up-to-date clients available.
+- The tests prevented us from merging in botched branches multiple times.
+- Creating releases was hassle-free.
+
 It was just very pleasant having all this automated.
-
 We'll go over our workflows below, hopefully you can draw some inspiration from them.
 
 **Resources:**

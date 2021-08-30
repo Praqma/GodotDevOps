@@ -416,7 +416,7 @@ We'll go over our workflows below, hopefully you can draw some inspiration from 
 
 ### Continuous integration <a name="continuous-integration"></a>
 
-Our first workflow was one to build and test our newest changes.
+Our first workflow was one to build and test our latest changes.
 It lives in the [.github/workflows/build.yml](https://github.com/Praqma/GodotDevOps/blob/main/.github/workflows/build.yml) file.
 
 #### Trigger
@@ -532,7 +532,7 @@ Finally, we use the [josephbmanley/butler-publish-itchio-action](https://github.
 **On embedding the version:**
 
 You'll notice part of our release workflow is dedicated to updating the `override.cfg` file we created in the build workflow.
-Using the `GITHUB_REF` environment variable provided by GitHub, we're only a few RegEx replaces away from updating the version in our main menu:
+Using the `GITHUB_REF` environment variable provided by GitHub, we're only a few RegEx replacements away from updating the version in our main menu:
 
 ```yaml
 - name: Set version
@@ -544,7 +544,7 @@ Using the `GITHUB_REF` environment variable provided by GitHub, we're only a few
 
 ### Automating release notes <a name="automating-release-notes"></a>
 
-While working on our release workflow, we realized we had two pieces in place that would allow us to automate our release notes:
+While working on our release workflow, we realized we had everything in place to automate our release notes:
 
 - **We tag our releases.**
   Combining `git describe` and `git log`, we can easily get a list of commits made since the last release.
@@ -585,17 +585,11 @@ When we tag a commit to make a release, we use the output of the script as the t
 That way our GitHub Release immediately has patch notes attached, as it defaults to the tag body for its message.
 It's all pretty siple, but it gets the job done and saves us a lot of work.
 
-## Extras <a name="extras"></a>
-
-### Practice Using the Command Line Interface <a name="cli"></a>
-
-- Used heavily throughout our development
-  - When making workflows and debugging them
-  - Can do a lot more with git command line compared to GitHub desktop
-    - Why learning Git in command line is worth it
-  - Run Gut tests from CL
-  - Export Godot builds from CL
-
 ## Conclusion <a name="conclusion"></a>
 
-[quick wrap-up, point to things we didn't get a chance to do]
+We've learned a lot from our dive into contemporary development practices.
+It has enabled us to make our projects more sustainable, organized and free of much of the tedium.
+While we often struggled to get things working or while developing good habits, it was worth it in the end.
+If you haven't dabbled in any of this yourself, try it out for a project! It'll be worth it.
+
+In hindsight, we've wasted a lot of time by not learning these things sooner.

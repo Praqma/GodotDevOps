@@ -51,7 +51,7 @@ The game is also hosted on our [NeoMori itch.io page](https://eficode.itch.io/ne
 
 ## Is it worth it? <a name="worth"></a>
 
-We had heard of many of the practices (version control, task management, Test Driven Development, etc.), but we didn't understand of the payoffs of using them:
+We had heard of many of the practices (version control, task management, Test Driven Development, etc.), but we didn't understand the payoffs of using them:
 
 - Why spend so much time organizing and refining tasks when you can jump straight to coding?
 - Why take extra time doing Test Driven Development when you can churn out more game features without it?
@@ -71,7 +71,7 @@ We slowly realized we weren't spending as much time doing the boring or frustrat
 
 These practices ultimately enabled us to spend _more_ time doing the fun part: developing the game.
 While it took us much time and effort to learn everything, we won't have to relearn it for our next project, and much of the automation we've done is reusable.
-In hindsight, we wish we'd have learned this stuff far sooner, before our previous collaborative projects.
+In hindsight, we wish we'd have learned this stuff far sooner, before our previous collaborative projects at university.
 
 It's worth it to create a workflow that works for you, and it's worth it to learn the skills that enable you to do so.
 _Your workflow is as much your product as your game._

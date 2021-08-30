@@ -51,8 +51,6 @@ The game is also hosted on our [NeoMori itch.io page](https://eficode.itch.io/ne
 
 ## Is it worth it? <a name="worth"></a>
 
-Before we dip into technical details, we wanted to share if and how learning all of this was worth it.
-
 We had heard of many of the practices (version control, task management, Test Driven Development, etc.), but we didn't understand of the payoffs of using them:
 
 - Why spend so much time organizing and refining tasks when you can jump straight to coding?
@@ -91,7 +89,6 @@ If you're tempted to skip this: don't.
 Many modern practices depend on using version control like git, and GitHub comes laden with free tooling.
 There's a lot of bells and whistles, which can be intimidating, but don't let that stop you.
 We eased into it, using only what we needed and we won't be going back to Dropbox any time soon.
-The benefits of a project repository and its tooling are absolutely worth the learning effort.
 
 ### Creating a GitHub repository <a name="repository-creation"></a>
 
@@ -167,11 +164,10 @@ This time things went differently.
 We were advised to start with a simple workflow, to gradually and deliberately expand on it.
 We decided to start with a simple project board and some basic rules regarding task management.
 Whenever something felt annoying or tedious in our workflow, we'd create a task to fix that.
-This was an easy way of weaving process improvements into our game development.
-The result was a genuinely comfortable workflow which only got better over time.
+The final result was a genuinely comfortable workflow which only got better over time.
 
 Below we go into the details of our workflow, feel free to draw inspiration from it.
-Noe that what we describe below is what we ended up with after a few weeks, not our original starting point.
+Note that what we describe below is what we ended up with after a few weeks, not our original starting point.
 We highly recommend you start small, and actively work on developing it as you would your game.
 
 ### Creating a project board <a name="project-board"></a>
@@ -231,7 +227,7 @@ For a task to leave To Do, a developer only needs to pick it up and start workin
 
 These are tasks currently being worked on.
 There shouldn't be more tasks in progress than you have people to work on them.
-No multi-tasking!
+No multitasking!
 
 For a task to leave In Progress, its definition of done must be completed.
 
@@ -263,13 +259,13 @@ To reference an issue or task, we add the following to our commit message body:
   Once this commit is merged into our main branch, GitHub will automatically close the issue and move it to *Done*.
 - **Fixes #12 > Added a new level**
   This behaves the same as the one above, but the extra text gets used in our [automated release notes](#automating-release-notes).
-  Note that this is a purely custom script and not something that comes out of the box.
+  Note that this is custom behaviour and not something that comes out of the box.
 
 Doing this makes every change in our repository link back to the issue that spawned it.
 It's great for traceability and finding out why specific changes were made.
 It also helped us stay disciplined and keep to our tasks.
 
-**References:**
+**Resources:**
 
 - [GitHub guides - Mastering Issues](https://guides.github.com/features/issues/#notifications)
 
@@ -291,11 +287,11 @@ Our flow is as follows:
 - Implements the feature
   - Use TDD where applicable
   - Create small [atomic commits](https://www.aleksandrhovhannisyan.com/blog/atomic-git-commits/)
-- Pushes your branch to GitHub when you're ready or taking a break
+- Push your branch to GitHub when you're ready or taking a break
 
 **Integration**
 
-- Make sure your branch is up-to-date ([rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) accordingly)
+- Make sure your branch is up-to-date, [rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) when necessary
 - Create a [Pull Request](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) for your branch
 - When the automatic build pipeline finishes with success, merge and close the Pull Request.
 
@@ -307,7 +303,7 @@ Our flow is as follows:
   - Generate release notes
   - Create and push a [git tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) with the release notes as its body
 
-This will trigger the release pipeline, publishing it to our [GitHub](https://github.com/Praqma/GodotDevOps/releases) and [Itch.io](https://eficode.itch.io/neomori) pages.
+This will trigger the release pipeline, publishing it to our [GitHub Releases](https://github.com/Praqma/GodotDevOps/releases) and [Itch.io](https://eficode.itch.io/neomori) pages.
 
 ### Test Driven Development <a name="tdd"></a>
 
@@ -395,7 +391,7 @@ We'll go into detail on our builds, but there's some learnings we'd like to shar
 ### GitHub Actions <a name="github-actions"></a>
 
 With GitHub Actions you define workflows in dedicated configuration files.
-A workflows consists of an event that triggers it, an environment it runs in and steps it executes.
+A workflow consists of an event that triggers it, an environment it runs in and steps it executes.
 An example workflow could be: "When a Pull Request gets a new change, spin up a Ubuntu environment with Godot and run my unit tests."
 
 It took us a while to get used to the concepts and syntax.
@@ -458,9 +454,9 @@ We prefer our current solution as the steps are more transparent than the pre-bu
 
 The steps differ slightly between target platforms, but they all follow the same trend.
 
-- First, we get the relevant code using the pre-built [https://github.com/actions/checkout](checkout action).
+- First, we get the relevant code using the pre-built [checkout action](https://github.com/actions/checkout).
   We use `lfs: true` to get our LFS files, and `fetch-depth: 0` to get our entire history as we'll need it later.
-- Then we pick between a building a debug or release client using the [Conditional value](https://github.com/haya14busa/action-cond) action.
+- Then we pick between building a debug or release client using the [Conditional value](https://github.com/haya14busa/action-cond) action.
   We were a bit surprised it wasn't trivial to get a conditional value, but here we are.
 - Then we use the [godot command line interface](https://docs.godotengine.org/en/stable/getting_started/editor/command_line_tutorial.html) to run GUT and export the client.
 - Finally, we upload the game clients as build artifacts using the pre-built [upload-artifact](https://github.com/actions/upload-artifact) action.
@@ -523,7 +519,7 @@ runs-on: ubuntu-latest
 Unlike the build workflows, the release workflow is identical for Windows, Linux and Mac.
 Thus we made it a [matrix workflow](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstrategymatrix), allowing us to define three near-identical workflows without duplication.
 
-Our fist step is to use the [dawidd6/action-download-artifact](https://github.com/dawidd6/action-download-artifact) action to download the clients we've already built in our build workflow. This way we avoid a redundant build and ensures the client we're releasing is the one we've been play-testing.
+Our first step is to use the [dawidd6/action-download-artifact](https://github.com/dawidd6/action-download-artifact) action to download the clients we've already built in our build workflow. This way we avoid a redundant build and ensures the client we're releasing is the one we've been play-testing.
 
 Then we zip up the client and use the [softprops/action-gh-release](https://github.com/softprops/action-gh-release) action to publish it as a GitHub release. Making them available on our [Releases page](https://github.com/Praqma/GodotDevOps/releases).
 
@@ -583,13 +579,11 @@ The magic happens in our release note generation script ([.buildscripts/release-
 
 When we tag a commit to make a release, we use the output of the script as the tag's body.
 That way our GitHub Release immediately has patch notes attached, as it defaults to the tag body for its message.
-It's all pretty siple, but it gets the job done and saves us a lot of work.
+It's all pretty simple, but it gets the job done and saves us a lot of work.
 
 ## Conclusion <a name="conclusion"></a>
 
 We've learned a lot from our dive into contemporary development practices.
 It has enabled us to make our projects more sustainable, organized and free of much of the tedium.
 While we often struggled to get things working or while developing good habits, it was worth it in the end.
-If you haven't dabbled in any of this yourself, try it out for a project! It'll be worth it.
-
 In hindsight, we've wasted a lot of time by not learning these things sooner.

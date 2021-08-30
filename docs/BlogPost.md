@@ -309,8 +309,8 @@ This will trigger the release pipeline, publishing it to our [GitHub Releases](h
 
 We never gave testing the attention it deserves, and why would we?
 It's easy to boot up the game and check if things work.
-But as a game grows, there's' more to test and more that can fail.
-That's when we'd look into adding some automated tests, but we'd our code hard to test and tightly coupled to the engine.
+But as a game grows, there's more to test and more that can fail.
+That's when we'd look into adding some automated tests, but we'd made our code hard to test and tightly coupled to the engine.
 
 This is the scenario Test Driven Development (TDD) aims to avoid.
 With TDD, you write tests _before_ writing the code.

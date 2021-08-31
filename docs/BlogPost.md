@@ -123,7 +123,7 @@ How to use git _properly_ is a trickier subject.
 Git is a popular tool with many ways of achieving similar goals, so there's a lot of opinions out there.
 To avoid unnecessary confusion, we started with a very simple workflow, slowly changing it over time to suit our needs.
 
-If you want a good tip (opinion) to get you stated: Write small commits. One change per commit is ideal.
+If you want a good tip (opinion) to get you started: Write small commits. One change per commit is ideal.
 
 **Resources**:
 

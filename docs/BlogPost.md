@@ -1,12 +1,10 @@
-# Title
+# A game dev dip into DevOps
 
-# Subtitle
+> A novice guide to being a little smarter about indie game development
 
-## Kicker
-
-- This summer, we coached two student game developers on modern development techniques. ...
-- After a summer of coaching, two game development students share ...
-- ...
+We helped two game dev students explore the world of contemporary software development and DevOps.
+This allowed them to simultaneously develop both a comfortable workflow and a _sweet_ ninja platforming game.
+These are their learnings and the advice they’d like to pass on.
 
 ## Introduction
 
@@ -583,7 +581,13 @@ It's all pretty simple, but it gets the job done and saves us a lot of work.
 
 ## Conclusion <a name="conclusion"></a>
 
-We've learned a lot from our dive into contemporary development practices.
+We already knew being more organized and disciplined would make development easier.
+Our big mistake was thinking it would also make it _less fun_.
+It enables you to get rid of the unfun things through automation.
+So if you're having trouble staying disciplined, try automating some things to make it all the more enticing.
+
+Ultimately, we've learned a lot from our dive into contemporary development practices.
 It has enabled us to make our projects more sustainable, organized and free of much of the tedium.
-While we often struggled to get things working or while developing good habits, it was worth it in the end.
+While we often struggled to get everything working or while developing good habits, it was worth it in the end.
+
 In hindsight, we've wasted a lot of time by not learning these things sooner.

@@ -382,8 +382,6 @@ We'll go into detail on our builds, but there's some learnings we'd like to shar
 
 **Resources**:
 
-- *TODO: shell intro*
-- *TODO: regex intro*
 - [regex101 - RegEx Playground](https://regex101.com/)
 
 ### GitHub Actions <a name="github-actions"></a>

@@ -1,32 +1,40 @@
-# A game dev dip into DevOps
+# The novice game developers’ guide to DevOps
 
-> A novice guide to being a little smarter about indie game development
+> The learnings of two game development students’ dip into the DevOps world
 
-We helped two game dev students explore the world of contemporary software development and DevOps.
-This allowed them to simultaneously develop both a comfortable workflow and a _sweet_ ninja platforming game.
-These are their learnings and the advice they’d like to pass on.
+We helped two game development students explore the world of contemporary software development and DevOps.
+This allowed them to simultaneously develop both:
+
+1. a comfortable workflow
+2. a sweet ninja platforming game
+
+In this blog post they share what they’ve learned.
+And now, over to the students...
 
 ## Introduction
 
 Hi there!
-We're two game development students who had the opportunity to collaborate with [Eficode](https://www.eficode.com) over summer.
+
+We're two game development students who had the opportunity to collaborate with Eficode over the summer of 2021.
 
 While game development is notoriously special, we can still learn from contemporary development practices used outside of it.
 We set out to develop a humble game while learning and applying as many modern development techniques and practices as we could.
 With the help of some Eficodeans, we dove headfirst into Test Driven Development (TDD), project planning, automated pipelines and more.
 
-This post serves as a summary of our learnings.
+This post is a summary of what we learned.
 We hope it can be of use to other aspiring game developers and show a different aspect of the development process outside of scripting, modeling and level design.
-While we used [Godot](https://godotengine.org/) for our engine, our learnings apply to other engines as well.
+While we used Godot for our engine, our learnings apply to other engines as well.
 
 You'll find everything in our [GodotDevOps GitHub repository](https://github.com/Praqma/GodotDevOps).
 
 The game is also hosted on our [NeoMori itch.io page](https://eficode.itch.io/neomori).
 
-## Table of contents
+## What we will cover
 
-[Something to introduce the TOC]
-[Something about using this as _inspiration_ and not blindly following everything. (recap in summary)]
+We covered many topics during the project.
+In this post we’ll be as concise as possible, but feel free to skim ahead to the parts you’re interested in.
+
+Here’s a quick overview of everything we’ll be covering:
 
 - [Is it worth it?](#worth)
 - [Getting started](#getting-started)
@@ -55,19 +63,19 @@ We had heard of many of the practices (version control, task management, Test Dr
 - Why take extra time doing Test Driven Development when you can churn out more game features without it?
 - Why struggle setting up automation when the tasks you're automating are trivial anyway?
 
-Going into the project, we didn't really know the answers to these questions.
-We knew these were the "correct way" of working, but considered them "enterprisey" and stifling.
+At first we didn't know the answers to these questions.
+We knew this was the "correct way" of working, but considered it "enterprisey" and stifling.
 It all seemed like a lot of time spent not developing the game.
 
 Even after implementing and using these practices, we didn't really notice the payoffs.
-But that's because it's difficult to notice when things are _missing_.
+But that's because it's difficult to notice when things are missing.
 We slowly realized we weren't spending as much time doing the boring or frustrating parts of development.
 
 - By organizing and refining our tasks properly, we always had clear and concrete tasks to work on and the project never got stuck.
 - By using Test Driven Development, we wasted less time chasing bugs or digging through old code.
 - By setting up the automated workflows, we completely removed many mundane, boring and distracting tasks from our work.
 
-These practices ultimately enabled us to spend _more_ time doing the fun part: developing the game.
+These practices ultimately enabled us to spend more time doing the fun part: developing the game.
 While it took us much time and effort to learn everything, we won't have to relearn it for our next project, and much of the automation we've done is reusable.
 In hindsight, we wish we'd have learned this stuff far sooner, before our previous collaborative projects at university.
 
@@ -76,12 +84,12 @@ _Your workflow is as much your product as your game._
 
 ## Getting started <a name="getting-started"></a>
 
-The very first part of our project was creating a repository on [GitHub](https://www.github.com) and getting comfortable using [git](git-scm.com/).
+The very first part of our project was creating a repository on GitHub and getting comfortable using git.
 
 For those unaware:
 
-- [git](git-scm.com/) is a version control system enabling you to save and share your work.
-- [GitHub](https://www.github.com) is a collaboration platform offering free git repository hosting, task management, build automation and more.
+- git is a version control system enabling you to save and share your work.
+- GitHub is a collaboration platform offering free git repository hosting, task management, build automation and more.
 
 If you're tempted to skip this: don't.
 Many modern practices depend on using version control like git, and GitHub comes laden with free tooling.
@@ -106,11 +114,11 @@ Creating one isn't difficult either:
 - [GitHub docs - Inviting collaborators](https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository)
 - [Brackeys - How to use GitHub with Unity](https://www.youtube.com/watch?v=qpXxcvS-g3g)
 
-### Using Git <a name="using-git"></a>
+### Using git <a name="using-git"></a>
 
 We had used git before, but it often felt more of a hindrance than a help.
 Admittedly, we hadn't taken the time to learn it properly.
-We were just fumbling around in the [GitHub Desktop](https://desktop.github.com/) client.
+We were just fumbling around in the GitHub Desktop client.
 
 GitHub Desktop is great, mind you.
 Still, we'd recommend learning to work from the command line interface (CLI).
@@ -121,7 +129,8 @@ How to use git _properly_ is a trickier subject.
 Git is a popular tool with many ways of achieving similar goals, so there's a lot of opinions out there.
 To avoid unnecessary confusion, we started with a very simple workflow, slowly changing it over time to suit our needs.
 
-If you want a good tip (opinion) to get you started: Write small commits. One change per commit is ideal.
+If you want a good tip (opinion) to get you started:
+_Write small commits. One change per commit is ideal._
 
 **Resources**:
 
@@ -140,6 +149,7 @@ Luckily there's two ways to deal with the size issue: Git LFS and shallow clonin
 
 Git Large File Storage (LFS) is a tool that allows you to mark certain file types to be stored outside of your repository.
 These files will get stored on an external file server, while your git repository will only store a lightweight reference to them.
+
 GitHub conveniently offers LFS integration, so we tried it out and found it working seamlessly.
 Its LFS service is only free up to a certain amount of storage/traffic, but we didn't even get close to the limit with our humble 2D platformer.
 
@@ -164,7 +174,8 @@ We decided to start with a simple project board and some basic rules regarding t
 Whenever something felt annoying or tedious in our workflow, we'd create a task to fix that.
 The final result was a genuinely comfortable workflow which only got better over time.
 
-Below we go into the details of our workflow, feel free to draw inspiration from it.
+Below we go into the details of our workflow.
+Feel free to draw inspiration from it.
 Note that what we describe below is what we ended up with after a few weeks, not our original starting point.
 We highly recommend you start small, and actively work on developing it as you would your game.
 
@@ -450,12 +461,12 @@ We prefer our current solution as the steps are more transparent than the pre-bu
 
 The steps differ slightly between target platforms, but they all follow the same trend.
 
-- First, we get the relevant code using the pre-built [checkout action](https://github.com/actions/checkout).
+1. Get the relevant code using the pre-built [checkout action](https://github.com/actions/checkout).
   We use `lfs: true` to get our LFS files, and `fetch-depth: 0` to get our entire history as we'll need it later.
-- Then we pick between building a debug or release client using the [Conditional value](https://github.com/haya14busa/action-cond) action.
+2. Choose between building a debug or release client using the [Conditional value](https://github.com/haya14busa/action-cond) action.
   We were a bit surprised it wasn't trivial to get a conditional value, but here we are.
-- Then we use the [godot command line interface](https://docs.godotengine.org/en/stable/getting_started/editor/command_line_tutorial.html) to run GUT and export the client.
-- Finally, we upload the game clients as build artifacts using the pre-built [upload-artifact](https://github.com/actions/upload-artifact) action.
+3. Use the [godot command line interface](https://docs.godotengine.org/en/stable/getting_started/editor/command_line_tutorial.html) to run GUT and export the client.
+4. Upload the game clients as build artifacts using the pre-built [upload-artifact](https://github.com/actions/upload-artifact) action.
 That's it, automated tests and builds are up and running!
 
 **On embedding the version:**
@@ -467,7 +478,7 @@ We learned we can override [Godot project settings](https://docs.godotengine.org
 
 Is it clever? Yes.
 Too clever? Maybe.
-Do we like it? Absolutely.
+Do we like it? Absolutely!
 
 ```yaml
 - name: Get version using git describe
@@ -579,7 +590,7 @@ It's all pretty simple, but it gets the job done and saves us a lot of work.
 
 ## Conclusion <a name="conclusion"></a>
 
-We already knew being more organized and disciplined would make development easier.
+That’s it. We already knew being more organized and disciplined would make development easier.
 Our big mistake was thinking it would also make it _less fun_.
 It enables you to get rid of the unfun things through automation.
 So if you're having trouble staying disciplined, try automating some things to make it all the more enticing.

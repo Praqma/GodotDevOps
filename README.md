@@ -2,6 +2,8 @@
 
 NeoMori is a summer project exploring contemporary software development and DevOps in a game development setting.
 
+☀️ Read our blog post [here](https://www.eficode.com/blog/the-novice-game-developers-guide-to-devops)! ☀️
+
 - [Project goals](#project-goals)
 - [Installation](#installation)
 - [Development](#development)
